@@ -1,0 +1,1981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janu Computers | Next-Gen Tech Store</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Modern Design System */
+        :root {
+            --bg-dark: #090d16;
+            --bg-card: #111827;
+            --bg-glass: rgba(17, 24, 39, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --accent: #ff4655;
+            --whatsapp: #25d366;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --success: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
+
+        /* Top Notification Bar */
+        .top-bar { 
+            background: linear-gradient(90deg, #1e1b4b, #0f172a); 
+            color: var(--text-muted); 
+            font-size: 0.8rem; 
+            padding: 8px 8%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .top-bar i { color: var(--accent); margin-right: 6px; }
+
+        /* Main Header */
+        .main-header { 
+            background: var(--bg-glass); 
+            backdrop-filter: blur(12px);
+            padding: 16px 8%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid var(--border-color); 
+        }
+        
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            color: #fff; 
+            text-decoration: none; 
+            letter-spacing: -0.5px; 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .logo span { color: var(--accent); }
+        
+        .search-box { 
+            display: flex; 
+            flex: 0.4; 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid var(--border-color); 
+            border-radius: 50px; 
+            padding: 4px 6px 4px 16px;
+            transition: all 0.3s ease;
+        }
+        .search-box:focus-within { 
+            border-color: var(--primary); 
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); 
+        }
+        .search-box input { 
+            width: 100%; 
+            border: none; 
+            background: transparent; 
+            outline: none; 
+            font-size: 0.85rem; 
+            color: #fff; 
+        }
+        .search-box button { 
+            background: var(--primary); 
+            color: #fff; 
+            border: none; 
+            width: 36px;
+            height: 36px;
+            border-radius: 50%; 
+            cursor: pointer; 
+            transition: 0.2s; 
+        }
+
+        .cart-btn { 
+            position: relative; 
+            font-size: 1.2rem; 
+            color: #fff; 
+            text-decoration: none; 
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid var(--border-color);
+            transition: 0.3s; 
+            cursor: pointer;
+        }
+        .cart-btn:hover { background: var(--accent); border-color: var(--accent); }
+        .cart-count { 
+            background: var(--accent); 
+            color: #fff; 
+            font-size: 0.65rem; 
+            font-weight: 800; 
+            padding: 2px 6px; 
+            border-radius: 20px; 
+            position: absolute; 
+            top: -2px; 
+            right: -2px; 
+        }
+
+        /* Nav Menu */
+        .cat-nav { background: var(--bg-card); border-bottom: 1px solid var(--border-color); padding: 0 8%; position: sticky; top: 73px; z-index: 999; }
+        .cat-nav ul { display: flex; list-style: none; gap: 24px; align-items: center; }
+        .cat-nav a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 0.82rem; 
+            font-weight: 600; 
+            padding: 16px 0; 
+            display: inline-block; 
+            transition: 0.3s; 
+            letter-spacing: 0.5px; 
+            cursor: pointer;
+        }
+        .cat-nav a:hover, .cat-nav a.active-nav { color: #fff; }
+
+        /* Dropdown */
+        .dropdown { position: relative; }
+        .dropdown > a { cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            min-width: 200px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 0 !important;
+            padding: 8px 0 !important;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu li { width: 100%; }
+        .dropdown-menu a {
+            padding: 10px 20px !important;
+            display: flex !important;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Banner */
+        .hero-banner { 
+            background: linear-gradient(180deg, rgba(9, 13, 22, 0.4) 0%, var(--bg-dark) 100%), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80') center/cover; 
+            padding: 80px 20px; 
+            text-align: center; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-banner h1 { 
+            font-size: 3rem; 
+            font-weight: 800; 
+            letter-spacing: -1px;
+            margin-bottom: 16px; 
+            background: linear-gradient(to right, #fff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-banner p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 600px; }
+        .btn-primary { 
+            background: var(--accent); 
+            color: #fff; 
+            padding: 12px 32px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.5px; 
+            box-shadow: 0 4px 20px rgba(255, 70, 85, 0.4); 
+            transition: 0.3s; 
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        /* Container & Sections */
+        .container { width: 88%; max-width: 1280px; margin: 40px auto; min-height: 60vh; }
+
+        .shop-by-cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+        .cat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .cat-card i { font-size: 2rem; color: var(--primary); transition: 0.3s; }
+        .cat-card span { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.5px; }
+        .cat-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+        .content-section { margin-bottom: 50px; }
+        .section-title { 
+            font-size: 1.3rem; 
+            font-weight: 800; 
+            margin-bottom: 24px; 
+            color: #fff; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px;
+        }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: var(--accent); border-radius: 4px; }
+
+        /* Hardware Product Grid */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+        .product-card { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border-color); 
+            border-radius: 16px; 
+            padding: 16px; 
+            position: relative; 
+            transition: all 0.3s ease; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        .product-card:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.2); }
+        .badge { position: absolute; top: 26px; left: 26px; background: var(--primary); color: #fff; font-size: 0.65rem; font-weight: 800; padding: 4px 10px; border-radius: 50px; z-index: 2; }
+        .badge-used { background: #475569; }
+        .product-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 16px; }
+        .product-title { font-size: 0.95rem; font-weight: 600; color: #fff; text-decoration: none; margin-bottom: 12px; line-height: 1.4; }
+        .price { font-size: 1.2rem; font-weight: 800; color: #fff; }
+        .koko-pay { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; display: block; }
+
+        .add-to-cart-btn { 
+            background: rgba(255, 255, 255, 0.05); 
+            color: #fff; 
+            border: 1px solid var(--border-color); 
+            width: 100%; 
+            padding: 10px; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            margin-top: 16px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            font-size: 0.85rem; 
+        }
+        .add-to-cart-btn:hover { background: var(--primary); border-color: var(--primary); }
+
+        /* COMPACT STORAGE CALCULATOR WIDGET STYLES */
+        .storage-wrapper { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border-color); 
+            border-radius: 14px; 
+            padding: 14px 18px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            position: sticky;
+            top: 130px;
+            z-index: 900;
+        }
+        
+        .config-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            padding: 10px 14px; 
+            margin-bottom: 10px; 
+        }
+        .config-card h4 { 
+            font-size: 0.85rem; 
+            color: #fff; 
+            margin-bottom: 8px; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+        }
+
+        select { 
+            width: 100%; 
+            padding: 6px 10px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 6px; 
+            background: var(--bg-dark); 
+            color: #fff; 
+            font-size: 0.8rem; 
+            outline: none; 
+        }
+
+        .storage-box { 
+            background: var(--bg-dark); 
+            border: 1px solid var(--border-color); 
+            padding: 10px 14px; 
+            border-radius: 8px; 
+        }
+        
+        .progress-container { 
+            background: rgba(255, 255, 255, 0.05); 
+            height: 8px; 
+            border-radius: 6px; 
+            overflow: hidden; 
+            margin-top: 6px; 
+        }
+        .progress-bar { 
+            height: 100%; 
+            width: 0%; 
+            transition: width 0.4s ease; 
+            border-radius: 6px; 
+            background: linear-gradient(90deg, var(--primary), var(--accent)); 
+        }
+
+        .selected-tags { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 6px; 
+            margin-top: 8px; 
+            max-height: 60px; 
+            overflow-y: auto; 
+        }
+        .tag-item { 
+            background: rgba(99, 102, 241, 0.15); 
+            border: 1px solid var(--primary); 
+            padding: 2px 8px; 
+            border-radius: 12px; 
+            font-size: 0.7rem; 
+            color: #fff; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+        }
+        .tag-item i { cursor: pointer; color: var(--accent); }
+
+        .btn-whatsapp-order {
+            background: var(--whatsapp);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+            width: 100%;
+            justify-content: center;
+        }
+        .btn-whatsapp-order:hover { background: #1eb954; }
+
+        /* Game Vault Grid */
+        .game-vault-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+        .game-vault-search { position: relative; min-width: 280px; }
+        .game-vault-search input { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 10px 16px 10px 40px; border-radius: 50px; color: #fff; outline: none; font-size: 0.85rem; }
+        .game-vault-search i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+        .category-tabs { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 24px; padding-bottom: 4px; }
+        .cat-tab { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: 0.3s; white-space: nowrap; }
+        .cat-tab.active, .cat-tab:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        .game-grid-showcase { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+        .game-poster-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .game-poster-card:hover { transform: translateY(-6px); border-color: var(--primary); }
+        .poster-image-wrap { position: relative; width: 100%; height: 260px; overflow: hidden; }
+        .poster-image { width: 100%; height: 100%; object-fit: cover; transition: 0.4s ease; }
+        .poster-size-tag { position: absolute; top: 10px; right: 10px; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(6px); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
+        .poster-details { padding: 14px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+        .poster-game-title { font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .poster-game-genre { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px; }
+        
+        /* System Requirements Display in Card */
+        .sys-req-box { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            padding: 8px; 
+            font-size: 0.68rem; 
+            color: var(--text-muted); 
+            margin-bottom: 12px;
+        }
+        .sys-req-box div { margin-bottom: 2px; }
+        .sys-req-box span { color: #fff; font-weight: 600; }
+
+        .poster-game-footer { display: flex; justify-content: flex-end; align-items: center; }
+        .btn-card-select { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; width: 100%; justify-content: center; }
+        .btn-card-select.selected { background: var(--success); border-color: var(--success); }
+
+        /* Dynamic Page Section Controller */
+        .page-view { display: none; }
+        .page-view.active-view { display: block; }
+
+        /* Modal Overlay System */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 520px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        .modal-close:hover { color: #fff; }
+
+        /* CART VIEW MODAL STYLES */
+        .cart-items-list {
+            margin: 15px 0;
+            max-height: 220px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .cart-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-dark);
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        .cart-item-info { display: flex; flex-direction: column; gap: 2px; }
+        .cart-item-title { font-size: 0.85rem; font-weight: 700; color: #fff; }
+        .cart-item-price { font-size: 0.8rem; color: var(--success); font-weight: 600; }
+        .cart-item-remove {
+            color: var(--accent);
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(255, 70, 85, 0.1);
+            transition: 0.2s;
+        }
+        .cart-item-remove:hover { background: var(--accent); color: #fff; }
+        .cart-total-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+            font-size: 0.85rem;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
+
+        /* Floating WhatsApp Icon */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--whatsapp);
+            color: #fff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1500;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* Footer */
+        footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 60px 8% 30px; font-size: 0.85rem; color: var(--text-muted); margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: #fff; font-size: 1rem; margin-bottom: 16px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a { color: var(--text-muted); text-decoration: none; transition: 0.2s; cursor: pointer; }
+        .copyright { text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/94715215075?text=Hi%20Janu%20Computers,%20I%20have%20an%20inquiry." class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Top Contact Bar -->
+    <div class="top-bar">
+        <div>
+            <span><i class="fa-solid fa-phone"></i> +94 71 521 5075</span>
+            <span style="margin-left: 15px;"><i class="fa-solid fa-envelope"></i> sales@janucomputers.lk</span>
+        </div>
+        <div>
+            <span><i class="fa-solid fa-truck-fast"></i> Island-wide Express Delivery</span>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="logo" onclick="navigateTo('home')">
+            <i class="fa-solid fa-bolt" style="color:var(--accent);"></i> JANU <span>COMPUTERS</span>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" placeholder="Search Laptops, Desktops, Monitors...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <!-- Open Cart Modal Icon -->
+        <div class="cart-btn" onclick="openCartModal()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Nav Menu -->
+    <nav class="cat-nav">
+        <ul>
+            <li><a onclick="navigateTo('home')">HOME</a></li>
+            <li class="dropdown">
+                <a><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-desktop"></i> Desktops Page</a></li>
+                    <li><a onclick="navigateTo('laptops')"><i class="fa-solid fa-laptop"></i> Laptops Page</a></li>
+                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> Monitors Page</a></li>
+                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-gamepad"></i> PC Game Vault</a></li>
+                </ul>
+            </li>
+            <li><a onclick="navigateTo('desktops')">DESKTOPS</a></li>
+            <li><a onclick="navigateTo('laptops')">LAPTOPS</a></li>
+            <li><a onclick="navigateTo('monitors')">MONITORS</a></li>
+            <li><a onclick="navigateTo('games')"><i class="fa-solid fa-gamepad" style="color:var(--accent);"></i> GAME VAULT & STORAGE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Dynamic Container -->
+    <div class="container">
+
+        <!-- PAGE 1: HOME PAGE -->
+        <div id="view-home" class="page-view active-view">
+            <!-- Hero Banner -->
+            <div class="hero-banner" style="margin-bottom: 40px; border-radius: 20px;">
+                <h1>UNLEASH ULTIMATE PERFORMANCE</h1>
+                <p>Premium Brand New & Certified Used Gaming Gear with Official Store Warranty.</p>
+                <a onclick="navigateTo('desktops')" class="btn-primary">EXPLORE STORE</a>
+            </div>
+
+            <!-- SHOP BY CATEGORY SECTION -->
+            <div class="content-section">
+                <div class="section-title">Shop By Category</div>
+                <div class="shop-by-cat-grid">
+                    <div class="cat-card" onclick="navigateTo('desktops')">
+                        <i class="fa-solid fa-desktop"></i>
+                        <span>DESKTOPS</span>
+                    </div>
+                    <div class="cat-card" onclick="navigateTo('laptops')">
+                        <i class="fa-solid fa-laptop"></i>
+                        <span>LAPTOPS</span>
+                    </div>
+                    <div class="cat-card" onclick="navigateTo('monitors')">
+                        <i class="fa-solid fa-tv"></i>
+                        <span>MONITORS</span>
+                    </div>
+                    <div class="cat-card" onclick="navigateTo('games')">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>PC GAMES</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Section Preview: Desktops -->
+            <div class="content-section">
+                <div class="section-title">Featured Desktops</div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <span class="badge">BRAND NEW</span>
+                        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80" alt="Desktop PC">
+                        <a class="product-title">Core i7 13th Gen Gaming PC - RTX 4060 8GB</a>
+                        <div>
+                            <span class="price">Rs: 285,000.00</span>
+                            <span class="koko-pay">or 3 x Rs: 95,000 with Koko</span>
+                            <button class="add-to-cart-btn" onclick="addToCart(101, 'Core i7 13th Gen Gaming PC', 285000)">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE 2: LAPTOPS PAGE -->
+        <div id="view-laptops" class="page-view">
+            <div class="section-title">Laptop Computers Collection</div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge">BRAND NEW</span>
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=500&q=80" alt="Brand New Laptop">
+                    <a class="product-title">ASUS TUF Gaming F15 Core i5 12th Gen RTX 3050</a>
+                    <div>
+                        <span class="price">Rs: 245,000.00</span>
+                        <span class="koko-pay">or 3 x Rs: 81,666 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(201, 'ASUS TUF Gaming F15', 245000)">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge badge-used">USED</span>
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80" alt="Used Laptop">
+                    <a class="product-title">HP Victus Gaming Used Laptop Ryzen 5 GTX 1650</a>
+                    <div>
+                        <span class="price">Rs: 165,000.00</span>
+                        <span class="koko-pay">or 3 x Rs: 55,000 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(202, 'HP Victus Gaming Laptop', 165000)">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE 3: DESKTOPS PAGE -->
+        <div id="view-desktops" class="page-view">
+            <div class="section-title">Desktop Computers Collection</div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge">BRAND NEW</span>
+                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80" alt="Desktop PC">
+                    <a class="product-title">Core i7 13th Gen Gaming PC - RTX 4060 8GB</a>
+                    <div>
+                        <span class="price">Rs: 285,000.00</span>
+                        <span class="koko-pay">or 3 x Rs: 95,000 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(101, 'Core i7 13th Gen Gaming PC', 285000)">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge badge-used">USED</span>
+                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500&q=80" alt="Used Desktop">
+                    <a class="product-title">Intel Core i5 10th Gen PC - GTX 1660 Super</a>
+                    <div>
+                        <span class="price">Rs: 145,000.00</span>
+                        <span class="koko-pay">or 3 x Rs: 48,333 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(102, 'Intel Core i5 10th Gen PC', 145000)">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE 4: MONITORS PAGE -->
+        <div id="view-monitors" class="page-view">
+            <div class="section-title">Monitors Collection</div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge">BRAND NEW</span>
+                    <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80" alt="Brand New Monitor">
+                    <a class="product-title">ASUS TUF Gaming 23.8" 165Hz IPS Gaming Monitor</a>
+                    <div>
+                        <span class="price">Rs: 68,000.00</span>
+                        <span class="koko-pay">or 3 x Rs: 22,666 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(301, 'ASUS TUF 23.8 Monitor', 68000)">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge badge-used">USED</span>
+                    <img src="https://images.unsplash.com/photo-1551645120-d70bfe84c826?auto=format&fit=crop&w=500&q=80" alt="Used Monitor">
+                    <a class="product-title">Samsung 24" IPS 75Hz Used Borderless Monitor</a>
+                    <div>
+                        <span class="price">Rs: 32,500.00</span>
+                        <span class="koko-pay">or 3 x Rs: 10,833 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(302, 'Samsung 24 Monitor', 32500)">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE 5: PC GAME VAULT & LIVE COMPACT STORAGE CALCULATOR -->
+        <div id="view-games" class="page-view">
+            
+            <!-- COMPACT STORAGE CALCULATOR WIDGET (UPDATED DYNAMIC DROPDOWNS) -->
+            <div class="storage-wrapper">
+                <div class="config-card">
+                    <h4><i class="fa-solid fa-hard-drive" style="color:var(--primary);"></i> Select Storage Device & Capacity</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
+                        
+                        <!-- Storage Type Dropdown -->
+                        <div>
+                            <label style="font-size:0.7rem; color:var(--text-muted);">STORAGE TYPE</label>
+                            <select id="storage-type" onchange="onStorageTypeChange()">
+                                <option value="Desktop HDD">Desktop HDD</option>
+                                <option value="Laptop HDD">Laptop HDD</option>
+                                <option value="SSD">SSD</option>
+                                <option value="Portable HDD">Portable HDD</option>
+                            </select>
+                        </div>
+
+                        <!-- Capacity Dropdown -->
+                        <div>
+                            <label style="font-size:0.7rem; color:var(--text-muted);">CAPACITY</label>
+                            <select id="hdd-capacity" onchange="updateStorageSystem()">
+                                <!-- Dynamically populated based on storage type -->
+                            </select>
+                        </div>
+
+                        <!-- Condition Dropdown -->
+                        <div>
+                            <label style="font-size:0.7rem; color:var(--text-muted);">CONDITION</label>
+                            <select id="storage-condition" onchange="updateStorageSystem()">
+                                <option value="Brand New">Brand New</option>
+                                <option value="Used">Used</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="storage-box">
+                    <div style="display:flex; justify-content:space-between; font-size:0.78rem; flex-wrap:wrap; gap:6px;">
+                        <span>Device: <b id="hdd-brand-lbl" style="color:var(--primary);">Desktop HDD</b> (<span id="hdd-condition-lbl" style="color:var(--accent);">Brand New</span> - <span id="hdd-total-lbl">2000 GB</span>)</span>
+                        <span>Used: <b id="hdd-used-lbl" style="color:var(--accent);">0</b> GB | Free: <b id="hdd-free-lbl" style="color:var(--success);">2000</b> GB</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="hdd-bar"></div>
+                    </div>
+                    <div class="selected-tags" id="selected-game-tags"></div>
+
+                    <button class="btn-whatsapp-order" onclick="openStorageCheckoutModal()">
+                        <i class="fa-brands fa-whatsapp"></i> Order Selected Games & Storage Device
+                    </button>
+                </div>
+            </div>
+
+            <!-- GAME VAULT SECTION -->
+            <div class="game-vault-header">
+                <div class="section-title" style="margin-bottom:0;">Full PC Game Vault</div>
+                
+                <div class="game-vault-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="gameSearchInput" placeholder="Search games by title..." onkeyup="filterGames()">
+                </div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="category-tabs">
+                <button class="cat-tab active" onclick="filterCategory('All', this)">All Games</button>
+                <button class="cat-tab" onclick="filterCategory('Action', this)">Action</button>
+                <button class="cat-tab" onclick="filterCategory('Open World', this)">Open World</button>
+                <button class="cat-tab" onclick="filterCategory('RPG', this)">RPG</button>
+                <button class="cat-tab" onclick="filterCategory('FPS', this)">FPS</button>
+            </div>
+
+            <!-- Game Posters Grid Showcase -->
+            <div class="game-grid-showcase" id="gameGridShowcase">
+                
+                <!-- Ancestors Legacy -->
+                <div class="game-poster-card" data-id="1" data-title="Ancestors Legacy" data-category="Strategy Action" data-size="11.7">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (4).jpg" class="poster-image" alt="Ancestors Legacy">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 11.7 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Ancestors Legacy</div>
+                            <div class="poster-game-genre">Strategy / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>i5-750 / Phenom II X4 955</span></div>
+                                <div><b>RAM:</b> <span>4 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 460 1GB / HD 5850 1GB</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(1, 'Ancestors Legacy', 11.7, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aragami 2 -->
+                <div class="game-poster-card" data-id="2" data-title="Aragami 2" data-category="Action Stealth" data-size="3.3">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/capsule_616x353.jpg" class="poster-image" alt="Aragami 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 3.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Aragami 2</div>
+                            <div class="poster-game-genre">Action / Stealth</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(2, 'Aragami 2', 3.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ARK - Survival Evolved -->
+                <div class="game-poster-card" data-id="3" data-title="ARK - Survival Evolved" data-category="Open World Action RPG" data-size="35.6">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (5).jpg" class="poster-image" alt="ARK - Survival Evolved">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 35.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">ARK - Survival Evolved</div>
+                            <div class="poster-game-genre">Open World / Survival</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(3, 'ARK - Survival Evolved', 35.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arma 3 -->
+                <div class="game-poster-card" data-id="4" data-title="Arma 3" data-category="FPS Action" data-size="75">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/capsule_616x353 (1).jpg" class="poster-image" alt="Arma 3">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 75 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Arma 3</div>
+                            <div class="poster-game-genre">FPS / Tactical</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(4, 'Arma 3', 75, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arma Reforger -->
+                <div class="game-poster-card" data-id="5" data-title="Arma Reforger" data-category="FPS Action" data-size="8.6">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/capsule_616x353 (2).jpg" class="poster-image" alt="Arma Reforger">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 8.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Arma Reforger</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(5, 'Arma Reforger', 8.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Black Flag -->
+                <div class="game-poster-card" data-id="6" data-title="Assassin's Creed Black Flag" data-category="Action Open World" data-size="5.3">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Assassin's_Creed_IV_-_Black_Flag_cover.jpg" class="poster-image" alt="Assassin's Creed Black Flag">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 5.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC IV Black Flag</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(6, 'AC IV Black Flag', 5.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Black Flag Resynced -->
+                <div class="game-poster-card" data-id="7" data-title="Assassin's Creed Black Flag Resynced" data-category="Action Open World" data-size="37.6">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/capsule_616x353 (3).jpg" class="poster-image" alt="AC Black Flag Resynced">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 37.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Black Flag Resynced</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 6500</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(7, 'AC Black Flag Resynced', 37.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Mirage -->
+                <div class="game-poster-card" data-id="8" data-title="Assassin's Creed Mirage" data-category="Action Open World" data-size="18.5">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/assassins-creed-mirage.jpg" class="poster-image" alt="Assassin's Creed Mirage">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 18.5 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Mirage</div>
+                            <div class="poster-game-genre">Action / Stealth</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(8, 'AC Mirage', 18.5, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Odyssey - Ultimate Edition -->
+                <div class="game-poster-card" data-id="9" data-title="Assassin's Creed Odyssey - Ultimate Edition" data-category="RPG Open World Action" data-size="35.5">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/ACOdysseyCoverArt.png" class="poster-image" alt="AC Odyssey Ultimate">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 35.5 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Odyssey Ultimate</div>
+                            <div class="poster-game-genre">RPG / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(9, 'AC Odyssey Ultimate', 35.5, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Origins -->
+                <div class="game-poster-card" data-id="10" data-title="Assassin's Creed Origins" data-category="Action Open World RPG" data-size="28.4">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (6).jpg" class="poster-image" alt="Assassin's Creed Origins">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 28.4 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Origins</div>
+                            <div class="poster-game-genre">Action / RPG</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(10, 'AC Origins', 28.4, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Shadows -->
+                <div class="game-poster-card" data-id="11" data-title="Assassin's Creed Shadows" data-category="Action Open World" data-size="79">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Assassin's_Creed_Shadows_cover.png" class="poster-image" alt="Assassin's Creed Shadows">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 79 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Shadows</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(11, 'AC Shadows', 79, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Syndicate -->
+                <div class="game-poster-card" data-id="12" data-title="Assassin's Creed Syndicate" data-category="Action Open World" data-size="32.1">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Assassin's_Creed_Syndicate_cover.jpg" class="poster-image" alt="Assassin's Creed Syndicate">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 32.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Syndicate</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(12, 'AC Syndicate', 32.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Unity -->
+                <div class="game-poster-card" data-id="13" data-title="Assassin's Creed Unity" data-category="Action Open World" data-size="36.3">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Assassin's_Creed_Unity_cover.jpg" class="poster-image" alt="Assassin's Creed Unity">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 36.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Unity</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(13, 'AC Unity', 36.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Valhalla Complete -->
+                <div class="game-poster-card" data-id="14" data-title="Assassin's Creed Valhalla Complete" data-category="RPG Open World Action" data-size="66.9">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Assassin's_Creed_Valhalla_cover.jpg" class="poster-image" alt="AC Valhalla Complete">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 66.9 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Valhalla Complete</div>
+                            <div class="poster-game-genre">RPG / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(14, 'AC Valhalla Complete', 66.9, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avowed: Premium Edition -->
+                <div class="game-poster-card" data-id="15" data-title="Avowed: Premium Edition" data-category="RPG Open World" data-size="50.1">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (7).jpg" class="poster-image" alt="Avowed Premium Edition">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 50.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Avowed: Premium Ed.</div>
+                            <div class="poster-game-genre">RPG / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(15, 'Avowed: Premium Ed.', 50.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back 4 Blood -->
+                <div class="game-poster-card" data-id="16" data-title="Back 4 Blood" data-category="FPS Action" data-size="47.8">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (8).jpg" class="poster-image" alt="Back 4 Blood">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 47.8 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Back 4 Blood</div>
+                            <div class="poster-game-genre">FPS / Zombie Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(16, 'Back 4 Blood', 47.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman - Arkham Knight -->
+                <div class="game-poster-card" data-id="17" data-title="Batman - Arkham Knight" data-category="Action Open World" data-size="27">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/SP2jKfb96pDnFMljfalSsay7NjcNLz4WRj1WDyoj05t2aH8ViCnNwv2TgMB2ko0S.png" class="poster-image" alt="Batman Arkham Knight">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 27 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman Arkham Knight</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(17, 'Batman Arkham Knight', 27, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman - TEW - TTS - Shadows Edition -->
+                <div class="game-poster-card" data-id="18" data-title="Batman - TEW - TTS - Shadows Edition" data-category="Action Story" data-size="9.1">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (9).jpg" class="poster-image" alt="Batman TEW TTS Shadows">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 9.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman TEW Shadows</div>
+                            <div class="poster-game-genre">Action / Adventure</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(18, 'Batman TEW Shadows', 9.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman Arkham Asylum -->
+                <div class="game-poster-card" data-id="19" data-title="Batman Arkham Asylum" data-category="Action" data-size="6.2">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Batman_Arkham_Asylum_Videogame_Cover.jpg" class="poster-image" alt="Batman Arkham Asylum">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 6.2 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman Arkham Asylum</div>
+                            <div class="poster-game-genre">Action / Adventure</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(19, 'Batman Arkham Asylum', 6.2, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman Arkham City GOTY -->
+                <div class="game-poster-card" data-id="20" data-title="Batman Arkham City GOTY" data-category="Action Open World" data-size="14.7">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (10).jpg" class="poster-image" alt="Batman Arkham City GOTY">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 14.7 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman Arkham City GOTY</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(20, 'Batman Arkham City GOTY', 14.7, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman Arkham Origins Complete Edition -->
+                <div class="game-poster-card" data-id="21" data-title="Batman Arkham Origins Complete Edition" data-category="Action Open World" data-size="13.3">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (11).jpg" class="poster-image" alt="Batman Arkham Origins Complete">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 13.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman Arkham Origins</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(21, 'Batman Arkham Origins', 13.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD 1 -->
+                <div class="game-poster-card" data-id="22" data-title="BATTLEFIELD 1" data-category="FPS Action" data-size="49">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (12).jpg" class="poster-image" alt="BATTLEFIELD 1">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 49 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 1</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(22, 'Battlefield 1', 49, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD 2 -->
+                <div class="game-poster-card" data-id="23" data-title="BATTLEFIELD 2" data-category="FPS Action" data-size="1.9">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (13).jpg" class="poster-image" alt="BATTLEFIELD 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 1.9 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 2</div>
+                            <div class="poster-game-genre">FPS / Tactical</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(23, 'Battlefield 2', 1.9, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD 3 -->
+                <div class="game-poster-card" data-id="24" data-title="BATTLEFIELD 3" data-category="FPS Action" data-size="8.6">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Battlefield_3_Game_Cover.jpg" class="poster-image" alt="BATTLEFIELD 3">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 8.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 3</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(24, 'Battlefield 3', 8.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD 4 -->
+                <div class="game-poster-card" data-id="25" data-title="BATTLEFIELD 4" data-category="FPS Action" data-size="25.2">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Battlefield_4_cover_art.jpg" class="poster-image" alt="BATTLEFIELD 4">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 25.2 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 4</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(25, 'Battlefield 4', 25.2, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battlefield 6 -->
+                <div class="game-poster-card" data-id="26" data-title="Battlefield 6" data-category="FPS Action" data-size="85.8">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Battlefield_6_cover_art.jpg" class="poster-image" alt="Battlefield 6">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 85.8 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 6</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(26, 'Battlefield 6', 85.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD BAD COMPANY 2 -->
+                <div class="game-poster-card" data-id="27" data-title="BATTLEFIELD BAD COMPANY 2" data-category="FPS Action" data-size="7.4">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Battlefield_Bad_Company_2_cover.jpg" class="poster-image" alt="BATTLEFIELD BAD COMPANY 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 7.4 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield Bad Company 2</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(27, 'BF Bad Company 2', 7.4, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battlefield Hardline (2015) -->
+                <div class="game-poster-card" data-id="28" data-title="Battlefield Hardline (2015)" data-category="FPS Action" data-size="32.1">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/images (14).jpg" class="poster-image" alt="Battlefield Hardline">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 32.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield Hardline</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(28, 'Battlefield Hardline', 32.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD V -->
+                <div class="game-poster-card" data-id="29" data-title="BATTLEFIELD V" data-category="FPS Action" data-size="50.5">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Battlefield_V_standard_edition_box_art.jpg" class="poster-image" alt="BATTLEFIELD V">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 50.5 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield V</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(29, 'Battlefield V', 50.5, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Black myth: Wukong -->
+                <div class="game-poster-card" data-id="30" data-title="Black myth: Wukong" data-category="RPG Action" data-size="95.2">
+                    <div class="poster-image-wrap">
+                        <img src="C:/Users/Januda/Desktop/Janu/4to/games/Black_Myth_Wukong_cover_art.jpg" class="poster-image" alt="Black myth: Wukong">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 95.2 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Black Myth: Wukong</div>
+                            <div class="poster-game-genre">RPG / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(30, 'Black Myth: Wukong', 95.2, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SHOPPING CART MODAL -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeCartModal()"><i class="fa-solid fa-xmark"></i></span>
+            <h3 style="color:#fff; font-size:1.2rem; margin-bottom:8px;"><i class="fa-solid fa-cart-shopping" style="color:var(--primary);"></i> Your Shopping Cart</h3>
+            
+            <div class="cart-items-list" id="cartItemsContainer"></div>
+
+            <div class="cart-total-box">
+                <span>Total Amount:</span>
+                <span id="cartTotalAmount" style="color:var(--success);">Rs. 0.00</span>
+            </div>
+
+            <form id="cartOrderForm" onsubmit="sendCartWhatsAppOrder(event)" style="margin-top:15px;">
+                <div class="form-group">
+                    <label>YOUR NAME</label>
+                    <input type="text" id="custNameCart" placeholder="e.g. Nimal Perera" required>
+                </div>
+                <div class="form-group">
+                    <label>PHONE NUMBER</label>
+                    <input type="tel" id="custPhoneCart" placeholder="0771234567" required>
+                </div>
+                <div class="form-group">
+                    <label>DELIVERY ADDRESS / CITY</label>
+                    <textarea id="custAddressCart" rows="2" placeholder="Colombo, Sri Lanka" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-whatsapp-order">
+                    <i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- STORAGE / GAME ORDER MODAL -->
+    <div class="modal-overlay" id="storageModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeStorageModal()"><i class="fa-solid fa-xmark"></i></span>
+            <h3 style="color:#fff; font-size:1.2rem; margin-bottom:8px;"><i class="fa-brands fa-whatsapp" style="color:var(--whatsapp);"></i> Complete Storage & Game Order</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:20px;">Enter details to send Drive & Selected Games order.</p>
+
+            <form onsubmit="sendStorageWhatsAppOrder(event)">
+                <div class="form-group">
+                    <label>YOUR NAME</label>
+                    <input type="text" id="custNameStorage" placeholder="e.g. Nimal Perera" required>
+                </div>
+                <div class="form-group">
+                    <label>PHONE NUMBER</label>
+                    <input type="tel" id="custPhoneStorage" placeholder="0771234567" required>
+                </div>
+                <div class="form-group">
+                    <label>DELIVERY ADDRESS / CITY</label>
+                    <textarea id="custAddressStorage" rows="2" placeholder="Colombo, Sri Lanka" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-whatsapp-order">
+                    <i class="fa-brands fa-whatsapp"></i> Send Order To WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Janu Computers</h4>
+                <p>Your ultimate destination for high-performance gaming rigs, certified used hardware, and PC games.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a onclick="navigateTo('desktops')">Desktops</a></li>
+                    <li><a onclick="navigateTo('laptops')">Laptops</a></li>
+                    <li><a onclick="navigateTo('monitors')">Monitors</a></li>
+                    <li><a onclick="navigateTo('games')">PC Games & Storage</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Support</h4>
+                <ul>
+                    <li><a href="#">Warranty Policy</a></li>
+                    <li><a href="#">Delivery & Shipping</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Janu Computers. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Interactive Logic -->
+    <script>
+        let cartItems = [];
+        let selectedGames = [];
+        const whatsappNumber = "94715215075"; 
+
+        // Capacity Options per Storage Type Definition
+        const storageCapacities = {
+            "SSD": [
+                { value: "128", label: "128 GB" },
+                { value: "256", label: "256 GB" },
+                { value: "512", label: "512 GB" },
+                { value: "1000", label: "1 TB (1000 GB)" },
+                { value: "2000", label: "2 TB (2000 GB)" }
+            ],
+            "Desktop HDD": [
+                { value: "320", label: "320 GB" },
+                { value: "500", label: "500 GB" },
+                { value: "1000", label: "1 TB (1000 GB)" },
+                { value: "2000", label: "2 TB (2000 GB)" },
+                { value: "3000", label: "3 TB (3000 GB)" },
+                { value: "4000", label: "4 TB (4000 GB)" }
+            ],
+            "Laptop HDD": [
+                { value: "320", label: "320 GB" },
+                { value: "500", label: "500 GB" },
+                { value: "1000", label: "1 TB (1000 GB)" },
+                { value: "2000", label: "2 TB (2000 GB)" }
+            ],
+            "Portable HDD": [
+                { value: "500", label: "500 GB" },
+                { value: "1000", label: "1 TB (1000 GB)" },
+                { value: "2000", label: "2 TB (2000 GB)" },
+                { value: "4000", label: "4 TB (4000 GB)" }
+            ]
+        };
+
+        function populateCapacities(type) {
+            const capacitySelect = document.getElementById('hdd-capacity');
+            capacitySelect.innerHTML = '';
+            
+            const options = storageCapacities[type] || storageCapacities["Desktop HDD"];
+            
+            options.forEach(opt => {
+                const el = document.createElement('option');
+                el.value = opt.value;
+                el.innerText = opt.label;
+                capacitySelect.appendChild(el);
+            });
+            
+            // Select default option dynamically if exists
+            if (options.length > 3) {
+                capacitySelect.selectedIndex = 3;
+            } else {
+                capacitySelect.selectedIndex = 0;
+            }
+        }
+
+        function onStorageTypeChange() {
+            const storageType = document.getElementById('storage-type').value;
+            populateCapacities(storageType);
+            updateStorageSystem();
+        }
+
+        // Dynamic Page Navigation Switcher
+        function navigateTo(viewId) {
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(p => p.classList.remove('active-view'));
+
+            const activePage = document.getElementById('view-' + viewId);
+            if(activePage) {
+                activePage.classList.add('active-view');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add Product to Cart Logic
+        function addToCart(id, title, price) {
+            cartItems.push({ id: Date.now(), productId: id, title, price });
+            updateCartUI();
+            alert(title + " added to cart!");
+        }
+
+        function removeFromCart(uniqueId) {
+            cartItems = cartItems.filter(item => item.id !== uniqueId);
+            updateCartUI();
+            renderCartModalList();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cartItems.length;
+        }
+
+        function openCartModal() {
+            if (cartItems.length === 0) {
+                alert("Your cart is empty! Add items first.");
+                return;
+            }
+            renderCartModalList();
+            document.getElementById('cartModal').classList.add('active');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function renderCartModalList() {
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = '';
+
+            if(cartItems.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:var(--text-muted); font-size:0.85rem;">Cart is empty.</p>`;
+                document.getElementById('cartTotalAmount').innerText = "Rs. 0.00";
+                return;
+            }
+
+            let total = 0;
+            cartItems.forEach(item => {
+                total += item.price;
+                const itemRow = document.createElement('div');
+                itemRow.className = 'cart-item-row';
+                itemRow.innerHTML = `
+                    <div class="cart-item-info">
+                        <span class="cart-item-title">${item.title}</span>
+                        <span class="cart-item-price">Rs. ${item.price.toLocaleString()}.00</span>
+                    </div>
+                    <div class="cart-item-remove" onclick="removeFromCart(${item.id})">
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
+                `;
+                container.appendChild(itemRow);
+            });
+
+            document.getElementById('cartTotalAmount').innerText = "Rs. " + total.toLocaleString() + ".00";
+        }
+
+        // Updated Storage Calculation & Update Logic (Realtime Sync)
+        function updateStorageSystem() {
+            const storageType = document.getElementById('storage-type').value;
+            const capacitySelect = document.getElementById('hdd-capacity');
+            
+            if(!capacitySelect.value) return;
+
+            const capacity = parseInt(capacitySelect.value);
+            const condition = document.getElementById('storage-condition').value;
+            
+            document.getElementById('hdd-brand-lbl').innerText = storageType;
+            document.getElementById('hdd-condition-lbl').innerText = condition;
+            document.getElementById('hdd-total-lbl').innerText = capacity + " GB";
+
+            let totalUsed = selectedGames.reduce((sum, g) => sum + g.size, 0);
+
+            let freeSpace = capacity - totalUsed;
+            if (freeSpace < 0) freeSpace = 0;
+
+            let usedPercent = Math.min(100, (totalUsed / capacity) * 100);
+
+            document.getElementById('hdd-used-lbl').innerText = totalUsed.toFixed(1);
+            document.getElementById('hdd-free-lbl').innerText = freeSpace.toFixed(1);
+            document.getElementById('hdd-bar').style.width = usedPercent + "%";
+            
+            renderTags();
+        }
+
+        // Toggle Game Selection Logic
+        function toggleGame(id, title, size, btn) {
+            const index = selectedGames.findIndex(g => g.id === id);
+            const capacitySelect = document.getElementById('hdd-capacity');
+            const capacity = parseInt(capacitySelect.value);
+            let currentUsed = selectedGames.reduce((sum, g) => sum + g.size, 0);
+
+            if (index > -1) {
+                // Remove game
+                selectedGames.splice(index, 1);
+                btn.classList.remove('selected');
+                btn.innerHTML = `<i class="fa-solid fa-plus"></i> Add`;
+            } else {
+                // Check if fits in selected hard drive
+                if (currentUsed + size > capacity) {
+                    alert("Not enough storage space! Increase Storage Capacity or remove other games.");
+                    return;
+                }
+                selectedGames.push({ id, title, size });
+                btn.classList.add('selected');
+                btn.innerHTML = `<i class="fa-solid fa-check"></i> Added`;
+            }
+
+            // Trigger Realtime HDD Bar Update
+            updateStorageSystem();
+        }
+
+        function removeGame(id) {
+            const index = selectedGames.findIndex(g => g.id === id);
+            if (index > -1) {
+                selectedGames.splice(index, 1);
+                
+                // Update Button UI on Card
+                const card = document.querySelector(`.game-poster-card[data-id="${id}"]`);
+                if (card) {
+                    const btn = card.querySelector('.btn-card-select');
+                    if (btn) {
+                        btn.classList.remove('selected');
+                        btn.innerHTML = `<i class="fa-solid fa-plus"></i> Add`;
+                    }
+                }
+                updateStorageSystem();
+            }
+        }
+
+        function renderTags() {
+            const container = document.getElementById('selected-game-tags');
+            container.innerHTML = '';
+            selectedGames.forEach(g => {
+                const tag = document.createElement('div');
+                tag.className = 'tag-item';
+                tag.innerHTML = `${g.title} (${g.size}GB) <i class="fa-solid fa-xmark" onclick="removeGame(${g.id})"></i>`;
+                container.appendChild(tag);
+            });
+        }
+
+        function filterGames() {
+            const query = document.getElementById('gameSearchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.game-poster-card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                card.style.display = title.includes(query) ? 'flex' : 'none';
+            });
+        }
+
+        function filterCategory(cat, tabBtn) {
+            document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+            tabBtn.classList.add('active');
+
+            const cards = document.querySelectorAll('.game-poster-card');
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                card.style.display = (cat === 'All' || category.includes(cat)) ? 'flex' : 'none';
+            });
+        }
+
+        function sendCartWhatsAppOrder(event) {
+            event.preventDefault();
+
+            if (cartItems.length === 0) {
+                alert("Cart is empty!");
+                return;
+            }
+
+            const name = document.getElementById('custNameCart').value;
+            const phone = document.getElementById('custPhoneCart').value;
+            const address = document.getElementById('custAddressCart').value;
+
+            let grandTotal = cartItems.reduce((sum, item) => sum + item.price, 0);
+
+            let message = `*NEW HARDWARE CART ORDER - JANU COMPUTERS*\n`;
+            message += `------------------------------------\n`;
+            message += `👤 *Customer Name:* ${name}\n`;
+            message += `📞 *Phone:* ${phone}\n`;
+            message += `📍 *Address:* ${address}\n`;
+            message += `------------------------------------\n`;
+            message += `🛒 *ORDERED ITEMS (${cartItems.length}):*\n`;
+
+            cartItems.forEach((item, idx) => {
+                message += `  ${idx + 1}. ${item.title} - Rs. ${item.price.toLocaleString()}\n`;
+            });
+
+            message += `\n💰 *Total Amount:* Rs. ${grandTotal.toLocaleString()}\n`;
+            message += `------------------------------------\n`;
+            message += `Please confirm my order. Thank you!`;
+
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            closeCartModal();
+        }
+
+        function openStorageCheckoutModal() {
+            if (selectedGames.length === 0) {
+                alert("Please select at least one game first.");
+                return;
+            }
+            document.getElementById('storageModal').classList.add('active');
+        }
+
+        function closeStorageModal() {
+            document.getElementById('storageModal').classList.remove('active');
+        }
+
+        function sendStorageWhatsAppOrder(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('custNameStorage').value;
+            const phone = document.getElementById('custPhoneStorage').value;
+            const address = document.getElementById('custAddressStorage').value;
+
+            const storageType = document.getElementById('storage-type').value;
+            const capacity = document.getElementById('hdd-capacity').value;
+            const condition = document.getElementById('storage-condition').value;
+            let totalUsed = selectedGames.reduce((sum, g) => sum + g.size, 0);
+
+            let message = `*NEW STORAGE & GAME ORDER - JANU COMPUTERS*\n`;
+            message += `------------------------------------\n`;
+            message += `👤 *Customer Name:* ${name}\n`;
+            message += `📞 *Phone:* ${phone}\n`;
+            message += `📍 *Address:* ${address}\n`;
+            message += `------------------------------------\n`;
+            message += `💾 *STORAGE DEVICE:* ${storageType}\n`;
+            message += `⚙️ *CONDITION:* ${condition}\n`;
+            message += `📦 *CAPACITY:* ${capacity} GB\n`;
+            message += `📊 *Total Selected Size:* ${totalUsed.toFixed(1)} GB\n\n`;
+            message += `🎮 *SELECTED PC GAMES (${selectedGames.length}):*\n`;
+
+            selectedGames.forEach((g, idx) => {
+                message += `  ${idx + 1}. ${g.title} (${g.size} GB)\n`;
+            });
+
+            message += `------------------------------------\n`;
+            message += `Please confirm my order. Thank you!`;
+
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            closeStorageModal();
+        }
+
+        // Initialize setup on load
+        onStorageTypeChange();
+    </script>
+</body>
+</html>
