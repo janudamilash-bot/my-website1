@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -155,9 +155,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            min-width: 250px;
-            max-height: 450px;
-            overflow-y: auto;
+            min-width: 200px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
@@ -182,11 +180,6 @@
             gap: 10px;
             width: 100%;
             font-size: 0.8rem;
-        }
-        .dropdown-menu .sub-item {
-            padding-left: 35px !important;
-            font-size: 0.75rem;
-            color: var(--text-muted);
         }
 
         /* Hero Banner */
@@ -249,7 +242,7 @@
             cursor: pointer;
         }
         .cat-card i { font-size: 2rem; color: var(--primary); transition: 0.3s; }
-        .cat-card span { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+        .cat-card span { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.5px; }
         .cat-card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
         .content-section { margin-bottom: 50px; }
@@ -279,9 +272,11 @@
         }
         .product-card:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.2); }
         .badge { position: absolute; top: 26px; left: 26px; background: var(--primary); color: #fff; font-size: 0.65rem; font-weight: 800; padding: 4px 10px; border-radius: 50px; z-index: 2; }
+        .badge-used { background: #475569; }
         .product-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 16px; }
         .product-title { font-size: 0.95rem; font-weight: 600; color: #fff; text-decoration: none; margin-bottom: 12px; line-height: 1.4; }
         .price { font-size: 1.2rem; font-weight: 800; color: #fff; }
+        .koko-pay { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; display: block; }
 
         .add-to-cart-btn { 
             background: rgba(255, 255, 255, 0.05); 
@@ -298,66 +293,241 @@
         }
         .add-to-cart-btn:hover { background: var(--primary); border-color: var(--primary); }
 
-        /* --- GAME VAULT & STORAGE CALCULATOR STYLES --- */
-        .storage-calculator {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        /* COMPACT STORAGE CALCULATOR WIDGET STYLES */
+        .storage-wrapper { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border-color); 
+            border-radius: 14px; 
+            padding: 14px 18px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            position: sticky;
+            top: 130px;
+            z-index: 900;
         }
-        .progress-bar-bg {
-            width: 100%;
-            height: 18px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
+        
+        .config-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            padding: 10px 14px; 
+            margin-bottom: 10px; 
         }
-        .progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            width: 0%;
-            transition: width 0.4s ease;
+        .config-card h4 { 
+            font-size: 0.85rem; 
+            color: #fff; 
+            margin-bottom: 8px; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
         }
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+
+        select { 
+            width: 100%; 
+            padding: 6px 10px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 6px; 
+            background: var(--bg-dark); 
+            color: #fff; 
+            font-size: 0.8rem; 
+            outline: none; 
         }
-        .game-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.3s;
+
+        .storage-box { 
+            background: var(--bg-dark); 
+            border: 1px solid var(--border-color); 
+            padding: 10px 14px; 
+            border-radius: 8px; 
         }
-        .game-card:hover { border-color: var(--primary); transform: translateY(-4px); }
-        .game-card img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
-        .game-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
-        .game-size { font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
-        .game-select-btn {
-            background: rgba(255, 255, 255, 0.08);
+        
+        .progress-container { 
+            background: rgba(255, 255, 255, 0.05); 
+            height: 8px; 
+            border-radius: 6px; 
+            overflow: hidden; 
+            margin-top: 6px; 
+        }
+        .progress-bar { 
+            height: 100%; 
+            width: 0%; 
+            transition: width 0.4s ease; 
+            border-radius: 6px; 
+            background: linear-gradient(90deg, var(--primary), var(--accent)); 
+        }
+
+        .selected-tags { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 6px; 
+            margin-top: 8px; 
+            max-height: 60px; 
+            overflow-y: auto; 
+        }
+        .tag-item { 
+            background: rgba(99, 102, 241, 0.15); 
+            border: 1px solid var(--primary); 
+            padding: 2px 8px; 
+            border-radius: 12px; 
+            font-size: 0.7rem; 
+            color: #fff; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+        }
+        .tag-item i { cursor: pointer; color: var(--accent); }
+
+        .btn-whatsapp-order {
+            background: var(--whatsapp);
             color: #fff;
-            border: 1px solid var(--border-color);
-            padding: 8px;
+            border: none;
+            padding: 8px 16px;
             border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.8rem;
             cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+            width: 100%;
+            justify-content: center;
+        }
+        .btn-whatsapp-order:hover { background: #1eb954; }
+
+        /* Game Vault Grid */
+        .game-vault-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+        .game-vault-search { position: relative; min-width: 280px; }
+        .game-vault-search input { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 10px 16px 10px 40px; border-radius: 50px; color: #fff; outline: none; font-size: 0.85rem; }
+        .game-vault-search i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+        .category-tabs { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 24px; padding-bottom: 4px; }
+        .cat-tab { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: 0.3s; white-space: nowrap; }
+        .cat-tab.active, .cat-tab:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        .game-grid-showcase { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+        .game-poster-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .game-poster-card:hover { transform: translateY(-6px); border-color: var(--primary); }
+        .poster-image-wrap { position: relative; width: 100%; height: 260px; overflow: hidden; }
+        .poster-image { width: 100%; height: 100%; object-fit: cover; transition: 0.4s ease; }
+        .poster-size-tag { position: absolute; top: 10px; right: 10px; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(6px); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
+        .poster-details { padding: 14px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+        .poster-game-title { font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .poster-game-genre { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px; }
+        
+        /* System Requirements Display in Card */
+        .sys-req-box { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            padding: 8px; 
+            font-size: 0.68rem; 
+            color: var(--text-muted); 
+            margin-bottom: 12px;
+        }
+        .sys-req-box div { margin-bottom: 2px; }
+        .sys-req-box span { color: #fff; font-weight: 600; }
+
+        .poster-game-footer { display: flex; justify-content: flex-end; align-items: center; }
+        .btn-card-select { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; width: 100%; justify-content: center; }
+        .btn-card-select.selected { background: var(--success); border-color: var(--success); }
+
+        /* Dynamic Page Section Controller */
+        .page-view { display: none; }
+        .page-view.active-view { display: block; }
+
+        /* Modal Overlay System */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 520px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        .modal-close:hover { color: #fff; }
+
+        /* CART VIEW MODAL STYLES */
+        .cart-items-list {
+            margin: 15px 0;
+            max-height: 220px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .cart-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-dark);
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        .cart-item-info { display: flex; flex-direction: column; gap: 2px; }
+        .cart-item-title { font-size: 0.85rem; font-weight: 700; color: #fff; }
+        .cart-item-price { font-size: 0.8rem; color: var(--success); font-weight: 600; }
+        .cart-item-remove {
+            color: var(--accent);
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(255, 70, 85, 0.1);
             transition: 0.2s;
         }
-        .game-select-btn.selected {
-            background: var(--success);
-            border-color: var(--success);
-            color: #fff;
+        .cart-item-remove:hover { background: var(--accent); color: #fff; }
+        .cart-total-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: 800;
         }
+
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+            font-size: 0.85rem;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
 
         /* Floating WhatsApp Icon */
         .whatsapp-float {
@@ -380,10 +550,6 @@
         }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* Dynamic Page Section Controller */
-        .page-view { display: none; }
-        .page-view.active-view { display: block; }
-
         /* Footer */
         footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 60px 8% 30px; font-size: 0.85rem; color: var(--text-muted); margin-top: 80px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px; }
@@ -392,6 +558,113 @@
         .footer-col ul li { margin-bottom: 10px; }
         .footer-col a { color: var(--text-muted); text-decoration: none; transition: 0.2s; cursor: pointer; }
         .copyright { text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px; font-size: 0.8rem; }
+
+        /* Mobile Responsive Enhancements */
+        @media screen and (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                gap: 6px;
+                text-align: center;
+                padding: 10px 4%;
+            }
+            .top-bar div span {
+                display: inline-block;
+                margin: 2px 5px !important;
+            }
+
+            .main-header {
+                flex-wrap: wrap;
+                gap: 12px;
+                padding: 12px 4%;
+            }
+            .search-box {
+                order: 3;
+                flex: 1 1 100%;
+            }
+
+            .cat-nav {
+                padding: 0 4%;
+                top: auto;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .cat-nav ul {
+                gap: 16px;
+            }
+            .cat-nav a {
+                padding: 12px 0;
+            }
+
+            .hero-banner {
+                padding: 50px 16px;
+            }
+            .hero-banner h1 {
+                font-size: 1.8rem;
+            }
+            .hero-banner p {
+                font-size: 0.95rem;
+            }
+
+            .container {
+                width: 92%;
+                margin: 24px auto;
+            }
+
+            .shop-by-cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 14px;
+            }
+            .product-card {
+                padding: 12px;
+            }
+            .product-card img {
+                height: 130px;
+            }
+            .product-title {
+                font-size: 0.85rem;
+            }
+            .price {
+                font-size: 1rem;
+            }
+
+            .storage-wrapper {
+                position: relative;
+                top: 0;
+                padding: 12px;
+            }
+
+            .game-grid-showcase {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 14px;
+            }
+            .poster-image-wrap {
+                height: 180px;
+            }
+            .poster-details {
+                padding: 10px;
+            }
+            .poster-game-title {
+                font-size: 0.85rem;
+            }
+
+            .game-vault-search {
+                width: 100%;
+                min-width: 100%;
+            }
+
+            .whatsapp-float {
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -419,11 +692,12 @@
         </div>
         
         <div class="search-box">
-            <input type="text" id="mainSearchInput" placeholder="Search Laptops, Desktops, Games..." onkeyup="filterGames()">
+            <input type="text" placeholder="Search Laptops, Desktops, Monitors...">
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
-        <div class="cart-btn">
+        <!-- Open Cart Modal Icon -->
+        <div class="cart-btn" onclick="openCartModal()">
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="cart-count" id="cart-count">0</span>
         </div>
@@ -436,46 +710,10 @@
             <li class="dropdown">
                 <a><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-display"></i> MONITORS</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('monitors')"><i class="fa-solid fa-angle-right"></i> BRANDNEW MONITOR</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('monitors')"><i class="fa-solid fa-angle-right"></i> USED MONITOR</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('monitors')"><i class="fa-solid fa-angle-right"></i> TV</a></li>
-                    
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> PROCESSORS</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> BRANDNEW PROCESSORS</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> USED PROCESSORS</a></li>
-                    
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> MOTHERBOARDS</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> BRANDNEW MOTHERBOARDS</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> USED MOTHERBOARDS</a></li>
-
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> RAM</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> BRANDNEW RAM</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> USED RAM</a></li>
-
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-vr-cardboard"></i> GRAPHIC CARD</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> BRANDNEW GRAPHIC CARD</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> USED GRAPHIC CARD</a></li>
-
-                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> STORAGE</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('games')"><i class="fa-solid fa-angle-right"></i> BRANDNEW STORAGE</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('games')"><i class="fa-solid fa-angle-right"></i> USED STORAGE</a></li>
-
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-box"></i> CASING</a></li>
-
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> COOLERS</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> BRANDNEW COOLERS</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> USED COOLERS</a></li>
-
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> POWER SUPPLY</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> BRANDNEW POWER SUPPLY</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> USED POWER SUPPLY</a></li>
-
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-keyboard"></i> KEYBOARD & MOUSE</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> KEYBOARD</a></li>
-                    <li><a class="sub-item" onclick="navigateTo('desktops')"><i class="fa-solid fa-angle-right"></i> MOUSE</a></li>
-
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-headphones"></i> HEADSET & SUBWOOFERS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-desktop"></i> Desktops Page</a></li>
+                    <li><a onclick="navigateTo('laptops')"><i class="fa-solid fa-laptop"></i> Laptops Page</a></li>
+                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> Monitors Page</a></li>
+                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-gamepad"></i> PC Game Vault</a></li>
                 </ul>
             </li>
             <li><a onclick="navigateTo('desktops')">DESKTOPS</a></li>
@@ -501,53 +739,43 @@
             <div class="content-section">
                 <div class="section-title">Shop By Category</div>
                 <div class="shop-by-cat-grid">
+                    <div class="cat-card" onclick="navigateTo('desktops')">
+                        <i class="fa-solid fa-desktop"></i>
+                        <span>DESKTOPS</span>
+                    </div>
+                    <div class="cat-card" onclick="navigateTo('laptops')">
+                        <i class="fa-solid fa-laptop"></i>
+                        <span>LAPTOPS</span>
+                    </div>
                     <div class="cat-card" onclick="navigateTo('monitors')">
                         <i class="fa-solid fa-tv"></i>
-                        <span>Monitors & TV</span>
-                    </div>
-                    <div class="cat-card" onclick="navigateTo('desktops')">
-                        <i class="fa-solid fa-microchip"></i>
-                        <span>Processors</span>
-                    </div>
-                    <div class="cat-card" onclick="navigateTo('desktops')">
-                        <i class="fa-solid fa-memory"></i>
-                        <span>Motherboards</span>
-                    </div>
-                    <div class="cat-card" onclick="navigateTo('desktops')">
-                        <i class="fa-solid fa-memory"></i>
-                        <span>RAM</span>
-                    </div>
-                    <div class="cat-card" onclick="navigateTo('desktops')">
-                        <i class="fa-solid fa-vr-cardboard"></i>
-                        <span>Graphic Card</span>
+                        <span>MONITORS</span>
                     </div>
                     <div class="cat-card" onclick="navigateTo('games')">
-                        <i class="fa-solid fa-hard-drive"></i>
-                        <span>Storage</span>
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>PC GAMES</span>
                     </div>
-                    <div class="cat-card" onclick="navigateTo('desktops')">
-                        <i class="fa-solid fa-box"></i>
-                        <span>Casing</span>
-                    </div>
-                    <div class="cat-card" onclick="navigateTo('desktops')">
-                        <i class="fa-solid fa-fan"></i>
-                        <span>Coolers</span>
-                    </div>
-                    <div class="cat-card" onclick="navigateTo('desktops')">
-                        <i class="fa-solid fa-plug"></i>
-                        <span>Power Supply</span>
-                    </div>
-                    <div class="cat-card" onclick="navigateTo('desktops')">
-                        <i class="fa-solid fa-keyboard"></i>
-                        <span>Keyboard & Mouse</span>
-                    </div>
-                    <div class="cat-card" onclick="navigateTo('desktops')">
-                        <i class="fa-solid fa-headphones"></i>
-                        <span>Headset & Subwoofers</span>
+                </div>
+            </div>
+
+            <!-- Home Section Preview: Desktops -->
+            <div class="content-section">
+                <div class="section-title">Featured Desktops</div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <span class="badge">BRAND NEW</span>
+                        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80" alt="Desktop PC">
+                        <a class="product-title">Core i7 13th Gen Gaming PC - RTX 4060 8GB</a>
+                        <div>
+                            <span class="price">Rs: 285,000.00</span>
+                            <span class="koko-pay">or 3 x Rs: 95,000 with Koko</span>
+                            <button class="add-to-cart-btn" onclick="addToCart(101, 'Core i7 13th Gen Gaming PC', 285000)">Add To Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <!-- PAGE 2: LAPTOPS PAGE -->
         <div id="view-laptops" class="page-view">
@@ -555,19 +783,32 @@
             <div class="product-grid">
                 <div class="product-card">
                     <span class="badge">BRAND NEW</span>
-                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=500&q=80" alt="Laptop">
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=500&q=80" alt="Brand New Laptop">
                     <a class="product-title">ASUS TUF Gaming F15 Core i5 12th Gen RTX 3050</a>
                     <div>
                         <span class="price">Rs: 245,000.00</span>
-                        <button class="add-to-cart-btn">Add To Cart</button>
+                        <span class="koko-pay">or 3 x Rs: 81,666 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(201, 'ASUS TUF Gaming F15', 245000)">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge badge-used">USED</span>
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80" alt="Used Laptop">
+                    <a class="product-title">HP Victus Gaming Used Laptop Ryzen 5 GTX 1650</a>
+                    <div>
+                        <span class="price">Rs: 165,000.00</span>
+                        <span class="koko-pay">or 3 x Rs: 55,000 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(202, 'HP Victus Gaming Laptop', 165000)">Add To Cart</button>
                     </div>
                 </div>
             </div>
         </div>
 
+
         <!-- PAGE 3: DESKTOPS PAGE -->
         <div id="view-desktops" class="page-view">
-            <div class="section-title">Desktop Computers & Hardware</div>
+            <div class="section-title">Desktop Computers Collection</div>
             <div class="product-grid">
                 <div class="product-card">
                     <span class="badge">BRAND NEW</span>
@@ -575,101 +816,1570 @@
                     <a class="product-title">Core i7 13th Gen Gaming PC - RTX 4060 8GB</a>
                     <div>
                         <span class="price">Rs: 285,000.00</span>
-                        <button class="add-to-cart-btn">Add To Cart</button>
+                        <span class="koko-pay">or 3 x Rs: 95,000 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(101, 'Core i7 13th Gen Gaming PC', 285000)">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge badge-used">USED</span>
+                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500&q=80" alt="Used Desktop">
+                    <a class="product-title">Intel Core i5 10th Gen PC - GTX 1660 Super</a>
+                    <div>
+                        <span class="price">Rs: 145,000.00</span>
+                        <span class="koko-pay">or 3 x Rs: 48,333 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(102, 'Intel Core i5 10th Gen PC', 145000)">Add To Cart</button>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <!-- PAGE 4: MONITORS PAGE -->
         <div id="view-monitors" class="page-view">
-            <div class="section-title">Monitors & TV Collection</div>
+            <div class="section-title">Monitors Collection</div>
             <div class="product-grid">
                 <div class="product-card">
                     <span class="badge">BRAND NEW</span>
-                    <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80" alt="Monitor">
+                    <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80" alt="Brand New Monitor">
                     <a class="product-title">ASUS TUF Gaming 23.8" 165Hz IPS Gaming Monitor</a>
                     <div>
                         <span class="price">Rs: 68,000.00</span>
-                        <button class="add-to-cart-btn">Add To Cart</button>
+                        <span class="koko-pay">or 3 x Rs: 22,666 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(301, 'ASUS TUF 23.8 Monitor', 68000)">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge badge-used">USED</span>
+                    <img src="https://images.unsplash.com/photo-1551645120-d70bfe84c826?auto=format&fit=crop&w=500&q=80" alt="Used Monitor">
+                    <a class="product-title">Samsung 24" IPS 75Hz Used Borderless Monitor</a>
+                    <div>
+                        <span class="price">Rs: 32,500.00</span>
+                        <span class="koko-pay">or 3 x Rs: 10,833 with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(302, 'Samsung 24 Monitor', 32500)">Add To Cart</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PAGE 5: PC GAME VAULT & STORAGE CALCULATOR -->
+
+        <!-- PAGE 5: PC GAME VAULT & LIVE COMPACT STORAGE CALCULATOR -->
         <div id="view-games" class="page-view">
-            <div class="section-title">PC Game Vault & Storage Calculator</div>
+            
+            <!-- COMPACT STORAGE CALCULATOR WIDGET (UPDATED DYNAMIC DROPDOWNS) -->
+            <div class="storage-wrapper">
+                <div class="config-card">
+                    <h4><i class="fa-solid fa-hard-drive" style="color:var(--primary);"></i> Select Storage Device & Capacity</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
+                        
+                        <!-- Storage Type Dropdown -->
+                        <div>
+                            <label style="font-size:0.7rem; color:var(--text-muted);">STORAGE TYPE</label>
+                            <select id="storage-type" onchange="onStorageTypeChange()">
+                                <option value="Desktop HDD">Desktop HDD</option>
+                                <option value="Laptop HDD">Laptop HDD</option>
+                                <option value="SSD">SSD</option>
+                                <option value="Portable HDD">Portable HDD</option>
+                            </select>
+                        </div>
 
-            <!-- STORAGE CALCULATOR CONTAINER -->
-            <div class="storage-calculator">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                    <div>
-                        <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-right: 10px;">Select Target Drive Size:</label>
-                        <select id="driveCapacitySelect" onchange="updateStorageCalc()" style="background: var(--bg-dark); color: #fff; border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 8px; font-weight: 700; outline: none;">
-                            <option value="500">500 GB</option>
-                            <option value="1000" selected>1 TB (1000 GB)</option>
-                            <option value="2000">2 TB (2000 GB)</option>
-                            <option value="4000">4 TB (4000 GB)</option>
-                        </select>
-                    </div>
-                    <div style="text-align: right;">
-                        <span style="font-size: 0.85rem; color: var(--text-muted);">Selected Capacity: </span>
-                        <strong id="usedSpaceText" style="color: var(--accent); font-size: 1.1rem;">0 GB</strong> / <span id="totalSpaceText">1000 GB</span>
+                        <!-- Capacity Dropdown -->
+                        <div>
+                            <label style="font-size:0.7rem; color:var(--text-muted);">CAPACITY</label>
+                            <select id="hdd-capacity" onchange="updateStorageSystem()">
+                                <!-- Dynamically populated based on storage type -->
+                            </select>
+                        </div>
+
+                        <!-- Condition Dropdown -->
+                        <div>
+                            <label style="font-size:0.7rem; color:var(--text-muted);">CONDITION</label>
+                            <select id="storage-condition" onchange="updateStorageSystem()">
+                                <option value="Brand New">Brand New</option>
+                                <option value="Used">Used</option>
+                            </select>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- PROGRESS BAR -->
-                <div class="progress-bar-bg">
-                    <div class="progress-bar-fill" id="storageProgressBar"></div>
-                </div>
+                <div class="storage-box">
+                    <div style="display:flex; justify-content:space-between; font-size:0.78rem; flex-wrap:wrap; gap:6px;">
+                        <span>Device: <b id="hdd-brand-lbl" style="color:var(--primary);">Desktop HDD</b> (<span id="hdd-condition-lbl" style="color:var(--accent);">Brand New</span> - <span id="hdd-total-lbl">2000 GB</span>)</span>
+                        <span>Used: <b id="hdd-used-lbl" style="color:var(--accent);">0</b> GB | Free: <b id="hdd-free-lbl" style="color:var(--success);">2000</b> GB</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="hdd-bar"></div>
+                    </div>
+                    <div class="selected-tags" id="selected-game-tags"></div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
-                    <span id="selectedGamesCount" style="font-size: 0.8rem; color: var(--text-muted);">0 Games Selected</span>
-                    <button onclick="orderSelectedGamesViaWhatsApp()" class="btn-primary" style="padding: 8px 20px; font-size: 0.8rem; background: var(--whatsapp); border: none;">
-                        <i class="fa-brands fa-whatsapp"></i> Order Games Drive
+                    <button class="btn-whatsapp-order" onclick="openStorageCheckoutModal()">
+                        <i class="fa-brands fa-whatsapp"></i> Order Selected Games & Storage Device
                     </button>
                 </div>
             </div>
 
-            <!-- GAME SEARCH & LIST -->
-            <div class="game-grid" id="gameGrid">
-                <!-- Dynamic Games Loaded via JS -->
+            <!-- GAME VAULT SECTION -->
+            <div class="game-vault-header">
+                <div class="section-title" style="margin-bottom:0;">Full PC Game Vault</div>
+                
+                <div class="game-vault-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="gameSearchInput" placeholder="Search games by title..." onkeyup="filterGames()">
+                </div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="category-tabs">
+                <button class="cat-tab active" onclick="filterCategory('All', this)">All Games</button>
+                <button class="cat-tab" onclick="filterCategory('Action', this)">Action</button>
+                <button class="cat-tab" onclick="filterCategory('Open World', this)">Open World</button>
+                <button class="cat-tab" onclick="filterCategory('RPG', this)">RPG</button>
+                <button class="cat-tab" onclick="filterCategory('FPS', this)">FPS</button>
+            </div>
+
+            <!-- Game Posters Grid Showcase -->
+            <div class="game-grid-showcase" id="gameGridShowcase">
+                
+                <!-- Ancestors Legacy -->
+                <div class="game-poster-card" data-id="1" data-title="Ancestors Legacy" data-category="Strategy Action" data-size="11.7">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (4).jpg" class="poster-image" alt="Ancestors Legacy">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 11.7 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Ancestors Legacy</div>
+                            <div class="poster-game-genre">Strategy / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>i5-750 / Phenom II X4 955</span></div>
+                                <div><b>RAM:</b> <span>4 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 460 1GB / HD 5850 1GB</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(1, 'Ancestors Legacy', 11.7, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aragami 2 -->
+                <div class="game-poster-card" data-id="2" data-title="Aragami 2" data-category="Action Stealth" data-size="3.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/capsule_616x353.jpg" class="poster-image" alt="Aragami 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 3.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Aragami 2</div>
+                            <div class="poster-game-genre">Action / Stealth</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(2, 'Aragami 2', 3.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ARK - Survival Evolved -->
+                <div class="game-poster-card" data-id="3" data-title="ARK - Survival Evolved" data-category="Open World Action RPG" data-size="35.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (5).jpg" alt="ARK - Survival Evolved">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 35.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">ARK - Survival Evolved</div>
+                            <div class="poster-game-genre">Open World / Survival</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(3, 'ARK - Survival Evolved', 35.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arma 3 -->
+                <div class="game-poster-card" data-id="4" data-title="Arma 3" data-category="FPS Action" data-size="75">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/capsule_616x353 (1).jpg" class="poster-image" alt="Arma 3">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 75 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Arma 3</div>
+                            <div class="poster-game-genre">FPS / Tactical</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(4, 'Arma 3', 75, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arma Reforger -->
+                <div class="game-poster-card" data-id="5" data-title="Arma Reforger" data-category="FPS Action" data-size="8.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/capsule_616x353 (2).jpg" class="poster-image" alt="Arma Reforger">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 8.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Arma Reforger</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(5, 'Arma Reforger', 8.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Black Flag -->
+                <div class="game-poster-card" data-id="6" data-title="Assassin's Creed Black Flag" data-category="Action Open World" data-size="5.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Assassin's_Creed_IV_-_Black_Flag_cover.jpg" class="poster-image" alt="Assassin's Creed Black Flag">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 5.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC IV Black Flag</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(6, 'AC IV Black Flag', 5.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Black Flag Resynced -->
+                <div class="game-poster-card" data-id="7" data-title="Assassin's Creed Black Flag Resynced" data-category="Action Open World" data-size="37.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/capsule_616x353 (3).jpg" class="poster-image" alt="AC Black Flag Resynced">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 37.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Black Flag Resynced</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 6500</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(7, 'AC Black Flag Resynced', 37.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Mirage -->
+                <div class="game-poster-card" data-id="8" data-title="Assassin's Creed Mirage" data-category="Action Open World" data-size="18.5">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/assassins-creed-mirage.jpg" class="poster-image" alt="Assassin's Creed Mirage">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 18.5 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Mirage</div>
+                            <div class="poster-game-genre">Action / Stealth</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(8, 'AC Mirage', 18.5, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Odyssey - Ultimate Edition -->
+                <div class="game-poster-card" data-id="9" data-title="Assassin's Creed Odyssey - Ultimate Edition" data-category="RPG Open World Action" data-size="35.5">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/ACOdysseyCoverArt.png" class="poster-image" alt="AC Odyssey Ultimate">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 35.5 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Odyssey Ultimate</div>
+                            <div class="poster-game-genre">RPG / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(9, 'AC Odyssey Ultimate', 35.5, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Origins -->
+                <div class="game-poster-card" data-id="10" data-title="Assassin's Creed Origins" data-category="Action Open World RPG" data-size="28.4">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (6).jpg" class="poster-image" alt="Assassin's Creed Origins">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 28.4 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Origins</div>
+                            <div class="poster-game-genre">Action / RPG</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(10, 'AC Origins', 28.4, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Shadows -->
+                <div class="game-poster-card" data-id="11" data-title="Assassin's Creed Shadows" data-category="Action Open World" data-size="79">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Assassin's_Creed_Shadows_cover.png" class="poster-image" alt="Assassin's Creed Shadows">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 79 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Shadows</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(11, 'AC Shadows', 79, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Syndicate -->
+                <div class="game-poster-card" data-id="12" data-title="Assassin's Creed Syndicate" data-category="Action Open World" data-size="32.1">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Assassin's_Creed_Syndicate_cover.jpg" class="poster-image" alt="Assassin's Creed Syndicate">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 32.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Syndicate</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(12, 'AC Syndicate', 32.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Unity -->
+                <div class="game-poster-card" data-id="13" data-title="Assassin's Creed Unity" data-category="Action Open World" data-size="36.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Assassin's_Creed_Unity_cover.jpg" class="poster-image" alt="Assassin's Creed Unity">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 36.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Unity</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(13, 'AC Unity', 36.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Valhalla Complete -->
+                <div class="game-poster-card" data-id="14" data-title="Assassin's Creed Valhalla Complete" data-category="RPG Open World Action" data-size="66.9">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Assassin's_Creed_Valhalla_cover.jpg" class="poster-image" alt="AC Valhalla Complete">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 66.9 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC Valhalla Complete</div>
+                            <div class="poster-game-genre">RPG / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(14, 'AC Valhalla Complete', 66.9, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avowed: Premium Edition -->
+                <div class="game-poster-card" data-id="15" data-title="Avowed: Premium Edition" data-category="RPG Open World" data-size="50.1">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (7).jpg" class="poster-image" alt="Avowed Premium Edition">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 50.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Avowed: Premium Ed.</div>
+                            <div class="poster-game-genre">RPG / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(15, 'Avowed: Premium Ed.', 50.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back 4 Blood -->
+                <div class="game-poster-card" data-id="16" data-title="Back 4 Blood" data-category="FPS Action" data-size="47.8">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (8).jpg" class="poster-image" alt="Back 4 Blood">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 47.8 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Back 4 Blood</div>
+                            <div class="poster-game-genre">FPS / Zombie Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(16, 'Back 4 Blood', 47.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman - Arkham Knight -->
+                <div class="game-poster-card" data-id="17" data-title="Batman - Arkham Knight" data-category="Action Open World" data-size="27">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/SP2jKfb96pDnFMljfalSsay7NjcNLz4WRj1WDyoj05t2aH8ViCnNwv2TgMB2ko0S.png" class="poster-image" alt="Batman Arkham Knight">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 27 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman Arkham Knight</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(17, 'Batman Arkham Knight', 27, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman - TEW - TTS - Shadows Edition -->
+                <div class="game-poster-card" data-id="18" data-title="Batman - TEW - TTS - Shadows Edition" data-category="Action Story" data-size="9.1">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (9).jpg" class="poster-image" alt="Batman TEW TTS Shadows">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 9.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman TEW Shadows</div>
+                            <div class="poster-game-genre">Action / Adventure</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(18, 'Batman TEW Shadows', 9.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman Arkham Asylum -->
+                <div class="game-poster-card" data-id="19" data-title="Batman Arkham Asylum" data-category="Action" data-size="6.2">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Batman_Arkham_Asylum_Videogame_Cover.jpg" class="poster-image" alt="Batman Arkham Asylum">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 6.2 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman Arkham Asylum</div>
+                            <div class="poster-game-genre">Action / Adventure</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(19, 'Batman Arkham Asylum', 6.2, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman Arkham City GOTY -->
+                <div class="game-poster-card" data-id="20" data-title="Batman Arkham City GOTY" data-category="Action Open World" data-size="14.7">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (10).jpg" class="poster-image" alt="Batman Arkham City GOTY">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 14.7 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman Arkham City GOTY</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(20, 'Batman Arkham City GOTY', 14.7, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batman Arkham Origins Complete Edition -->
+                <div class="game-poster-card" data-id="21" data-title="Batman Arkham Origins Complete Edition" data-category="Action Open World" data-size="13.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (11).jpg" class="poster-image" alt="Batman Arkham Origins Complete">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 13.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Batman Arkham Origins</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(21, 'Batman Arkham Origins', 13.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD 1 -->
+                <div class="game-poster-card" data-id="22" data-title="BATTLEFIELD 1" data-category="FPS Action" data-size="49">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (12).jpg" class="poster-image" alt="BATTLEFIELD 1">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 49 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 1</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(22, 'Battlefield 1', 49, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD 2 -->
+                <div class="game-poster-card" data-id="23" data-title="BATTLEFIELD 2" data-category="FPS Action" data-size="1.9">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (13).jpg" class="poster-image" alt="BATTLEFIELD 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 1.9 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 2</div>
+                            <div class="poster-game-genre">FPS / Tactical</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(23, 'Battlefield 2', 1.9, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD 3 -->
+                <div class="game-poster-card" data-id="24" data-title="BATTLEFIELD 3" data-category="FPS Action" data-size="8.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Battlefield_3_Game_Cover.jpg" class="poster-image" alt="BATTLEFIELD 3">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 8.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 3</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(24, 'Battlefield 3', 8.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD 4 -->
+                <div class="game-poster-card" data-id="25" data-title="BATTLEFIELD 4" data-category="FPS Action" data-size="25.2">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Battlefield_4_cover_art.jpg" class="poster-image" alt="BATTLEFIELD 4">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 25.2 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 4</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(25, 'Battlefield 4', 25.2, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battlefield 6 -->
+                <div class="game-poster-card" data-id="26" data-title="Battlefield 6" data-category="FPS Action" data-size="85.8">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Battlefield_6_cover_art.jpg" class="poster-image" alt="Battlefield 6">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 85.8 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield 6</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(26, 'Battlefield 6', 85.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD BAD COMPANY 2 -->
+                <div class="game-poster-card" data-id="27" data-title="BATTLEFIELD BAD COMPANY 2" data-category="FPS Action" data-size="7.4">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Battlefield_Bad_Company_2_cover.jpg" class="poster-image" alt="BATTLEFIELD BAD COMPANY 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 7.4 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield Bad Company 2</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(27, 'BF Bad Company 2', 7.4, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battlefield Hardline (2015) -->
+                <div class="game-poster-card" data-id="28" data-title="Battlefield Hardline (2015)" data-category="FPS Action" data-size="32.1">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (14).jpg" class="poster-image" alt="Battlefield Hardline">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 32.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield Hardline</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(28, 'Battlefield Hardline', 32.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATTLEFIELD V -->
+                <div class="game-poster-card" data-id="29" data-title="BATTLEFIELD V" data-category="FPS Action" data-size="50.5">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Battlefield_V_standard_edition_box_art.jpg" class="poster-image" alt="BATTLEFIELD V">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 50.5 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Battlefield V</div>
+                            <div class="poster-game-genre">FPS / Shooter</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(29, 'Battlefield V', 50.5, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Black myth: Wukong -->
+                <div class="game-poster-card" data-id="30" data-title="Black myth: Wukong" data-category="RPG Action" data-size="95.2">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Black_Myth_Wukong_cover_art.jpg" class="poster-image" alt="Black myth: Wukong">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 95.2 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Black Myth: Wukong</div>
+                            <div class="poster-game-genre">RPG / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(30, 'Black Myth: Wukong', 95.2, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call Of Duty - WWII -->
+                <div class="game-poster-card" data-id="101" data-title="Call Of Duty - WWII" data-category="FPS Action" data-size="36.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_WWII_Cover_Art.jpg" class="poster-image" alt="Call Of Duty - WWII">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 36.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call Of Duty - WWII</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(101, 'Call Of Duty - WWII', 36.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call Of Duty – ADVANCE WARFARE -->
+                <div class="game-poster-card" data-id="102" data-title="Call Of Duty – ADVANCE WARFARE" data-category="FPS Action" data-size="27.7">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Advanced_Warfare.jpg" class="poster-image" alt="Call Of Duty – ADVANCE WARFARE">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 27.7 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call Of Duty – ADVANCE WARFARE</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(102, 'Call Of Duty – ADVANCE WARFARE', 27.7, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty 4 Modern Warfare -->
+                <div class="game-poster-card" data-id="103" data-title="Call of Duty 4 Modern Warfare" data-category="FPS Action" data-size="3.9">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_4_Modern_Warfare.jpg" class="poster-image" alt="Call of Duty 4 Modern Warfare">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 3.9 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty 4 Modern Warfare</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(103, 'Call of Duty 4 Modern Warfare', 3.9, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty Black Ops 1 -->
+                <div class="game-poster-card" data-id="104" data-title="Call of Duty Black Ops 1" data-category="FPS Action" data-size="15.1">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/CoD_Black_Ops_cover.png" class="poster-image" alt="Call of Duty Black Ops 1">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 15.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty Black Ops 1</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(104, 'Call of Duty Black Ops 1', 15.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty Black Ops 2 -->
+                <div class="game-poster-card" data-id="105" data-title="Call of Duty Black Ops 2" data-category="FPS Action" data-size="15.1">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_Black_Ops_II_box_artwork.png" class="poster-image" alt="Call of Duty Black Ops 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 15.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty Black Ops 2</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(105, 'Call of Duty Black Ops 2', 15.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CALL OF DUTY Black OPS III -->
+                <div class="game-poster-card" data-id="106" data-title="CALL OF DUTY Black OPS III" data-category="FPS Action" data-size="55.5">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Black_Ops_3.jpg" class="poster-image" alt="CALL OF DUTY Black OPS III">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 55.5 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">CALL OF DUTY Black OPS III</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(106, 'CALL OF DUTY Black OPS III', 55.5, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty COLD WAR -->
+                <div class="game-poster-card" data-id="107" data-title="Call of Duty COLD WAR" data-category="FPS Action" data-size="102.9">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/1.jpg" class="poster-image" alt="Call of Duty COLD WAR">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 102.9 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty COLD WAR</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(107, 'Call of Duty COLD WAR', 102.9, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call Of Duty Ghosts -->
+                <div class="game-poster-card" data-id="108" data-title="Call Of Duty Ghosts" data-category="FPS Action" data-size="28.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_duty_ghosts_box_art.jpg" class="poster-image" alt="Call Of Duty Ghosts">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 28.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call Of Duty Ghosts</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(108, 'Call Of Duty Ghosts', 28.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty Infinite Warfare -->
+                <div class="game-poster-card" data-id="109" data-title="Call of Duty Infinite Warfare" data-category="FPS Action" data-size="61.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_Infinite_Warfare_cover.jpg" class="poster-image" alt="Call of Duty Infinite Warfare">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 61.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty Infinite Warfare</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(109, 'Call of Duty Infinite Warfare', 61.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty Modern Warfare 1 Remastered -->
+                <div class="game-poster-card" data-id="110" data-title="Call of Duty Modern Warfare 1 Remastered" data-category="FPS Action" data-size="26.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_-_Modern_Warfare_Remastered.jpeg" class="poster-image" alt="Call of Duty Modern Warfare 1 Remastered">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 26.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty Modern Warfare 1 Remastered</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(110, 'Call of Duty Modern Warfare 1 Remastered', 26.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of duty Modern warfare 2 -->
+                <div class="game-poster-card" data-id="111" data-title="Call of duty Modern warfare 2" data-category="FPS Action" data-size="5.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/2.jpg" class="poster-image" alt="Call of duty Modern warfare 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 5.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of duty Modern warfare 2</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(111, 'Call of duty Modern warfare 2', 5.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty Modern Warfare 2 Remastered -->
+                <div class="game-poster-card" data-id="112" data-title="Call of Duty Modern Warfare 2 Remastered" data-category="FPS Action" data-size="37.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_Modern_Warfare_2_(2009)_cover.png" class="poster-image" alt="Call of Duty Modern Warfare 2 Remastered">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 37.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty Modern Warfare 2 Remastered</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(112, 'Call of Duty Modern Warfare 2 Remastered', 37.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty Modern Warfare 3 -->
+                <div class="game-poster-card" data-id="113" data-title="Call of Duty Modern Warfare 3" data-category="FPS Action" data-size="13.8">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/3.jpg" class="poster-image" alt="Call of Duty Modern Warfare 3">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 13.8 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty Modern Warfare 3</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(113, 'Call of Duty Modern Warfare 3', 13.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty Warzone (Steam Game Files Only) -->
+                <div class="game-poster-card" data-id="114" data-title="Call of Duty Warzone (Steam Game Files Only)" data-category="FPS Action" data-size="179.2">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/COD_Warzone_Cover_Art.jpg" class="poster-image" alt="Call of Duty Warzone">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 179.2 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty Warzone (Steam Game Files Only)</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(114, 'Call of Duty Warzone', 179.2, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call Of Duty World At War -->
+                <div class="game-poster-card" data-id="115" data-title="Call Of Duty World At War" data-category="FPS Action" data-size="6.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/MV5BOGU0YTkxY2YtZjcwYS00NmRlLTg3OGQtYzJhMDU3N2E2YWYxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" class="poster-image" alt="Call Of Duty World At War">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 6.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call Of Duty World At War</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(115, 'Call Of Duty World At War', 6.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty: Blac Ops 6 -->
+                <div class="game-poster-card" data-id="116" data-title="Call of Duty: Blac Ops 6" data-category="FPS Action" data-size="48.1">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_Black_Ops_6_Key_Art.png" class="poster-image" alt="Call of Duty: Blac Ops 6">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 48.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty: Blac Ops 6</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(116, 'Call of Duty: Blac Ops 6', 48.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty: Modern Warfare I -->
+                <div class="game-poster-card" data-id="117" data-title="Call of Duty: Modern Warfare I" data-category="FPS Action" data-size="198">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_Modern_Warfare_(2019)_cover.jpg" class="poster-image" alt="Call of Duty: Modern Warfare I">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 198 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty: Modern Warfare I</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(117, 'Call of Duty: Modern Warfare I', 198, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty: Modern Warfare II -->
+                <div class="game-poster-card" data-id="118" data-title="Call of Duty: Modern Warfare II" data-category="FPS Action" data-size="31.5">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_Modern_Warfare_II_Key_Art.jpg" class="poster-image" alt="Call of Duty: Modern Warfare II">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 31.5 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty: Modern Warfare II</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(118, 'Call of Duty: Modern Warfare II', 31.5, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty: Modern Warfare III -->
+                <div class="game-poster-card" data-id="119" data-title="Call of Duty: Modern Warfare III" data-category="FPS Action" data-size="49.5">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/MWIII_Cover_Art.png" class="poster-image" alt="Call of Duty: Modern Warfare III">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 49.5 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty: Modern Warfare III</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(119, 'Call of Duty: Modern Warfare III', 49.5, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty: vanguard -->
+                <div class="game-poster-card" data-id="120" data-title="Call of Duty: vanguard" data-category="FPS Action" data-size="80.2">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Call_of_Duty_Vanguard_cover_art.jpg" class="poster-image" alt="Call of Duty: vanguard">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 80.2 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Call of Duty: vanguard</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i7 / Ryzen 5 3600+</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(120, 'Call of Duty: vanguard', 80.2, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CarX Street -->
+                <div class="game-poster-card" data-id="121" data-title="CarX Street" data-category="Action Open World" data-size="9.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/4.jpg" class="poster-image" alt="CarX Street">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 9.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">CarX Street</div>
+                            <div class="poster-game-genre">Racing / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(121, 'CarX Street', 9.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crysis 1 -->
+                <div class="game-poster-card" data-id="122" data-title="Crysis 1" data-category="FPS Action" data-size="3.8">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Crysis_Cover.jpg" class="poster-image" alt="Crysis 1">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 3.8 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Crysis 1</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(122, 'Crysis 1', 3.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crysis 2 -->
+                <div class="game-poster-card" data-id="123" data-title="Crysis 2" data-category="FPS Action" data-size="6.1">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Crysis_2_cover.png" class="poster-image" alt="Crysis 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 6.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Crysis 2</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(123, 'Crysis 2', 6.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crysis 3 -->
+                <div class="game-poster-card" data-id="124" data-title="Crysis 3" data-category="FPS Action" data-size="6.8">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Crysis_3_cover.jpg" class="poster-image" alt="Crysis 3">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 6.8 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Crysis 3</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core 2 Duo / AMD Athlon 64 X2</span></div>
+                                <div><b>RAM:</b> <span>3 GB</span></div>
+                                <div><b>GPU:</b> <span>GeForce GTS 450 / Radeon HD 5770</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(124, 'Crysis 3', 6.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crysis 3 Remastered -->
+                <div class="game-poster-card" data-id="125" data-title="Crysis 3 Remastered" data-category="FPS Action" data-size="11.8">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Crysis_3_Remastered_cover.jpg" class="poster-image" alt="Crysis 3 Remastered">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 11.8 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Crysis 3 Remastered</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5-3470 / AMD FX-6350</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 480</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(125, 'Crysis 3 Remastered', 11.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
+    </div>
+
+    <!-- MODAL 1: HARDWARE CART OVERLAY -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark modal-close" onclick="closeCartModal()"></i>
+            <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #fff;"><i class="fa-solid fa-cart-shopping" style="color:var(--primary);"></i> Your Shopping Cart</h3>
+            
+            <div class="cart-items-list" id="cartItemsContainer">
+                <p style="color: var(--text-muted); text-align: center;">Your cart is currently empty.</p>
+            </div>
+
+            <div class="cart-total-box">
+                <span>Total Amount:</span>
+                <span id="cartTotalValue" style="color: var(--success);">Rs: 0.00</span>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label>Your Name</label>
+                <input type="text" id="cart-cust-name" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Delivery Address</label>
+                <textarea id="cart-cust-address" rows="2" placeholder="Street Address, City"></textarea>
+            </div>
+
+            <button class="btn-whatsapp-order" onclick="submitHardwareCartOrder()">
+                <i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: STORAGE CALCULATOR CHECKOUT OVERLAY -->
+    <div class="modal-overlay" id="storageModal">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark modal-close" onclick="closeStorageCheckoutModal()"></i>
+            <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #fff;"><i class="fa-solid fa-hard-drive" style="color:var(--primary);"></i> Order Selected Games & Storage</h3>
+            
+            <div style="background: var(--bg-dark); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 0.8rem; margin-bottom: 15px; color: var(--text-muted);">
+                <div style="color: #fff; font-weight: 700; margin-bottom: 4px;" id="modalStorageSummary">Device: Desktop HDD (Brand New - 2000 GB)</div>
+                <div id="modalGameCountSummary">Selected Games: 0</div>
+                <div id="modalSpaceSummary">Used Space: 0 GB / Free: 2000 GB</div>
+            </div>
+
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" id="storage-cust-name" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Contact Phone Number</label>
+                <input type="text" id="storage-cust-phone" placeholder="07X XXXXXXX">
+            </div>
+            <div class="form-group">
+                <label>Delivery Address</label>
+                <textarea id="storage-cust-address" rows="2" placeholder="Street Address, City"></textarea>
+            </div>
+
+            <button class="btn-whatsapp-order" onclick="submitStorageWhatsAppOrder()">
+                <i class="fa-brands fa-whatsapp"></i> Send Game Order to WhatsApp
+            </button>
+        </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>JANU COMPUTERS</h4>
-                <p>Your ultimate destination for High-End PC Hardware, Laptops & Gaming Equipment in Sri Lanka.</p>
+                <h4 style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-bolt" style="color:var(--accent);"></i> JANU COMPUTERS</h4>
+                <p>Leading supplier for high-end gaming desktop PCs, laptops, displays, and custom PC game vault solutions in Sri Lanka.</p>
             </div>
             <div class="footer-col">
-                <h4>Quick Links</h4>
+                <h4>Quick Navigation</h4>
                 <ul>
                     <li><a onclick="navigateTo('home')">Home</a></li>
-                    <li><a onclick="navigateTo('laptops')">Laptops</a></li>
-                    <li><a onclick="navigateTo('desktops')">Desktops</a></li>
-                    <li><a onclick="navigateTo('monitors')">Monitors</a></li>
+                    <li><a onclick="navigateTo('desktops')">Desktops Collection</a></li>
+                    <li><a onclick="navigateTo('laptops')">Laptops Collection</a></li>
+                    <li><a onclick="navigateTo('monitors')">Monitors Collection</a></li>
+                    <li><a onclick="navigateTo('games')">PC Game Vault</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Contact Us</h4>
-                <p>Phone: +94 71 521 5075</p>
-                <p>Email: sales@janucomputers.lk</p>
+                <ul>
+                    <li><i class="fa-solid fa-phone" style="color:var(--accent);"></i> +94 71 521 5075</li>
+                    <li><i class="fa-solid fa-envelope" style="color:var(--accent);"></i> sales@janucomputers.lk</li>
+                    <li><i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> Colombo, Sri Lanka</li>
+                </ul>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2026 Janu Computers. All Rights Reserved.
+            &copy; 2026 Janu Computers. All Rights Reserved. Designed for Ultimate Gaming Performance.
         </div>
     </footer>
 
-    <!-- JavaScript Engine -->
+    <!-- JavaScript Application Logic -->
     <script>
-        // PAGE NAVIGATION CONTROLLER
+        /* STORAGE OPTIONS DATA */
+        const storageCapabilities = {
+            'Desktop HDD': [500, 1000, 2000, 4000],
+            'Laptop HDD': [500, 1000, 2000],
+            'SSD': [128, 256, 512, 1000, 2000],
+            'Portable HDD': [500, 1000, 2000, 4000]
+        };
+
+        /* STATE MANAGEMENT */
+        let cartItems = [];
+        let selectedGamesList = [];
+        let currentTotalStorageGB = 2000;
+
+        /* INITIALIZATION */
+        window.onload = function() {
+            onStorageTypeChange();
+        };
+
+        /* NAVIGATION CONTROLLER */
         function navigateTo(pageId) {
             const pages = document.querySelectorAll('.page-view');
             pages.forEach(page => page.classList.remove('active-view'));
@@ -677,117 +2387,287 @@
             const target = document.getElementById('view-' + pageId);
             if (target) {
                 target.classList.add('active-view');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // GAME VAULT DATA
-        const gameList = [
-            { id: 1, name: "Cyberpunk 2077: Phantom Liberty", size: 70, img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" },
-            { id: 2, name: "GTA V (Grand Theft Auto)", size: 110, img: "https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?auto=format&fit=crop&w=400&q=80" },
-            { id: 3, name: "Red Dead Redemption 2", size: 120, img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=400&q=80" },
-            { id: 4, name: "God of War Ragnarök", size: 85, img: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=400&q=80" },
-            { id: 5, name: "Call of Duty: Modern Warfare III", size: 150, img: "https://images.unsplash.com/photo-1552824722-6312742677c4?auto=format&fit=crop&w=400&q=80" },
-            { id: 6, name: "Forza Horizon 5", size: 110, img: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=400&q=80" }
-        ];
+        /* STORAGE CALCULATOR ENGINE */
+        function onStorageTypeChange() {
+            const typeSelect = document.getElementById('storage-type');
+            const capSelect = document.getElementById('hdd-capacity');
+            const selectedType = typeSelect.value;
+            
+            const capacities = storageCapabilities[selectedType] || [1000];
+            capSelect.innerHTML = '';
+            
+            capacities.forEach(cap => {
+                const opt = document.createElement('option');
+                opt.value = cap;
+                opt.textContent = cap >= 1000 ? (cap / 1000) + ' TB (' + cap + ' GB)' : cap + ' GB';
+                capSelect.appendChild(opt);
+            });
 
-        let selectedGames = [];
+            // Set default capacity to 2000 GB if available, else first option
+            if (capacities.includes(2000)) {
+                capSelect.value = 2000;
+            } else {
+                capSelect.value = capacities[0];
+            }
 
-        // RENDER GAME LIST
-        function renderGames(filterText = "") {
-            const grid = document.getElementById('gameGrid');
-            grid.innerHTML = "";
+            updateStorageSystem();
+        }
 
-            const filtered = gameList.filter(g => g.name.toLowerCase().includes(filterText.toLowerCase()));
+        function updateStorageSystem() {
+            const type = document.getElementById('storage-type').value;
+            const capacity = parseInt(document.getElementById('hdd-capacity').value) || 2000;
+            const condition = document.getElementById('storage-condition').value;
 
-            filtered.forEach(game => {
-                const isSelected = selectedGames.some(sg => sg.id === game.id);
-                const card = document.createElement('div');
-                card.className = 'game-card';
-                card.innerHTML = `
-                    <img src="${game.img}" alt="${game.name}">
-                    <div>
-                        <div class="game-title">${game.name}</div>
-                        <div class="game-size"><i class="fa-solid fa-hard-drive"></i> ${game.size} GB</div>
-                    </div>
-                    <button class="game-select-btn ${isSelected ? 'selected' : ''}" onclick="toggleGameSelect(${game.id})">
-                        ${isSelected ? '<i class="fa-solid fa-check"></i> Selected' : '<i class="fa-solid fa-plus"></i> Select Game'}
-                    </button>
-                `;
-                grid.appendChild(card);
+            currentTotalStorageGB = capacity;
+
+            document.getElementById('hdd-brand-lbl').textContent = type;
+            document.getElementById('hdd-condition-lbl').textContent = condition;
+            document.getElementById('hdd-total-lbl').textContent = capacity + ' GB';
+
+            calculateStorageUsage();
+        }
+
+        function calculateStorageUsage() {
+            let usedSpace = 0;
+            selectedGamesList.forEach(game => {
+                usedSpace += game.size;
+            });
+
+            usedSpace = parseFloat(usedSpace.toFixed(1));
+            let freeSpace = parseFloat((currentTotalStorageGB - usedSpace).toFixed(1));
+            
+            if (freeSpace < 0) freeSpace = 0;
+
+            let percentage = (usedSpace / currentTotalStorageGB) * 100;
+            if (percentage > 100) percentage = 100;
+
+            document.getElementById('hdd-used-lbl').textContent = usedSpace;
+            document.getElementById('hdd-free-lbl').textContent = freeSpace;
+            document.getElementById('hdd-bar').style.width = percentage + '%';
+
+            renderGameTags();
+        }
+
+        /* GAME VAULT SELECTION TOGGLE */
+        function toggleGame(id, title, size, btnElement) {
+            const index = selectedGamesList.findIndex(g => g.id === id);
+
+            if (index > -1) {
+                // Remove game
+                selectedGamesList.splice(index, 1);
+                if (btnElement) {
+                    btnElement.classList.remove('selected');
+                    btnElement.innerHTML = '<i class="fa-solid fa-plus"></i> Add';
+                }
+            } else {
+                // Calculate space check
+                let currentUsed = selectedGamesList.reduce((acc, g) => acc + g.size, 0);
+                if (currentUsed + size > currentTotalStorageGB) {
+                    alert('Not enough storage capacity available on the selected storage device! Please upgrade capacity.');
+                    return;
+                }
+
+                // Add game
+                selectedGamesList.push({ id: id, title: title, size: size });
+                if (btnElement) {
+                    btnElement.classList.add('selected');
+                    btnElement.innerHTML = '<i class="fa-solid fa-check"></i> Added';
+                }
+            }
+
+            calculateStorageUsage();
+        }
+
+        function removeGameTag(id) {
+            const index = selectedGamesList.findIndex(g => g.id === id);
+            if (index > -1) {
+                selectedGamesList.splice(index, 1);
+                
+                // Update card button UI if visible
+                const cardBtns = document.querySelectorAll('.game-poster-card[data-id="' + id + '"] .btn-card-select');
+                cardBtns.forEach(btn => {
+                    btn.classList.remove('selected');
+                    btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add';
+                });
+
+                calculateStorageUsage();
+            }
+        }
+
+        function renderGameTags() {
+            const container = document.getElementById('selected-game-tags');
+            container.innerHTML = '';
+
+            selectedGamesList.forEach(game => {
+                const tag = document.createElement('div');
+                tag.className = 'tag-item';
+                tag.innerHTML = game.title + ' (' + game.size + ' GB) <i class="fa-solid fa-xmark" onclick="removeGameTag(' + game.id + ')"></i>';
+                container.appendChild(tag);
             });
         }
 
-        // TOGGLE GAME SELECTION
-        function toggleGameSelect(gameId) {
-            const game = gameList.find(g => g.id === gameId);
-            const index = selectedGames.findIndex(sg => sg.id === gameId);
-
-            if (index > -1) {
-                selectedGames.splice(index, 1);
-            } else {
-                selectedGames.push(game);
-            }
-
-            updateStorageCalc();
-            renderGames(document.getElementById('mainSearchInput').value);
-        }
-
-        // UPDATE STORAGE CALCULATOR
-        function updateStorageCalc() {
-            const totalCapacity = parseInt(document.getElementById('driveCapacitySelect').value);
-            const usedCapacity = selectedGames.reduce((sum, g) => sum + g.size, 0);
-
-            document.getElementById('usedSpaceText').innerText = usedCapacity + " GB";
-            document.getElementById('totalSpaceText').innerText = totalCapacity + " GB";
-            document.getElementById('selectedGamesCount').innerText = selectedGames.length + " Games Selected";
-
-            const percentage = Math.min((usedCapacity / totalCapacity) * 100, 100);
-            const progressBar = document.getElementById('storageProgressBar');
-            progressBar.style.width = percentage + "%";
-
-            if (usedCapacity > totalCapacity) {
-                progressBar.style.background = "#ef4444";
-            } else {
-                progressBar.style.background = "linear-gradient(90deg, var(--primary), var(--accent))";
-            }
-        }
-
-        // FILTER GAMES VIA SEARCH BAR
+        /* GAME FILTERING */
         function filterGames() {
-            const query = document.getElementById('mainSearchInput').value;
-            if (query.trim() !== "") {
-                navigateTo('games');
-            }
-            renderGames(query);
+            const query = document.getElementById('gameSearchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('#gameGridShowcase .game-poster-card');
+
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
 
-        // WHATSAPP ORDER GENERATOR
-        function orderSelectedGamesViaWhatsApp() {
-            if (selectedGames.length === 0) {
-                alert("Please select at least one game to order!");
+        function filterCategory(cat, tabElem) {
+            const tabs = document.querySelectorAll('.cat-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            if(tabElem) tabElem.classList.add('active');
+
+            const cards = document.querySelectorAll('#gameGridShowcase .game-poster-card');
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (cat === 'All' || (category && category.includes(cat))) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        /* HARDWARE SHOPPING CART LOGIC */
+        function addToCart(id, title, price) {
+            cartItems.push({ id: id, title: title, price: price });
+            updateCartUI();
+            openCartModal();
+        }
+
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').textContent = cartItems.length;
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = '';
+
+            let total = 0;
+            if (cartItems.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Your cart is currently empty.</p>';
+            } else {
+                cartItems.forEach((item, index) => {
+                    total += item.price;
+                    const row = document.createElement('div');
+                    row.className = 'cart-item-row';
+                    row.innerHTML = `
+                        <div class="cart-item-info">
+                            <span class="cart-item-title">${item.title}</span>
+                            <span class="cart-item-price">Rs: ${item.price.toLocaleString()}.00</span>
+                        </div>
+                        <i class="fa-solid fa-trash cart-item-remove" onclick="removeFromCart(${index})"></i>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+
+            document.getElementById('cartTotalValue').textContent = 'Rs: ' + total.toLocaleString() + '.00';
+        }
+
+        function openCartModal() {
+            document.getElementById('cartModal').classList.add('active');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function submitHardwareCartOrder() {
+            if (cartItems.length === 0) {
+                alert('Your cart is empty!');
                 return;
             }
 
-            const driveSize = document.getElementById('driveCapacitySelect').value;
-            const totalUsed = selectedGames.reduce((sum, g) => sum + g.size, 0);
-            
-            let message = `Hi Janu Computers,%0A%0AI would like to order a *${driveSize} GB Storage Drive* loaded with the following games:%0A%0A`;
-            
-            selectedGames.forEach((g, idx) => {
-                message += `${idx + 1}. *${g.name}* (${g.size} GB)%0A`;
+            const name = document.getElementById('cart-cust-name').value || 'Customer';
+            const address = document.getElementById('cart-cust-address').value || 'N/A';
+
+            let message = `*NEW HARDWARE ORDER - JANU COMPUTERS*\n`;
+            message += `*Customer:* ${name}\n`;
+            message += `*Address:* ${address}\n\n`;
+            message += `*Items Ordered:*\n`;
+
+            let total = 0;
+            cartItems.forEach((item, idx) => {
+                message += `${idx + 1}. ${item.title} - Rs: ${item.price.toLocaleString()}.00\n`;
+                total += item.price;
             });
 
-            message += `%0A*Total Storage Used:* ${totalUsed} GB / ${driveSize} GB%0APlease let me know the total price and details.`;
+            message += `\n*Total Amount:* Rs: ${total.toLocaleString()}.00`;
 
-            window.open(`https://wa.me/94715215075?text=${message}`, '_blank');
+            const encodedMsg = encodeURIComponent(message);
+            window.open(`https://wa.me/94715215075?text=${encodedMsg}`, '_blank');
         }
 
-        // INITIAL RENDER
-        window.onload = () => {
-            renderGames();
-            updateStorageCalc();
-        };
+        /* STORAGE CHECKOUT MODAL LOGIC */
+        function openStorageCheckoutModal() {
+            if (selectedGamesList.length === 0) {
+                alert('Please select at least one game to place a storage order!');
+                return;
+            }
+
+            const type = document.getElementById('storage-type').value;
+            const capacity = document.getElementById('hdd-capacity').value;
+            const condition = document.getElementById('storage-condition').value;
+
+            let usedSpace = selectedGamesList.reduce((acc, g) => acc + g.size, 0).toFixed(1);
+            let freeSpace = (capacity - usedSpace).toFixed(1);
+
+            document.getElementById('modalStorageSummary').textContent = `Device: ${type} (${condition} - ${capacity} GB)`;
+            document.getElementById('modalGameCountSummary').textContent = `Selected Games: ${selectedGamesList.length} Games`;
+            document.getElementById('modalSpaceSummary').textContent = `Used Space: ${usedSpace} GB / Free: ${freeSpace} GB`;
+
+            document.getElementById('storageModal').classList.add('active');
+        }
+
+        function closeStorageCheckoutModal() {
+            document.getElementById('storageModal').classList.remove('active');
+        }
+
+        function submitStorageWhatsAppOrder() {
+            const name = document.getElementById('storage-cust-name').value || 'Customer';
+            const phone = document.getElementById('storage-cust-phone').value || 'N/A';
+            const address = document.getElementById('storage-cust-address').value || 'N/A';
+
+            const type = document.getElementById('storage-type').value;
+            const capacity = document.getElementById('hdd-capacity').value;
+            const condition = document.getElementById('storage-condition').value;
+
+            let usedSpace = selectedGamesList.reduce((acc, g) => acc + g.size, 0).toFixed(1);
+
+            let message = `*GAME VAULT & STORAGE ORDER - JANU COMPUTERS*\n`;
+            message += `*Customer Name:* ${name}\n`;
+            message += `*Phone:* ${phone}\n`;
+            message += `*Address:* ${address}\n\n`;
+            message += `*Storage Configuration:*\n`;
+            message += `- Device: ${type}\n`;
+            message += `- Capacity: ${capacity} GB\n`;
+            message += `- Condition: ${condition}\n`;
+            message += `- Total Games Selected: ${selectedGamesList.length} (${usedSpace} GB Used)\n\n`;
+            message += `*Selected Games List:*\n`;
+
+            selectedGamesList.forEach((game, idx) => {
+                message += `${idx + 1}. ${game.title} (${game.size} GB)\n`;
+            });
+
+            const encodedMsg = encodeURIComponent(message);
+            window.open(`https://wa.me/94715215075?text=${encodedMsg}`, '_blank');
+        }
     </script>
 </body>
 </html>
