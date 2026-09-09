@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -558,6 +558,113 @@
         .footer-col ul li { margin-bottom: 10px; }
         .footer-col a { color: var(--text-muted); text-decoration: none; transition: 0.2s; cursor: pointer; }
         .copyright { text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px; font-size: 0.8rem; }
+
+        /* Mobile Responsive Enhancements */
+        @media screen and (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                gap: 6px;
+                text-align: center;
+                padding: 10px 4%;
+            }
+            .top-bar div span {
+                display: inline-block;
+                margin: 2px 5px !important;
+            }
+
+            .main-header {
+                flex-wrap: wrap;
+                gap: 12px;
+                padding: 12px 4%;
+            }
+            .search-box {
+                order: 3;
+                flex: 1 1 100%;
+            }
+
+            .cat-nav {
+                padding: 0 4%;
+                top: auto;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .cat-nav ul {
+                gap: 16px;
+            }
+            .cat-nav a {
+                padding: 12px 0;
+            }
+
+            .hero-banner {
+                padding: 50px 16px;
+            }
+            .hero-banner h1 {
+                font-size: 1.8rem;
+            }
+            .hero-banner p {
+                font-size: 0.95rem;
+            }
+
+            .container {
+                width: 92%;
+                margin: 24px auto;
+            }
+
+            .shop-by-cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 14px;
+            }
+            .product-card {
+                padding: 12px;
+            }
+            .product-card img {
+                height: 130px;
+            }
+            .product-title {
+                font-size: 0.85rem;
+            }
+            .price {
+                font-size: 1rem;
+            }
+
+            .storage-wrapper {
+                position: relative;
+                top: 0;
+                padding: 12px;
+            }
+
+            .game-grid-showcase {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 14px;
+            }
+            .poster-image-wrap {
+                height: 180px;
+            }
+            .poster-details {
+                padding: 10px;
+            }
+            .poster-game-title {
+                font-size: 0.85rem;
+            }
+
+            .game-vault-search {
+                width: 100%;
+                min-width: 100%;
+            }
+
+            .whatsapp-float {
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
     </style>
 </head>
 <body>
