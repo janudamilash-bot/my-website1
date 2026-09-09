@@ -703,35 +703,19 @@
         </div>
     </header>
 
-  <!-- Nav Menu Container -->
+  <!-- Nav Menu -->
     <nav class="cat-nav">
-        <!-- Mobile Hamburger Button -->
-        <div class="menu-toggle" id="mobile-menu-btn">
-            <span><i class="fa-solid fa-bars"></i> MENU</span>
-            <i class="fa-solid fa-chevron-down" style="font-size:0.9rem;"></i>
-        </div>
-
-        <!-- Main Navigation Items -->
-        <ul id="nav-list">
+        <ul>
             <li><a onclick="navigateTo('home')">HOME</a></li>
-            
-            <!-- CATEGORIES DROPDOWN -->
             <li class="dropdown">
-                <a>
-                    <i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> 
-                    CATEGORIES 
-                    <i class="fa-solid fa-chevron-down" style="font-size:0.7rem; margin-left:auto;"></i>
-                </a>
+                <a><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
                 <ul class="dropdown-menu">
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-desktop"></i> Desktops Page</a></li>
                     <li><a onclick="navigateTo('laptops')"><i class="fa-solid fa-laptop"></i> Laptops Page</a></li>
                     
                     <!-- MONITORS & TV -->
                     <li class="dropdown-submenu">
-                        <a onclick="navigateTo('monitors')">
-                            <i class="fa-solid fa-tv"></i> Monitors & TV 
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i>
-                        </a>
+                        <a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> Monitors & TV <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i></a>
                         <ul class="submenu">
                             <li><a onclick="navigateTo('monitors-brandnew')"><i class="fa-solid fa-tag"></i> Brand New Monitor</a></li>
                             <li><a onclick="navigateTo('monitors-used')"><i class="fa-solid fa-recycle"></i> Used Monitor</a></li>
@@ -741,10 +725,7 @@
 
                     <!-- PROCESSORS -->
                     <li class="dropdown-submenu">
-                        <a onclick="navigateTo('processors')">
-                            <i class="fa-solid fa-microchip"></i> Processors 
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i>
-                        </a>
+                        <a onclick="navigateTo('processors')"><i class="fa-solid fa-microchip"></i> Processors <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i></a>
                         <ul class="submenu">
                             <li><a onclick="navigateTo('processors-brandnew')"><i class="fa-solid fa-tag"></i> Brand New Processors</a></li>
                             <li><a onclick="navigateTo('processors-used')"><i class="fa-solid fa-recycle"></i> Used Processors</a></li>
@@ -753,10 +734,7 @@
 
                     <!-- MOTHERBOARDS -->
                     <li class="dropdown-submenu">
-                        <a onclick="navigateTo('motherboards')">
-                            <i class="fa-solid fa-microchip"></i> Motherboards 
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i>
-                        </a>
+                        <a onclick="navigateTo('motherboards')"><i class="fa-solid fa-circuit-board"></i> Motherboards <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i></a>
                         <ul class="submenu">
                             <li><a onclick="navigateTo('motherboards-brandnew')"><i class="fa-solid fa-tag"></i> Brand New Motherboards</a></li>
                             <li><a onclick="navigateTo('motherboards-used')"><i class="fa-solid fa-recycle"></i> Used Motherboards</a></li>
@@ -765,10 +743,7 @@
 
                     <!-- RAM -->
                     <li class="dropdown-submenu">
-                        <a onclick="navigateTo('ram')">
-                            <i class="fa-solid fa-memory"></i> RAM 
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i>
-                        </a>
+                        <a onclick="navigateTo('ram')"><i class="fa-solid fa-memory"></i> RAM <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i></a>
                         <ul class="submenu">
                             <li><a onclick="navigateTo('ram-brandnew')"><i class="fa-solid fa-tag"></i> Brand New RAM</a></li>
                             <li><a onclick="navigateTo('ram-used')"><i class="fa-solid fa-recycle"></i> Used RAM</a></li>
@@ -777,10 +752,7 @@
 
                     <!-- GRAPHIC CARD -->
                     <li class="dropdown-submenu">
-                        <a onclick="navigateTo('graphic-cards')">
-                            <i class="fa-solid fa-hard-drive"></i> Graphic Card 
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i>
-                        </a>
+                        <a onclick="navigateTo('graphic-cards')"><i class="fa-solid fa-hard-drive"></i> Graphic Card <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i></a>
                         <ul class="submenu">
                             <li><a onclick="navigateTo('gpu-brandnew')"><i class="fa-solid fa-tag"></i> Brand New Graphic Card</a></li>
                             <li><a onclick="navigateTo('gpu-used')"><i class="fa-solid fa-recycle"></i> Used Graphic Card</a></li>
@@ -789,10 +761,7 @@
 
                     <!-- STORAGE -->
                     <li class="dropdown-submenu">
-                        <a onclick="navigateTo('storage')">
-                            <i class="fa-solid fa-database"></i> Storage 
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i>
-                        </a>
+                        <a onclick="navigateTo('storage')"><i class="fa-solid fa-database"></i> Storage <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i></a>
                         <ul class="submenu">
                             <li><a onclick="navigateTo('storage-brandnew')"><i class="fa-solid fa-tag"></i> Brand New Storage</a></li>
                             <li><a onclick="navigateTo('storage-used')"><i class="fa-solid fa-recycle"></i> Used Storage</a></li>
@@ -804,10 +773,7 @@
 
                     <!-- COOLERS -->
                     <li class="dropdown-submenu">
-                        <a onclick="navigateTo('coolers')">
-                            <i class="fa-solid fa-fan"></i> Coolers 
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i>
-                        </a>
+                        <a onclick="navigateTo('coolers')"><i class="fa-solid fa-fan"></i> Coolers <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i></a>
                         <ul class="submenu">
                             <li><a onclick="navigateTo('coolers-brandnew')"><i class="fa-solid fa-tag"></i> Brand New Coolers</a></li>
                             <li><a onclick="navigateTo('coolers-used')"><i class="fa-solid fa-recycle"></i> Used Coolers</a></li>
@@ -816,10 +782,7 @@
 
                     <!-- POWER SUPPLY -->
                     <li class="dropdown-submenu">
-                        <a onclick="navigateTo('power-supply')">
-                            <i class="fa-solid fa-plug"></i> Power Supply 
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i>
-                        </a>
+                        <a onclick="navigateTo('power-supply')"><i class="fa-solid fa-plug"></i> Power Supply <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i></a>
                         <ul class="submenu">
                             <li><a onclick="navigateTo('psu-brandnew')"><i class="fa-solid fa-tag"></i> Brand New Power Supply</a></li>
                             <li><a onclick="navigateTo('psu-used')"><i class="fa-solid fa-recycle"></i> Used Power Supply</a></li>
@@ -828,22 +791,19 @@
 
                     <!-- KEYBOARD & MOUSE -->
                     <li class="dropdown-submenu">
-                        <a onclick="navigateTo('keyboard-mouse')">
-                            <i class="fa-solid fa-keyboard"></i> Keyboard & Mouse 
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i>
-                        </a>
+                        <a onclick="navigateTo('keyboard-mouse')"><i class="fa-solid fa-keyboard"></i> Keyboard & Mouse <i class="fa-solid fa-chevron-right" style="font-size:0.6rem; margin-left:auto;"></i></a>
                         <ul class="submenu">
                             <li><a onclick="navigateTo('keyboard')"><i class="fa-solid fa-keyboard"></i> Keyboard</a></li>
                             <li><a onclick="navigateTo('mouse')"><i class="fa-solid fa-mouse"></i> Mouse</a></li>
                         </ul>
                     </li>
 
-                    <!-- AUDIO & GAMES -->
+                    <!-- HEADSET & SUBWOOFERS -->
                     <li><a onclick="navigateTo('audio')"><i class="fa-solid fa-headphones"></i> Headset & Subwoofers</a></li>
+
                     <li><a onclick="navigateTo('games')"><i class="fa-solid fa-gamepad"></i> PC Game Vault</a></li>
                 </ul>
             </li>
-
             <li><a onclick="navigateTo('desktops')">DESKTOPS</a></li>
             <li><a onclick="navigateTo('laptops')">LAPTOPS</a></li>
             <li><a onclick="navigateTo('monitors')">MONITORS</a></li>
