@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -155,7 +155,9 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            min-width: 200px;
+            min-width: 240px;
+            max-height: 400px;
+            overflow-y: auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
@@ -710,10 +712,36 @@
             <li class="dropdown">
                 <a><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-desktop"></i> Desktops Page</a></li>
-                    <li><a onclick="navigateTo('laptops')"><i class="fa-solid fa-laptop"></i> Laptops Page</a></li>
-                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> Monitors Page</a></li>
-                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-gamepad"></i> PC Game Vault</a></li>
+                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-desktop"></i> MONITORS</a></li>
+                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-desktop"></i> BRANDNEW MONITOR</a></li>
+                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-desktop"></i> USED MONITOR</a></li>
+                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> TV</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> PROCESSORS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> BRANDNEW PROCESSORS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> USED PROCESSORS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-circuit-board"></i> MOTHERBOARDS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-circuit-board"></i> BRANDNEW MOTHERBOARDS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-circuit-board"></i> USED MOTHERBOARDS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> RAM</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> BRANDNEW RAM</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> USED RAM</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-vr-cardboard"></i> GRAPHIC CARD</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-vr-cardboard"></i> BRANDNEW GRAPHIC CARD</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-vr-cardboard"></i> USED GRAPHIC CARD</a></li>
+                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> STORAGE</a></li>
+                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> BRANDNEW STORAGE</a></li>
+                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> USED STORAGE</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-box"></i> CASING</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> COOLERS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> BRANDNEW COOLERS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> USED COOLERS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> POWER SUPPLY</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> BRANDNEW POWER SUPPLY</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> USED POWER SUPPLY</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-keyboard"></i> KEYBOARD & MOUSE</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-keyboard"></i> KEYBOARD</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-mouse"></i> MOUSE</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-headphones"></i> HEADSET & SUBFOOWERS</a></li>
                 </ul>
             </li>
             <li><a onclick="navigateTo('desktops')">DESKTOPS</a></li>
@@ -1661,8 +1689,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Call Of Duty - WWII -->
+     <!-- Call Of Duty - WWII -->
                 <div class="game-poster-card" data-id="101" data-title="Call Of Duty - WWII" data-category="FPS Action" data-size="36.3">
                     <div class="poster-image-wrap">
                         <img src="Janu/4to/games/Call_of_Duty_WWII_Cover_Art.jpg" class="poster-image" alt="Call Of Duty - WWII">
@@ -2155,7 +2182,7 @@
                             <div class="sys-req-box">
                                 <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
                                 <div><b>RAM:</b> <span>8 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                                <div><b>GPU:</b> <span>GTX 750</span></div>
                             </div>
                         </div>
                         <div class="poster-game-footer">
@@ -2166,507 +2193,50 @@
                     </div>
                 </div>
 
-                <!-- Crysis 1 -->
-                <div class="game-poster-card" data-id="122" data-title="Crysis 1" data-category="FPS Action" data-size="3.8">
-                    <div class="poster-image-wrap">
-                        <img src="Janu/4to/games/Crysis_Cover.jpg" class="poster-image" alt="Crysis 1">
-                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 3.8 GB</span>
-                    </div>
-                    <div class="poster-details">
-                        <div>
-                            <div class="poster-game-title">Crysis 1</div>
-                            <div class="poster-game-genre">FPS / Action</div>
-                            <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
-                                <div><b>RAM:</b> <span>8 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
-                            </div>
-                        </div>
-                        <div class="poster-game-footer">
-                            <button class="btn-card-select" onclick="toggleGame(122, 'Crysis 1', 3.8, this)">
-                                <i class="fa-solid fa-plus"></i> Add
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Crysis 2 -->
-                <div class="game-poster-card" data-id="123" data-title="Crysis 2" data-category="FPS Action" data-size="6.1">
-                    <div class="poster-image-wrap">
-                        <img src="Janu/4to/games/Crysis_2_cover.png" class="poster-image" alt="Crysis 2">
-                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 6.1 GB</span>
-                    </div>
-                    <div class="poster-details">
-                        <div>
-                            <div class="poster-game-title">Crysis 2</div>
-                            <div class="poster-game-genre">FPS / Action</div>
-                            <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
-                                <div><b>RAM:</b> <span>8 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
-                            </div>
-                        </div>
-                        <div class="poster-game-footer">
-                            <button class="btn-card-select" onclick="toggleGame(123, 'Crysis 2', 6.1, this)">
-                                <i class="fa-solid fa-plus"></i> Add
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Crysis 3 -->
-                <div class="game-poster-card" data-id="124" data-title="Crysis 3" data-category="FPS Action" data-size="6.8">
-                    <div class="poster-image-wrap">
-                        <img src="Janu/4to/games/Crysis_3_cover.jpg" class="poster-image" alt="Crysis 3">
-                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 6.8 GB</span>
-                    </div>
-                    <div class="poster-details">
-                        <div>
-                            <div class="poster-game-title">Crysis 3</div>
-                            <div class="poster-game-genre">FPS / Action</div>
-                            <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Intel Core 2 Duo / AMD Athlon 64 X2</span></div>
-                                <div><b>RAM:</b> <span>3 GB</span></div>
-                                <div><b>GPU:</b> <span>GeForce GTS 450 / Radeon HD 5770</span></div>
-                            </div>
-                        </div>
-                        <div class="poster-game-footer">
-                            <button class="btn-card-select" onclick="toggleGame(124, 'Crysis 3', 6.8, this)">
-                                <i class="fa-solid fa-plus"></i> Add
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Crysis 3 Remastered -->
-                <div class="game-poster-card" data-id="125" data-title="Crysis 3 Remastered" data-category="FPS Action" data-size="11.8">
-                    <div class="poster-image-wrap">
-                        <img src="Janu/4to/games/Crysis_3_Remastered_cover.jpg" class="poster-image" alt="Crysis 3 Remastered">
-                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 11.8 GB</span>
-                    </div>
-                    <div class="poster-details">
-                        <div>
-                            <div class="poster-game-title">Crysis 3 Remastered</div>
-                            <div class="poster-game-genre">FPS / Action</div>
-                            <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Intel Core i5-3470 / AMD FX-6350</span></div>
-                                <div><b>RAM:</b> <span>8 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 1060 / RX 480</span></div>
-                            </div>
-                        </div>
-                        <div class="poster-game-footer">
-                            <button class="btn-card-select" onclick="toggleGame(125, 'Crysis 3 Remastered', 11.8, this)">
-                                <i class="fa-solid fa-plus"></i> Add
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
 
-    </div>
-
-    <!-- MODAL 1: HARDWARE CART OVERLAY -->
-    <div class="modal-overlay" id="cartModal">
-        <div class="modal-content">
-            <i class="fa-solid fa-xmark modal-close" onclick="closeCartModal()"></i>
-            <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #fff;"><i class="fa-solid fa-cart-shopping" style="color:var(--primary);"></i> Your Shopping Cart</h3>
-            
-            <div class="cart-items-list" id="cartItemsContainer">
-                <p style="color: var(--text-muted); text-align: center;">Your cart is currently empty.</p>
-            </div>
-
-            <div class="cart-total-box">
-                <span>Total Amount:</span>
-                <span id="cartTotalValue" style="color: var(--success);">Rs: 0.00</span>
-            </div>
-
-            <div class="form-group" style="margin-top: 15px;">
-                <label>Your Name</label>
-                <input type="text" id="cart-cust-name" placeholder="John Doe">
-            </div>
-            <div class="form-group">
-                <label>Delivery Address</label>
-                <textarea id="cart-cust-address" rows="2" placeholder="Street Address, City"></textarea>
-            </div>
-
-            <button class="btn-whatsapp-order" onclick="submitHardwareCartOrder()">
-                <i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp
-            </button>
-        </div>
-    </div>
-
-    <!-- MODAL 2: STORAGE CALCULATOR CHECKOUT OVERLAY -->
-    <div class="modal-overlay" id="storageModal">
-        <div class="modal-content">
-            <i class="fa-solid fa-xmark modal-close" onclick="closeStorageCheckoutModal()"></i>
-            <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #fff;"><i class="fa-solid fa-hard-drive" style="color:var(--primary);"></i> Order Selected Games & Storage</h3>
-            
-            <div style="background: var(--bg-dark); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 0.8rem; margin-bottom: 15px; color: var(--text-muted);">
-                <div style="color: #fff; font-weight: 700; margin-bottom: 4px;" id="modalStorageSummary">Device: Desktop HDD (Brand New - 2000 GB)</div>
-                <div id="modalGameCountSummary">Selected Games: 0</div>
-                <div id="modalSpaceSummary">Used Space: 0 GB / Free: 2000 GB</div>
-            </div>
-
-            <div class="form-group">
-                <label>Your Name</label>
-                <input type="text" id="storage-cust-name" placeholder="John Doe">
-            </div>
-            <div class="form-group">
-                <label>Contact Phone Number</label>
-                <input type="text" id="storage-cust-phone" placeholder="07X XXXXXXX">
-            </div>
-            <div class="form-group">
-                <label>Delivery Address</label>
-                <textarea id="storage-cust-address" rows="2" placeholder="Street Address, City"></textarea>
-            </div>
-
-            <button class="btn-whatsapp-order" onclick="submitStorageWhatsAppOrder()">
-                <i class="fa-brands fa-whatsapp"></i> Send Game Order to WhatsApp
-            </button>
-        </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h4 style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-bolt" style="color:var(--accent);"></i> JANU COMPUTERS</h4>
-                <p>Leading supplier for high-end gaming desktop PCs, laptops, displays, and custom PC game vault solutions in Sri Lanka.</p>
+                <h4>JANU COMPUTERS</h4>
+                <p>Your ultimate destination for Next-Gen Gaming Gear, PC Components, and Custom Built Workstations in Sri Lanka.</p>
             </div>
             <div class="footer-col">
-                <h4>Quick Navigation</h4>
+                <h4>Quick Links</h4>
                 <ul>
                     <li><a onclick="navigateTo('home')">Home</a></li>
-                    <li><a onclick="navigateTo('desktops')">Desktops Collection</a></li>
-                    <li><a onclick="navigateTo('laptops')">Laptops Collection</a></li>
-                    <li><a onclick="navigateTo('monitors')">Monitors Collection</a></li>
-                    <li><a onclick="navigateTo('games')">PC Game Vault</a></li>
+                    <li><a onclick="navigateTo('desktops')">Desktops</a></li>
+                    <li><a onclick="navigateTo('laptops')">Laptops</a></li>
+                    <li><a onclick="navigateTo('monitors')">Monitors</a></li>
+                    <li><a onclick="navigateTo('games')">PC Games & Storage</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Contact Us</h4>
-                <ul>
-                    <li><i class="fa-solid fa-phone" style="color:var(--accent);"></i> +94 71 521 5075</li>
-                    <li><i class="fa-solid fa-envelope" style="color:var(--accent);"></i> sales@janucomputers.lk</li>
-                    <li><i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> Colombo, Sri Lanka</li>
-                </ul>
+                <p><i class="fa-solid fa-location-dot"></i> Sri Lanka</p>
+                <p><i class="fa-solid fa-phone"></i> +94 71 521 5075</p>
+                <p><i class="fa-solid fa-envelope"></i> sales@janucomputers.lk</p>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2026 Janu Computers. All Rights Reserved. Designed for Ultimate Gaming Performance.
+            &copy; 2026 Janu Computers. All Rights Reserved.
         </div>
     </footer>
 
-    <!-- JavaScript Application Logic -->
     <script>
-        /* STORAGE OPTIONS DATA */
-        const storageCapabilities = {
-            'Desktop HDD': [500, 1000, 2000, 4000],
-            'Laptop HDD': [500, 1000, 2000],
-            'SSD': [128, 256, 512, 1000, 2000],
-            'Portable HDD': [500, 1000, 2000, 4000]
-        };
-
-        /* STATE MANAGEMENT */
-        let cartItems = [];
-        let selectedGamesList = [];
-        let currentTotalStorageGB = 2000;
-
-        /* INITIALIZATION */
-        window.onload = function() {
-            onStorageTypeChange();
-        };
-
-        /* NAVIGATION CONTROLLER */
         function navigateTo(pageId) {
-            const pages = document.querySelectorAll('.page-view');
-            pages.forEach(page => page.classList.remove('active-view'));
-            
-            const target = document.getElementById('view-' + pageId);
-            if (target) {
-                target.classList.add('active-view');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        /* STORAGE CALCULATOR ENGINE */
-        function onStorageTypeChange() {
-            const typeSelect = document.getElementById('storage-type');
-            const capSelect = document.getElementById('hdd-capacity');
-            const selectedType = typeSelect.value;
-            
-            const capacities = storageCapabilities[selectedType] || [1000];
-            capSelect.innerHTML = '';
-            
-            capacities.forEach(cap => {
-                const opt = document.createElement('option');
-                opt.value = cap;
-                opt.textContent = cap >= 1000 ? (cap / 1000) + ' TB (' + cap + ' GB)' : cap + ' GB';
-                capSelect.appendChild(opt);
+            document.querySelectorAll('.page-view').forEach(view => {
+                view.classList.remove('active-view');
             });
-
-            // Set default capacity to 2000 GB if available, else first option
-            if (capacities.includes(2000)) {
-                capSelect.value = 2000;
-            } else {
-                capSelect.value = capacities[0];
+            const selectedPage = document.getElementById('view-' + pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active-view');
             }
-
-            updateStorageSystem();
-        }
-
-        function updateStorageSystem() {
-            const type = document.getElementById('storage-type').value;
-            const capacity = parseInt(document.getElementById('hdd-capacity').value) || 2000;
-            const condition = document.getElementById('storage-condition').value;
-
-            currentTotalStorageGB = capacity;
-
-            document.getElementById('hdd-brand-lbl').textContent = type;
-            document.getElementById('hdd-condition-lbl').textContent = condition;
-            document.getElementById('hdd-total-lbl').textContent = capacity + ' GB';
-
-            calculateStorageUsage();
-        }
-
-        function calculateStorageUsage() {
-            let usedSpace = 0;
-            selectedGamesList.forEach(game => {
-                usedSpace += game.size;
-            });
-
-            usedSpace = parseFloat(usedSpace.toFixed(1));
-            let freeSpace = parseFloat((currentTotalStorageGB - usedSpace).toFixed(1));
-            
-            if (freeSpace < 0) freeSpace = 0;
-
-            let percentage = (usedSpace / currentTotalStorageGB) * 100;
-            if (percentage > 100) percentage = 100;
-
-            document.getElementById('hdd-used-lbl').textContent = usedSpace;
-            document.getElementById('hdd-free-lbl').textContent = freeSpace;
-            document.getElementById('hdd-bar').style.width = percentage + '%';
-
-            renderGameTags();
-        }
-
-        /* GAME VAULT SELECTION TOGGLE */
-        function toggleGame(id, title, size, btnElement) {
-            const index = selectedGamesList.findIndex(g => g.id === id);
-
-            if (index > -1) {
-                // Remove game
-                selectedGamesList.splice(index, 1);
-                if (btnElement) {
-                    btnElement.classList.remove('selected');
-                    btnElement.innerHTML = '<i class="fa-solid fa-plus"></i> Add';
-                }
-            } else {
-                // Calculate space check
-                let currentUsed = selectedGamesList.reduce((acc, g) => acc + g.size, 0);
-                if (currentUsed + size > currentTotalStorageGB) {
-                    alert('Not enough storage capacity available on the selected storage device! Please upgrade capacity.');
-                    return;
-                }
-
-                // Add game
-                selectedGamesList.push({ id: id, title: title, size: size });
-                if (btnElement) {
-                    btnElement.classList.add('selected');
-                    btnElement.innerHTML = '<i class="fa-solid fa-check"></i> Added';
-                }
-            }
-
-            calculateStorageUsage();
-        }
-
-        function removeGameTag(id) {
-            const index = selectedGamesList.findIndex(g => g.id === id);
-            if (index > -1) {
-                selectedGamesList.splice(index, 1);
-                
-                // Update card button UI if visible
-                const cardBtns = document.querySelectorAll('.game-poster-card[data-id="' + id + '"] .btn-card-select');
-                cardBtns.forEach(btn => {
-                    btn.classList.remove('selected');
-                    btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add';
-                });
-
-                calculateStorageUsage();
-            }
-        }
-
-        function renderGameTags() {
-            const container = document.getElementById('selected-game-tags');
-            container.innerHTML = '';
-
-            selectedGamesList.forEach(game => {
-                const tag = document.createElement('div');
-                tag.className = 'tag-item';
-                tag.innerHTML = game.title + ' (' + game.size + ' GB) <i class="fa-solid fa-xmark" onclick="removeGameTag(' + game.id + ')"></i>';
-                container.appendChild(tag);
-            });
-        }
-
-        /* GAME FILTERING */
-        function filterGames() {
-            const query = document.getElementById('gameSearchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('#gameGridShowcase .game-poster-card');
-
-            cards.forEach(card => {
-                const title = card.getAttribute('data-title').toLowerCase();
-                if (title.includes(query)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        function filterCategory(cat, tabElem) {
-            const tabs = document.querySelectorAll('.cat-tab');
-            tabs.forEach(t => t.classList.remove('active'));
-            if(tabElem) tabElem.classList.add('active');
-
-            const cards = document.querySelectorAll('#gameGridShowcase .game-poster-card');
-            cards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (cat === 'All' || (category && category.includes(cat))) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        /* HARDWARE SHOPPING CART LOGIC */
-        function addToCart(id, title, price) {
-            cartItems.push({ id: id, title: title, price: price });
-            updateCartUI();
-            openCartModal();
-        }
-
-        function removeFromCart(index) {
-            cartItems.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            document.getElementById('cart-count').textContent = cartItems.length;
-            const container = document.getElementById('cartItemsContainer');
-            container.innerHTML = '';
-
-            let total = 0;
-            if (cartItems.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Your cart is currently empty.</p>';
-            } else {
-                cartItems.forEach((item, index) => {
-                    total += item.price;
-                    const row = document.createElement('div');
-                    row.className = 'cart-item-row';
-                    row.innerHTML = `
-                        <div class="cart-item-info">
-                            <span class="cart-item-title">${item.title}</span>
-                            <span class="cart-item-price">Rs: ${item.price.toLocaleString()}.00</span>
-                        </div>
-                        <i class="fa-solid fa-trash cart-item-remove" onclick="removeFromCart(${index})"></i>
-                    `;
-                    container.appendChild(row);
-                });
-            }
-
-            document.getElementById('cartTotalValue').textContent = 'Rs: ' + total.toLocaleString() + '.00';
-        }
-
-        function openCartModal() {
-            document.getElementById('cartModal').classList.add('active');
-        }
-
-        function closeCartModal() {
-            document.getElementById('cartModal').classList.remove('active');
-        }
-
-        function submitHardwareCartOrder() {
-            if (cartItems.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-
-            const name = document.getElementById('cart-cust-name').value || 'Customer';
-            const address = document.getElementById('cart-cust-address').value || 'N/A';
-
-            let message = `*NEW HARDWARE ORDER - JANU COMPUTERS*\n`;
-            message += `*Customer:* ${name}\n`;
-            message += `*Address:* ${address}\n\n`;
-            message += `*Items Ordered:*\n`;
-
-            let total = 0;
-            cartItems.forEach((item, idx) => {
-                message += `${idx + 1}. ${item.title} - Rs: ${item.price.toLocaleString()}.00\n`;
-                total += item.price;
-            });
-
-            message += `\n*Total Amount:* Rs: ${total.toLocaleString()}.00`;
-
-            const encodedMsg = encodeURIComponent(message);
-            window.open(`https://wa.me/94715215075?text=${encodedMsg}`, '_blank');
-        }
-
-        /* STORAGE CHECKOUT MODAL LOGIC */
-        function openStorageCheckoutModal() {
-            if (selectedGamesList.length === 0) {
-                alert('Please select at least one game to place a storage order!');
-                return;
-            }
-
-            const type = document.getElementById('storage-type').value;
-            const capacity = document.getElementById('hdd-capacity').value;
-            const condition = document.getElementById('storage-condition').value;
-
-            let usedSpace = selectedGamesList.reduce((acc, g) => acc + g.size, 0).toFixed(1);
-            let freeSpace = (capacity - usedSpace).toFixed(1);
-
-            document.getElementById('modalStorageSummary').textContent = `Device: ${type} (${condition} - ${capacity} GB)`;
-            document.getElementById('modalGameCountSummary').textContent = `Selected Games: ${selectedGamesList.length} Games`;
-            document.getElementById('modalSpaceSummary').textContent = `Used Space: ${usedSpace} GB / Free: ${freeSpace} GB`;
-
-            document.getElementById('storageModal').classList.add('active');
-        }
-
-        function closeStorageCheckoutModal() {
-            document.getElementById('storageModal').classList.remove('active');
-        }
-
-        function submitStorageWhatsAppOrder() {
-            const name = document.getElementById('storage-cust-name').value || 'Customer';
-            const phone = document.getElementById('storage-cust-phone').value || 'N/A';
-            const address = document.getElementById('storage-cust-address').value || 'N/A';
-
-            const type = document.getElementById('storage-type').value;
-            const capacity = document.getElementById('hdd-capacity').value;
-            const condition = document.getElementById('storage-condition').value;
-
-            let usedSpace = selectedGamesList.reduce((acc, g) => acc + g.size, 0).toFixed(1);
-
-            let message = `*GAME VAULT & STORAGE ORDER - JANU COMPUTERS*\n`;
-            message += `*Customer Name:* ${name}\n`;
-            message += `*Phone:* ${phone}\n`;
-            message += `*Address:* ${address}\n\n`;
-            message += `*Storage Configuration:*\n`;
-            message += `- Device: ${type}\n`;
-            message += `- Capacity: ${capacity} GB\n`;
-            message += `- Condition: ${condition}\n`;
-            message += `- Total Games Selected: ${selectedGamesList.length} (${usedSpace} GB Used)\n\n`;
-            message += `*Selected Games List:*\n`;
-
-            selectedGamesList.forEach((game, idx) => {
-                message += `${idx + 1}. ${game.title} (${game.size} GB)\n`;
-            });
-
-            const encodedMsg = encodeURIComponent(message);
-            window.open(`https://wa.me/94715215075?text=${encodedMsg}`, '_blank');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
