@@ -929,3 +929,168 @@ footer {
     background-color: var(--primary);
     border-color: var(--primary);
 }
+/* ==========================================
+   MOBILE RESPONSIVE STYLES (Screen Max Width 768px)
+   ========================================== */
+@media screen and (max-width: 768px) {
+
+    /* Top Bar adjustments */
+    .top-bar {
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+        padding: 6px 10px;
+        font-size: 0.72rem;
+    }
+
+    /* Main Header Mobile layout */
+    .main-header {
+        padding: 10px 14px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .search-box {
+        order: 3;
+        flex: 1 1 100%;
+        margin-top: 4px;
+    }
+
+    /* Horizontal Scrollable Navigation Bar */
+    .cat-nav {
+        padding: 0 10px;
+        top: 105px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .cat-nav::-webkit-scrollbar {
+        display: none; /* Hide scrollbar */
+    }
+
+    .cat-nav ul {
+        gap: 12px;
+    }
+
+    .cat-nav a {
+        padding: 12px 6px;
+        font-size: 0.75rem;
+    }
+
+    /* Container Padding & Spacing */
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    /* Hero Banner Mobile */
+    .hero-banner {
+        padding: 40px 14px;
+        border-radius: 14px !important;
+    }
+
+    .hero-banner h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero-banner p {
+        font-size: 0.85rem;
+    }
+
+    /* Category Grid 2 Columns on Mobile */
+    .shop-by-cat-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .cat-card {
+        padding: 14px 10px;
+    }
+
+    .cat-card i {
+        font-size: 1.5rem;
+    }
+
+    /* Product Grid 2 Columns Mobile Display */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .product-card {
+        padding: 10px;
+    }
+
+    .product-card img {
+        height: 120px;
+        margin-bottom: 8px;
+    }
+
+    .product-title {
+        font-size: 0.78rem;
+        height: 38px;
+        overflow: hidden;
+    }
+
+    .price {
+        font-size: 0.95rem;
+    }
+
+    .koko-pay {
+        font-size: 0.65rem;
+    }
+
+    .add-to-cart-btn {
+        padding: 8px 4px;
+        font-size: 0.75rem;
+    }
+
+    /* Storage Widget Sticky Position Adjustment */
+    .storage-wrapper {
+        position: relative;
+        top: 0;
+        padding: 12px;
+    }
+
+    /* Game Vault Mobile View (2 Columns) */
+    .game-grid-showcase {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .poster-image-wrap {
+        height: 160px;
+    }
+
+    .poster-game-title {
+        font-size: 0.8rem;
+    }
+
+    .sys-req-box {
+        display: none; /* Mobile view eka neat venna Requirements box hidden kara */
+    }
+
+    /* Floating WhatsApp Button Mobile size */
+    .whatsapp-float {
+        width: 46px;
+        height: 46px;
+        font-size: 1.4rem;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    /* Footer Mobile view */
+    footer {
+        padding: 30px 5% 20px;
+        margin-top: 40px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
