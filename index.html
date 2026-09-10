@@ -156,8 +156,6 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             min-width: 200px;
-            max-height: 380px;
-            overflow-y: auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
@@ -169,12 +167,13 @@
             transition: all 0.3s ease;
             z-index: 1000;
         }
-        .dropdown:hover .dropdown-menu, .dropdown.active .dropdown-menu {
+        .dropdown:hover .dropdown-menu,
+        .dropdown.mobile-open .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-        .dropdown-menu li { width: 100%; list-style: none; }
+        .dropdown-menu li { width: 100%; }
         .dropdown-menu a {
             padding: 10px 20px !important;
             display: flex !important;
@@ -182,7 +181,6 @@
             gap: 10px;
             width: 100%;
             font-size: 0.8rem;
-            white-space: nowrap;
         }
 
         /* Hero Banner */
@@ -588,27 +586,25 @@
             .cat-nav {
                 padding: 0 4%;
                 top: auto;
-                position: relative;
+                overflow-x: auto;
+                white-space: nowrap;
             }
             .cat-nav ul {
-                gap: 12px;
-                flex-wrap: wrap;
+                gap: 16px;
             }
             .cat-nav a {
-                padding: 10px 0;
+                padding: 12px 0;
             }
 
+            /* Fix Dropdown visibility and scrolling on Mobile */
             .dropdown-menu {
                 position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) !important;
-                width: 85%;
-                max-width: 320px;
-                max-height: 70vh;
+                top: auto;
+                left: 5%;
+                right: 5%;
+                width: 90%;
+                max-height: 60vh;
                 overflow-y: auto;
-                box-shadow: 0 0 50px rgba(0,0,0,0.8);
-                border: 1px solid var(--primary);
                 z-index: 2000;
             }
 
@@ -1138,6 +1134,24 @@
         let selectedGames = [];
         const whatsappNumber = "94715215075"; 
 
+        // Function to handle Categories dropdown toggle on mobile
+        function toggleCategoryMenu(event) {
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                event.stopPropagation();
+                const dropdown = document.getElementById('categoryDropdown');
+                dropdown.classList.toggle('mobile-open');
+            }
+        }
+
+        // Close dropdown when clicked outside
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('categoryDropdown');
+            if (dropdown && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('mobile-open');
+            }
+        });
+
         // Capacity Options per Storage Type Definition
         const storageCapacities = {
             "SSD": [
@@ -1196,26 +1210,8 @@
             updateStorageSystem();
         }
 
-        // Toggle Category Menu on Mobile/Touch
-        function toggleCategoryMenu(e) {
-            e.stopPropagation();
-            const dropdown = document.getElementById('categoryDropdown');
-            dropdown.classList.toggle('active');
-        }
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            const dropdown = document.getElementById('categoryDropdown');
-            if (dropdown && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
-
         // Dynamic Page Navigation Switcher
         function navigateTo(viewId) {
-            const dropdown = document.getElementById('categoryDropdown');
-            if (dropdown) dropdown.classList.remove('active');
-
             const pages = document.querySelectorAll('.page-view');
             pages.forEach(p => p.classList.remove('active-view'));
 
@@ -1223,6 +1219,10 @@
             if(activePage) {
                 activePage.classList.add('active-view');
             }
+
+            // Close mobile dropdown after selection
+            const dropdown = document.getElementById('categoryDropdown');
+            if (dropdown) dropdown.classList.remove('mobile-open');
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
