@@ -155,7 +155,9 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            min-width: 200px;
+            min-width: 250px;
+            max-height: 70vh;
+            overflow-y: auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
@@ -1130,6 +1132,108 @@
 
     <!-- Interactive Logic -->
     <script>
+        // Database Of Products Categorized for Category Nav Click Handler
+        const categoryDataDB = {
+            "MONITORS": [
+                { id: 301, title: 'ASUS TUF Gaming 23.8" 165Hz IPS Gaming Monitor', price: 68000, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80' },
+                { id: 302, title: 'Samsung 24" IPS 75Hz Borderless Monitor', price: 32500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1551645120-d70bfe84c826?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "BRANDNEW MONITOR": [
+                { id: 301, title: 'ASUS TUF Gaming 23.8" 165Hz IPS Gaming Monitor', price: 68000, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "USED MONITOR": [
+                { id: 302, title: 'Samsung 24" IPS 75Hz Borderless Monitor', price: 32500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1551645120-d70bfe84c826?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "TV": [
+                { id: 303, title: '32 Inch Smart Android LED TV', price: 45000, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "PROCESSORS": [
+                { id: 401, title: 'Intel Core i5 12400F Processor', price: 42000, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' },
+                { id: 402, title: 'Intel Core i7 10700 Processor', price: 38000, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "BRANDNEW PROCESSORS": [
+                { id: 401, title: 'Intel Core i5 12400F Processor', price: 42000, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "USED PROCESSORS": [
+                { id: 402, title: 'Intel Core i7 10700 Processor', price: 38000, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "MOTHERBOARDS": [
+                { id: 501, title: 'MSI PRO B660M-E DDR4 Motherboard', price: 39500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' },
+                { id: 502, title: 'Gigabyte H410M Motherboard', price: 18500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "BRANDNEW MOTHERBOARDS": [
+                { id: 501, title: 'MSI PRO B660M-E DDR4 Motherboard', price: 39500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "USED MOTHERBOARDS": [
+                { id: 502, title: 'Gigabyte H410M Motherboard', price: 18500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "RAM": [
+                { id: 601, title: 'Corsair Vengeance LPX 8GB DDR4 3200MHz RAM', price: 8500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' },
+                { id: 602, title: 'Kingston HyperX 8GB DDR4 RAM', price: 5500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "BRANDNEW RAM": [
+                { id: 601, title: 'Corsair Vengeance LPX 8GB DDR4 3200MHz RAM', price: 8500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "USED RAM": [
+                { id: 602, title: 'Kingston HyperX 8GB DDR4 RAM', price: 5500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "GRAPHIC CARD": [
+                { id: 701, title: 'NVIDIA RTX 3060 12GB Graphic Card', price: 98000, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' },
+                { id: 702, title: 'GTX 1660 Super 6GB Graphic Card', price: 48000, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "BRANDNEW GRAPHIC CARD": [
+                { id: 701, title: 'NVIDIA RTX 3060 12GB Graphic Card', price: 98000, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "USED GRAPHIC CARD": [
+                { id: 702, title: 'GTX 1660 Super 6GB Graphic Card', price: 48000, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "STORAGE": [
+                { id: 801, title: 'Lexar 512GB NVMe M.2 SSD', price: 12500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' },
+                { id: 802, title: 'Seagate 1TB 3.5 Desktop HDD', price: 7500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "BRANDNEW STORAGE": [
+                { id: 801, title: 'Lexar 512GB NVMe M.2 SSD', price: 12500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "USED STORAGE": [
+                { id: 802, title: 'Seagate 1TB 3.5 Desktop HDD', price: 7500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "CASING": [
+                { id: 901, title: 'Armaggeddon Tempered Glass Gaming Casing', price: 14500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "COOLERS": [
+                { id: 1001, title: 'Golden Field CPU Air Cooler', price: 4500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' },
+                { id: 1002, title: 'Intel Stock CPU Cooler', price: 1500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "BRANDNEW COOLERS": [
+                { id: 1001, title: 'Golden Field CPU Air Cooler', price: 4500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "USED COOLERS": [
+                { id: 1002, title: 'Intel Stock CPU Cooler', price: 1500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "POWER SUPPLY": [
+                { id: 1101, title: 'Corsair CV550 550W 80 Plus Bronze Power Supply', price: 18500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' },
+                { id: 1102, title: '450W Normal Power Supply Unit', price: 3500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "BRANDNEW POWER SUPPLY": [
+                { id: 1101, title: 'Corsair CV550 550W 80 Plus Bronze Power Supply', price: 18500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "USED POWER SUPPLY": [
+                { id: 1102, title: '450W Normal Power Supply Unit', price: 3500, badge: 'USED', isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "KEYBOARD & MOUSE": [
+                { id: 1201, title: 'Gaming RGB Keyboard and Mouse Combo', price: 6500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "KEYBOARD": [
+                { id: 1202, title: 'Mechanical RGB Gaming Keyboard', price: 8500, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "MOUSE": [
+                { id: 1203, title: 'Logitech G102 Lightsync Gaming Mouse', price: 6200, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=500&q=80' }
+            ],
+            "HEADSET & SUBWOOFERS": [
+                { id: 1301, title: 'Fantech HG11 Captain RGB Gaming Headset', price: 7800, badge: 'BRAND NEW', img: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=500&q=80' }
+            ]
+        };
+
         let cartItems = [];
         let selectedGames = [];
         const whatsappNumber = "94715215075"; 
@@ -1211,7 +1315,7 @@
         }
 
         // Dynamic Page Navigation Switcher
-        function navigateTo(viewId) {
+        function navigateTo(viewId, categoryName = null) {
             const pages = document.querySelectorAll('.page-view');
             pages.forEach(p => p.classList.remove('active-view'));
 
@@ -1220,12 +1324,64 @@
                 activePage.classList.add('active-view');
             }
 
+            // If a specific category was clicked from dropdown menu
+            if (categoryName && categoryDataDB[categoryName]) {
+                renderCategoryItems(categoryName, activePage);
+            }
+
             // Close mobile dropdown after selection
             const dropdown = document.getElementById('categoryDropdown');
             if (dropdown) dropdown.classList.remove('mobile-open');
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        function renderCategoryItems(categoryName, containerPage) {
+            const items = categoryDataDB[categoryName];
+            if (!items || !containerPage) return;
+
+            const grid = containerPage.querySelector('.product-grid');
+            const titleEl = containerPage.querySelector('.section-title');
+
+            if (titleEl) titleEl.innerText = categoryName + " Collection";
+            if (!grid) return;
+
+            grid.innerHTML = '';
+            items.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <span class="badge ${prod.isUsed ? 'badge-used' : ''}">${prod.badge}</span>
+                    <img src="${prod.img}" alt="${prod.title}">
+                    <a class="product-title">${prod.title}</a>
+                    <div>
+                        <span class="price">Rs: ${prod.price.toLocaleString()}.00</span>
+                        <span class="koko-pay">or 3 x Rs: ${Math.round(prod.price/3).toLocaleString()} with Koko</span>
+                        <button class="add-to-cart-btn" onclick="addToCart(${prod.id}, '${prod.title}', ${prod.price})">Add To Cart</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Setup Event Listeners for Dynamic Category Menu Links
+        document.addEventListener('DOMContentLoaded', () => {
+            const catMenuLinks = document.querySelectorAll('.dropdown-menu a');
+            catMenuLinks.forEach(link => {
+                const text = link.innerText.trim();
+                const onClickAttr = link.getAttribute('onclick');
+                let targetView = 'desktops';
+
+                if(onClickAttr.includes('monitors')) targetView = 'monitors';
+                else if(onClickAttr.includes('games')) targetView = 'games';
+                else if(onClickAttr.includes('desktops')) targetView = 'desktops';
+
+                link.onclick = (e) => {
+                    e.preventDefault();
+                    navigateTo(targetView, text);
+                };
+            });
+        });
 
         // Add Product to Cart Logic
         function addToCart(id, title, price) {
