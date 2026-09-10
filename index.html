@@ -609,6 +609,10 @@
                 overflow-y: auto;
                 z-index: 2000;
             }
+            
+            .dropdown-menu a {
+                pointer-events: auto !important;
+            }
 
             .hero-banner {
                 padding: 50px 16px;
@@ -1255,14 +1259,8 @@
             ]
         };
 
-        // Render selected category items & Auto-close dropdown on mobile
+        // Render selected category items
         function filterCategoryProducts(categoryName) {
-            // Auto close mobile dropdown menu
-            const dropdown = document.getElementById('categoryDropdown');
-            if (dropdown) {
-                dropdown.classList.remove('mobile-open');
-            }
-
             document.getElementById('selected-category-title').innerText = categoryName + " COLLECTION";
             const grid = document.getElementById('category-products-grid');
             grid.innerHTML = '';
@@ -1294,6 +1292,12 @@
             }
 
             navigateTo('category-items');
+
+            // --- Auto close mobile dropdown after selection ---
+            const dropdown = document.getElementById('categoryDropdown');
+            if (dropdown) {
+                dropdown.classList.remove('mobile-open');
+            }
         }
 
         // Function to handle Categories dropdown toggle on mobile
@@ -1358,7 +1362,6 @@
                 capacitySelect.appendChild(el);
             });
             
-            // Select default option dynamically if exists
             if (options.length > 3) {
                 capacitySelect.selectedIndex = 3;
             } else {
@@ -1382,7 +1385,6 @@
                 activePage.classList.add('active-view');
             }
 
-            // Close mobile dropdown after selection
             const dropdown = document.getElementById('categoryDropdown');
             if (dropdown) dropdown.classList.remove('mobile-open');
 
@@ -1449,7 +1451,6 @@
             document.getElementById('cartTotalAmount').innerText = "Rs. " + total.toLocaleString() + ".00";
         }
 
-        // Updated Storage Calculation & Update Logic (Realtime Sync)
         function updateStorageSystem() {
             const storageType = document.getElementById('storage-type').value;
             const capacitySelect = document.getElementById('hdd-capacity');
@@ -1477,7 +1478,6 @@
             renderTags();
         }
 
-        // Toggle Game Selection Logic
         function toggleGame(id, title, size, btn) {
             const index = selectedGames.findIndex(g => g.id === id);
             const capacitySelect = document.getElementById('hdd-capacity');
@@ -1485,12 +1485,10 @@
             let currentUsed = selectedGames.reduce((sum, g) => sum + g.size, 0);
 
             if (index > -1) {
-                // Remove game
                 selectedGames.splice(index, 1);
                 btn.classList.remove('selected');
                 btn.innerHTML = `<i class="fa-solid fa-plus"></i> Add`;
             } else {
-                // Check if fits in selected hard drive
                 if (currentUsed + size > capacity) {
                     alert("Not enough storage space! Increase Storage Capacity or remove other games.");
                     return;
@@ -1500,7 +1498,6 @@
                 btn.innerHTML = `<i class="fa-solid fa-check"></i> Added`;
             }
 
-            // Trigger Realtime HDD Bar Update
             updateStorageSystem();
         }
 
@@ -1509,7 +1506,6 @@
             if (index > -1) {
                 selectedGames.splice(index, 1);
                 
-                // Update Button UI on Card
                 const card = document.querySelector(`.game-poster-card[data-id="${id}"]`);
                 if (card) {
                     const btn = card.querySelector('.btn-card-select');
@@ -1634,7 +1630,6 @@
             closeStorageModal();
         }
 
-        // Initialize setup on load
         onStorageTypeChange();
     </script>
 </body>
