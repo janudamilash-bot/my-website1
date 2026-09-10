@@ -51,7 +51,7 @@
             justify-content: space-between; 
             position: sticky; 
             top: 0; 
-            z-index: 1000; 
+            z-index: 10000; 
             border-bottom: 1px solid var(--border-color); 
         }
         
@@ -129,18 +129,20 @@
             right: -2px; 
         }
 
-        /* Nav Menu - FIXED FOR HORIZONTAL SCROLL & OVERFLOW */
+        /* Nav Menu with Horizontal Scroll Support */
         .cat-nav { 
             background: var(--bg-card); 
             border-bottom: 1px solid var(--border-color); 
             padding: 0 8%; 
             position: sticky; 
             top: 73px; 
-            z-index: 999; 
+            z-index: 9999; 
             overflow-x: auto;
             white-space: nowrap;
-            overflow-y: visible; /* Allows Dropdown to pop out */
+            scrollbar-width: none; /* Firefox */
         }
+        .cat-nav::-webkit-scrollbar { display: none; } /* Chrome, Safari, Opera */
+
         .cat-nav ul { 
             display: flex; 
             list-style: none; 
@@ -157,10 +159,11 @@
             transition: 0.3s; 
             letter-spacing: 0.5px; 
             cursor: pointer;
+            white-space: nowrap;
         }
         .cat-nav a:hover, .cat-nav a.active-nav { color: #fff; }
 
-        /* Dropdown - FIXED Z-INDEX & FIXED SCROLLING IN MENU */
+        /* Dropdown Overlay Fix */
         .dropdown { position: relative; }
         .dropdown > a { cursor: pointer; display: flex; align-items: center; gap: 6px; }
         .dropdown-menu {
@@ -170,10 +173,10 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            min-width: 250px;
-            max-height: 380px; /* Limits height and enables vertical scrolling inside dropdown */
+            min-width: 240px;
+            max-height: 400px;
             overflow-y: auto;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             display: flex;
             flex-direction: column;
             gap: 0 !important;
@@ -182,14 +185,14 @@
             visibility: hidden;
             transform: translateY(10px);
             transition: all 0.3s ease;
-            z-index: 2000; /* High z-index to stay above Unleash Ultimate hero banner */
+            z-index: 10005; /* Always show above Hero Banner */
         }
         .dropdown:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-        .dropdown-menu li { width: 100%; }
+        .dropdown-menu li { width: 100%; list-style: none; }
         .dropdown-menu a {
             padding: 10px 20px !important;
             display: flex !important;
@@ -197,10 +200,15 @@
             gap: 10px;
             width: 100%;
             font-size: 0.8rem;
+            color: var(--text-muted);
             white-space: nowrap;
         }
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
 
-        /* Hero Banner - LOWER Z-INDEX JUST IN CASE */
+        /* Hero Banner */
         .hero-banner { 
             background: linear-gradient(180deg, rgba(9, 13, 22, 0.4) 0%, var(--bg-dark) 100%), 
                         url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80') center/cover; 
@@ -238,7 +246,7 @@
         }
 
         /* Container & Sections */
-        .container { width: 88%; max-width: 1280px; margin: 40px auto; min-height: 60vh; }
+        .container { width: 88%; max-width: 1280px; margin: 40px auto; min-height: 60vh; position: relative; z-index: 1; }
 
         .shop-by-cat-grid {
             display: grid;
@@ -721,7 +729,7 @@
         </div>
     </header>
 
-  <!-- Nav Menu -->
+    <!-- Nav Menu -->
     <nav class="cat-nav">
         <ul>
             <li><a onclick="navigateTo('home')">HOME</a></li>
@@ -1705,7 +1713,8 @@
                         </div>
                     </div>
                 </div>
-     <!-- Call Of Duty - WWII -->
+
+                <!-- Call Of Duty - WWII -->
                 <div class="game-poster-card" data-id="101" data-title="Call Of Duty - WWII" data-category="FPS Action" data-size="36.3">
                     <div class="poster-image-wrap">
                         <img src="Janu/4to/games/Call_of_Duty_WWII_Cover_Art.jpg" class="poster-image" alt="Call Of Duty - WWII">
@@ -2225,6 +2234,83 @@
                                 <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
                             </div>
                         </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(122, 'Crysis 1', 3.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crysis 2 -->
+                <div class="game-poster-card" data-id="123" data-title="Crysis 2" data-category="FPS Action" data-size="6.1">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Crysis_2_cover.png" class="poster-image" alt="Crysis 2">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 6.1 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Crysis 2</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(123, 'Crysis 2', 6.1, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crysis 3 -->
+                <div class="game-poster-card" data-id="124" data-title="Crysis 3" data-category="FPS Action" data-size="6.8">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Crysis_3_cover.jpg" class="poster-image" alt="Crysis 3">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 6.8 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Crysis 3</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core 2 Duo / AMD Athlon 64 X2</span></div>
+                                <div><b>RAM:</b> <span>3 GB</span></div>
+                                <div><b>GPU:</b> <span>GeForce GTS 450 / Radeon HD 5770</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(124, 'Crysis 3', 6.8, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crysis 3 Remastered -->
+                <div class="game-poster-card" data-id="125" data-title="Crysis 3 Remastered" data-category="FPS Action" data-size="10.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Crysis_3_Remastered.jpg" class="poster-image" alt="Crysis 3 Remastered">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 10.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Crysis 3 Remastered</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(125, 'Crysis 3 Remastered', 10.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -2233,13 +2319,54 @@
 
     </div>
 
+    <!-- Modals Overlay System -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark modal-close" onclick="closeCartModal()"></i>
+            <h3 style="margin-bottom: 15px; color:#fff;"><i class="fa-solid fa-cart-shopping" style="color:var(--accent);"></i> Your Shopping Cart</h3>
+            <div class="cart-items-list" id="cartItemsContainer">
+                <!-- Cart items will be generated here dynamically -->
+            </div>
+            <div class="cart-total-box">
+                <span>Total Amount:</span>
+                <span id="cartTotalAmount" style="color:var(--success);">Rs: 0.00</span>
+            </div>
+            <button class="btn-whatsapp-order" style="margin-top: 15px;" onclick="checkoutCartWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Proceed to Checkout via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Storage Order Modal -->
+    <div class="modal-overlay" id="storageModal">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark modal-close" onclick="closeStorageModal()"></i>
+            <h3 style="margin-bottom: 15px; color:#fff;"><i class="fa-solid fa-hard-drive" style="color:var(--primary);"></i> Order Games & Storage</h3>
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" id="custName" placeholder="Enter full name">
+            </div>
+            <div class="form-group">
+                <label>Delivery Address</label>
+                <textarea id="custAddress" rows="3" placeholder="Enter delivery address"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" id="custPhone" placeholder="07X XXXXXXX">
+            </div>
+            <button class="btn-whatsapp-order" onclick="sendStorageOrderWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Send Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>JANU COMPUTERS</h4>
-                <p style="margin-bottom: 12px;">Your trusted destination for custom gaming builds, laptops, components, and hard drives filled with the latest PC games.</p>
-                <p><i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> Sri Lanka</p>
+                <p style="margin-bottom: 15px;">Your trusted source for Next-Gen Computer Hardware, Laptops, Monitors, and Ultimate Gaming Solutions in Sri Lanka.</p>
+                <p><i class="fa-solid fa-location-dot"></i> Colombo, Sri Lanka</p>
             </div>
             <div class="footer-col">
                 <h4>Quick Links</h4>
@@ -2252,18 +2379,287 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Contact Us</h4>
+                <h4>Customer Support</h4>
                 <ul>
-                    <li><i class="fa-solid fa-phone" style="color:var(--accent);"></i> +94 71 521 5075</li>
-                    <li><i class="fa-solid fa-envelope" style="color:var(--accent);"></i> sales@janucomputers.lk</li>
-                    <li><i class="fa-solid fa-clock" style="color:var(--accent);"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>
+                    <li><a href="https://wa.me/94715215075" target="_blank">Contact Us</a></li>
+                    <li><a>Warranty Policy</a></li>
+                    <li><a>Delivery & Shipping</a></li>
+                    <li><a>Payment Options</a></li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2026 Janu Computers. All Rights Reserved.
+            &copy; 2026 Janu Computers. All Rights Reserved. Designed with Performance in Mind.
         </div>
     </footer>
 
+    <!-- JavaScript Logic Block -->
+    <script>
+        // Page Navigation Logic
+        function navigateTo(pageId) {
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(p => p.classList.remove('active-view'));
+            
+            const targetPage = document.getElementById('view-' + pageId);
+            if(targetPage) {
+                targetPage.classList.add('active-view');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Cart Data System
+        let cart = [];
+
+        function addToCart(id, name, price) {
+            cart.push({ id, name, price });
+            updateCartUI();
+            alert(name + ' added to your cart!');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = '';
+            
+            let total = 0;
+            if(cart.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted); text-align:center; padding:20px;">Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, idx) => {
+                    total += item.price;
+                    container.innerHTML += `
+                        <div class="cart-item-row">
+                            <div class="cart-item-info">
+                                <span class="cart-item-title">${item.name}</span>
+                                <span class="cart-item-price">Rs: ${item.price.toLocaleString()}.00</span>
+                            </div>
+                            <i class="fa-solid fa-trash cart-item-remove" onclick="removeFromCart(${idx})"></i>
+                        </div>
+                    `;
+                });
+            }
+            document.getElementById('cartTotalAmount').innerText = 'Rs: ' + total.toLocaleString() + '.00';
+        }
+
+        function openCartModal() {
+            updateCartUI();
+            document.getElementById('cartModal').classList.add('active');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function checkoutCartWhatsApp() {
+            if(cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            let msg = "Hi Janu Computers, I would like to order the following items:\n\n";
+            let total = 0;
+            cart.forEach((item, i) => {
+                msg += `${i+1}. ${item.name} - Rs. ${item.price.toLocaleString()}\n`;
+                total += item.price;
+            });
+            msg += `\nTotal Amount: Rs. ${total.toLocaleString()}`;
+            
+            window.open(`https://wa.me/94715215075?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // Dynamic Storage Capacities Config
+        const storageCapacities = {
+            "Desktop HDD": [
+                { label: "500 GB", val: 500 },
+                { label: "1 TB (1000 GB)", val: 1000 },
+                { label: "2 TB (2000 GB)", val: 2000 },
+                { label: "4 TB (4000 GB)", val: 4000 }
+            ],
+            "Laptop HDD": [
+                { label: "500 GB", val: 500 },
+                { label: "1 TB (1000 GB)", val: 1000 },
+                { label: "2 TB (2000 GB)", val: 2000 }
+            ],
+            "SSD": [
+                { label: "128 GB", val: 128 },
+                { label: "256 GB", val: 256 },
+                { label: "512 GB", val: 512 },
+                { label: "1 TB (1000 GB)", val: 1000 },
+                { label: "2 TB (2000 GB)", val: 2000 }
+            ],
+            "Portable HDD": [
+                { label: "1 TB (1000 GB)", val: 1000 },
+                { label: "2 TB (2000 GB)", val: 2000 },
+                { label: "4 TB (4000 GB)", val: 4000 }
+            ]
+        };
+
+        let selectedStorageGames = [];
+
+        function onStorageTypeChange() {
+            const type = document.getElementById('storage-type').value;
+            const capSelect = document.getElementById('hdd-capacity');
+            capSelect.innerHTML = '';
+
+            storageCapacities[type].forEach(item => {
+                const opt = document.createElement('option');
+                opt.value = item.val;
+                opt.innerText = item.label;
+                capSelect.appendChild(opt);
+            });
+
+            updateStorageSystem();
+        }
+
+        function updateStorageSystem() {
+            const type = document.getElementById('storage-type').value;
+            const cap = parseInt(document.getElementById('hdd-capacity').value) || 0;
+            const cond = document.getElementById('storage-condition').value;
+
+            document.getElementById('hdd-brand-lbl').innerText = type;
+            document.getElementById('hdd-condition-lbl').innerText = cond;
+            document.getElementById('hdd-total-lbl').innerText = cap + ' GB';
+
+            let usedSize = selectedStorageGames.reduce((acc, g) => acc + g.size, 0);
+            let freeSize = cap - usedSize;
+
+            document.getElementById('hdd-used-lbl').innerText = usedSize.toFixed(1);
+            document.getElementById('hdd-free-lbl').innerText = (freeSize < 0 ? 0 : freeSize).toFixed(1);
+
+            let pct = (usedSize / cap) * 100;
+            if(pct > 100) pct = 100;
+            document.getElementById('hdd-bar').style.width = pct + '%';
+
+            // Tag rendering
+            const tagBox = document.getElementById('selected-game-tags');
+            tagBox.innerHTML = '';
+            selectedStorageGames.forEach(g => {
+                tagBox.innerHTML += `
+                    <div class="tag-item">
+                        <span>${g.title} (${g.size}GB)</span>
+                        <i class="fa-solid fa-xmark" onclick="removeSelectedGame(${g.id})"></i>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleGame(id, title, size, btn) {
+            const index = selectedStorageGames.findIndex(g => g.id === id);
+            if(index > -1) {
+                selectedStorageGames.splice(index, 1);
+                btn.classList.remove('selected');
+                btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add';
+            } else {
+                const type = document.getElementById('storage-type').value;
+                const cap = parseInt(document.getElementById('hdd-capacity').value) || 0;
+                let usedSize = selectedStorageGames.reduce((acc, g) => acc + g.size, 0);
+
+                if (usedSize + size > cap) {
+                    alert('Selected storage capacity exceeded! Please increase your storage capacity or remove a game.');
+                    return;
+                }
+
+                selectedStorageGames.push({ id, title, size });
+                btn.classList.add('selected');
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Added';
+            }
+            updateStorageSystem();
+        }
+
+        function removeSelectedGame(id) {
+            selectedStorageGames = selectedStorageGames.filter(g => g.id !== id);
+            
+            // Sync with Game Card Buttons
+            const cards = document.querySelectorAll('.game-poster-card');
+            cards.forEach(card => {
+                if(parseInt(card.getAttribute('data-id')) === id) {
+                    const btn = card.querySelector('.btn-card-select');
+                    if(btn) {
+                        btn.classList.remove('selected');
+                        btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add';
+                    }
+                }
+            });
+
+            updateStorageSystem();
+        }
+
+        function filterGames() {
+            const query = document.getElementById('gameSearchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.game-poster-card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if(title.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterCategory(cat, tab) {
+            const tabs = document.querySelectorAll('.cat-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const cards = document.querySelectorAll('.game-poster-card');
+            cards.forEach(card => {
+                const itemCat = card.getAttribute('data-category');
+                if(cat === 'All' || itemCat.includes(cat)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openStorageCheckoutModal() {
+            if(selectedStorageGames.length === 0) {
+                alert('Please select at least one game to place an order.');
+                return;
+            }
+            document.getElementById('storageModal').classList.add('active');
+        }
+
+        function closeStorageModal() {
+            document.getElementById('storageModal').classList.remove('active');
+        }
+
+        function sendStorageOrderWhatsApp() {
+            const name = document.getElementById('custName').value;
+            const address = document.getElementById('custAddress').value;
+            const phone = document.getElementById('custPhone').value;
+
+            if(!name || !address || !phone) {
+                alert('Please fill out all contact details!');
+                return;
+            }
+
+            const type = document.getElementById('storage-type').value;
+            const cap = document.getElementById('hdd-capacity').value;
+            const cond = document.getElementById('storage-condition').value;
+
+            let msg = `Hi Janu Computers, I would like to order a Storage Device with Games:\n\n`;
+            msg += `*Customer Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n`;
+            msg += `*Storage Configuration:*\nType: ${type}\nCapacity: ${cap} GB\nCondition: ${cond}\n\n`;
+            msg += `*Selected Games (${selectedStorageGames.length}):*\n`;
+
+            selectedStorageGames.forEach((g, i) => {
+                msg += `${i+1}. ${g.title} (${g.size} GB)\n`;
+            });
+
+            window.open(`https://wa.me/94715215075?text=${encodeURIComponent(msg)}`, '_blank');
+            closeStorageModal();
+        }
+
+        // Initialize Dynamic Select Dropdowns on Page Load
+        window.onload = function() {
+            onStorageTypeChange();
+        };
+    </script>
 </body>
 </html>
