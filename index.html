@@ -1257,6 +1257,12 @@
 
         // Render selected category items
         function filterCategoryProducts(categoryName) {
+            // Mobile view එකේදී category එකක් select කළ පසු dropdown menu එක auto hide කිරීම
+            const dropdown = document.getElementById('categoryDropdown');
+            if (dropdown) {
+                dropdown.classList.remove('mobile-open');
+            }
+
             document.getElementById('selected-category-title').innerText = categoryName + " COLLECTION";
             const grid = document.getElementById('category-products-grid');
             grid.innerHTML = '';
