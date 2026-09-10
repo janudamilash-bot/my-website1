@@ -3347,5 +3347,26 @@
         // Initialize setup on load
         onStorageTypeChange();
     </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownLink = dropdown.querySelector('a');
+
+        dropdownLink.addEventListener('click', function (e) {
+            // Screen එක mobile size එකක් නම් පමණක් trigger වේ
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('mobile-active');
+            }
+        });
+
+        // Dropdown එකෙන් එලිය touch කල විට එය වැසීමට
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('mobile-active');
+            }
+        });
+    });
+</script>
 </body>
 </html>
