@@ -1287,9 +1287,11 @@
                 });
             }
 
-            // Mobile එකේදී Dropdown එක Auto Hide කිරීම
+            // Auto close mobile dropdown when a category item is selected
             const dropdown = document.getElementById('categoryDropdown');
-            if (dropdown) dropdown.classList.remove('mobile-open');
+            if (dropdown) {
+                dropdown.classList.remove('mobile-open');
+            }
 
             navigateTo('category-items');
         }
