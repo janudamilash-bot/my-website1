@@ -1287,6 +1287,12 @@
                 });
             }
 
+            // Close mobile dropdown automatically after selection
+            const dropdown = document.getElementById('categoryDropdown');
+            if (dropdown) {
+                dropdown.classList.remove('mobile-open');
+            }
+
             navigateTo('category-items');
         }
 
