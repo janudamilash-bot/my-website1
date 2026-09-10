@@ -1255,8 +1255,14 @@
             ]
         };
 
-        // Render selected category items
+        // Render selected category items & Auto-close dropdown on mobile
         function filterCategoryProducts(categoryName) {
+            // Auto close mobile dropdown menu
+            const dropdown = document.getElementById('categoryDropdown');
+            if (dropdown) {
+                dropdown.classList.remove('mobile-open');
+            }
+
             document.getElementById('selected-category-title').innerText = categoryName + " COLLECTION";
             const grid = document.getElementById('category-products-grid');
             grid.innerHTML = '';
@@ -1285,12 +1291,6 @@
                     `;
                     grid.innerHTML += cardHtml;
                 });
-            }
-
-            // Close mobile dropdown automatically after selection
-            const dropdown = document.getElementById('categoryDropdown');
-            if (dropdown) {
-                dropdown.classList.remove('mobile-open');
             }
 
             navigateTo('category-items');
