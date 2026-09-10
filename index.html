@@ -145,7 +145,7 @@
         }
         .cat-nav a:hover, .cat-nav a.active-nav { color: #fff; }
 
-        /* Dropdown */
+        /* Dropdown - Click Control Enabled */
         .dropdown { position: relative; }
         .dropdown > a { cursor: pointer; display: flex; align-items: center; gap: 6px; }
         .dropdown-menu {
@@ -169,8 +169,8 @@
             transition: all 0.3s ease;
             z-index: 1000;
         }
-        .dropdown:hover .dropdown-menu,
-        .dropdown.mobile-open .dropdown-menu {
+        /* Open state triggered via JavaScript class */
+        .dropdown.active-dropdown .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -609,10 +609,6 @@
                 overflow-y: auto;
                 z-index: 2000;
             }
-            
-            .dropdown-menu a {
-                pointer-events: auto !important;
-            }
 
             .hero-banner {
                 padding: 50px 16px;
@@ -727,38 +723,40 @@
         <ul>
             <li><a onclick="navigateTo('home')">HOME</a></li>
             <li class="dropdown" id="categoryDropdown">
+                <!-- CATEGORIES Click කරපුවාම toggleCategoryMenu එක මඟින් ඩ්‍රොප්ඩවුන් එක ඕපන්/ක්ලෝස් කරයි -->
                 <a onclick="toggleCategoryMenu(event)"><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a onclick="filterCategoryProducts('MONITORS')"><i class="fa-solid fa-tv"></i> MONITORS</a></li>
-                    <li><a onclick="filterCategoryProducts('BRANDNEW MONITOR')"><i class="fa-solid fa-tv"></i> BRANDNEW MONITOR</a></li>
-                    <li><a onclick="filterCategoryProducts('USED MONITOR')"><i class="fa-solid fa-tv"></i> USED MONITOR</a></li>
-                    <li><a onclick="filterCategoryProducts('TV')"><i class="fa-solid fa-desktop"></i> TV</a></li>
-                    <li><a onclick="filterCategoryProducts('PROCESSORS')"><i class="fa-solid fa-microchip"></i> PROCESSORS</a></li>
-                    <li><a onclick="filterCategoryProducts('BRANDNEW PROCESSORS')"><i class="fa-solid fa-microchip"></i> BRANDNEW PROCESSORS</a></li>
-                    <li><a onclick="filterCategoryProducts('USED PROCESSORS')"><i class="fa-solid fa-microchip"></i> USED PROCESSORS</a></li>
-                    <li><a onclick="filterCategoryProducts('MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> MOTHERBOARDS</a></li>
-                    <li><a onclick="filterCategoryProducts('BRANDNEW MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> BRANDNEW MOTHERBOARDS</a></li>
-                    <li><a onclick="filterCategoryProducts('USED MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> USED MOTHERBOARDS</a></li>
-                    <li><a onclick="filterCategoryProducts('RAM')"><i class="fa-solid fa-memory"></i> RAM</a></li>
-                    <li><a onclick="filterCategoryProducts('BRANDNEW RAM')"><i class="fa-solid fa-memory"></i> BRANDNEW RAM</a></li>
-                    <li><a onclick="filterCategoryProducts('USED RAM')"><i class="fa-solid fa-memory"></i> USED RAM</a></li>
-                    <li><a onclick="filterCategoryProducts('GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> GRAPHIC CARD</a></li>
-                    <li><a onclick="filterCategoryProducts('BRANDNEW GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> BRANDNEW GRAPHIC CARD</a></li>
-                    <li><a onclick="filterCategoryProducts('USED GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> USED GRAPHIC CARD</a></li>
-                    <li><a onclick="filterCategoryProducts('STORAGE')"><i class="fa-solid fa-hard-drive"></i> STORAGE</a></li>
-                    <li><a onclick="filterCategoryProducts('BRANDNEW STORAGE')"><i class="fa-solid fa-hard-drive"></i> BRANDNEW STORAGE</a></li>
-                    <li><a onclick="filterCategoryProducts('USED STORAGE')"><i class="fa-solid fa-hard-drive"></i> USED STORAGE</a></li>
-                    <li><a onclick="filterCategoryProducts('CASING')"><i class="fa-solid fa-box"></i> CASING</a></li>
-                    <li><a onclick="filterCategoryProducts('COOLERS')"><i class="fa-solid fa-fan"></i> COOLERS</a></li>
-                    <li><a onclick="filterCategoryProducts('BRANDNEW COOLERS')"><i class="fa-solid fa-fan"></i> BRANDNEW COOLERS</a></li>
-                    <li><a onclick="filterCategoryProducts('USED COOLERS')"><i class="fa-solid fa-fan"></i> USED COOLERS</a></li>
-                    <li><a onclick="filterCategoryProducts('POWER SUPPLY')"><i class="fa-solid fa-plug"></i> POWER SUPPLY</a></li>
-                    <li><a onclick="filterCategoryProducts('BRANDNEW POWER SUPPLY')"><i class="fa-solid fa-plug"></i> BRANDNEW POWER SUPPLY</a></li>
-                    <li><a onclick="filterCategoryProducts('USED POWER SUPPLY')"><i class="fa-solid fa-plug"></i> USED POWER SUPPLY</a></li>
-                    <li><a onclick="filterCategoryProducts('KEYBOARD & MOUSE')"><i class="fa-solid fa-keyboard"></i> KEYBOARD & MOUSE</a></li>
-                    <li><a onclick="filterCategoryProducts('KEYBOARD')"><i class="fa-solid fa-keyboard"></i> KEYBOARD</a></li>
-                    <li><a onclick="filterCategoryProducts('MOUSE')"><i class="fa-solid fa-mouse"></i> MOUSE</a></li>
-                    <li><a onclick="filterCategoryProducts('HEADSET & SUBWOOFERS')"><i class="fa-solid fa-headphones"></i> HEADSET & SUBWOOFERS</a></li>
+                    <!-- අයිතමයක් ක්ලික් කළ වහාම ඩ්‍රොප්ඩවුන් මෙනුව වැසීමට selectCategoryItem function එක යොදා ඇත -->
+                    <li><a onclick="selectCategoryItem('MONITORS')"><i class="fa-solid fa-tv"></i> MONITORS</a></li>
+                    <li><a onclick="selectCategoryItem('BRANDNEW MONITOR')"><i class="fa-solid fa-tv"></i> BRANDNEW MONITOR</a></li>
+                    <li><a onclick="selectCategoryItem('USED MONITOR')"><i class="fa-solid fa-tv"></i> USED MONITOR</a></li>
+                    <li><a onclick="selectCategoryItem('TV')"><i class="fa-solid fa-desktop"></i> TV</a></li>
+                    <li><a onclick="selectCategoryItem('PROCESSORS')"><i class="fa-solid fa-microchip"></i> PROCESSORS</a></li>
+                    <li><a onclick="selectCategoryItem('BRANDNEW PROCESSORS')"><i class="fa-solid fa-microchip"></i> BRANDNEW PROCESSORS</a></li>
+                    <li><a onclick="selectCategoryItem('USED PROCESSORS')"><i class="fa-solid fa-microchip"></i> USED PROCESSORS</a></li>
+                    <li><a onclick="selectCategoryItem('MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> MOTHERBOARDS</a></li>
+                    <li><a onclick="selectCategoryItem('BRANDNEW MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> BRANDNEW MOTHERBOARDS</a></li>
+                    <li><a onclick="selectCategoryItem('USED MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> USED MOTHERBOARDS</a></li>
+                    <li><a onclick="selectCategoryItem('RAM')"><i class="fa-solid fa-memory"></i> RAM</a></li>
+                    <li><a onclick="selectCategoryItem('BRANDNEW RAM')"><i class="fa-solid fa-memory"></i> BRANDNEW RAM</a></li>
+                    <li><a onclick="selectCategoryItem('USED RAM')"><i class="fa-solid fa-memory"></i> USED RAM</a></li>
+                    <li><a onclick="selectCategoryItem('GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> GRAPHIC CARD</a></li>
+                    <li><a onclick="selectCategoryItem('BRANDNEW GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> BRANDNEW GRAPHIC CARD</a></li>
+                    <li><a onclick="selectCategoryItem('USED GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> USED GRAPHIC CARD</a></li>
+                    <li><a onclick="selectCategoryItem('STORAGE')"><i class="fa-solid fa-hard-drive"></i> STORAGE</a></li>
+                    <li><a onclick="selectCategoryItem('BRANDNEW STORAGE')"><i class="fa-solid fa-hard-drive"></i> BRANDNEW STORAGE</a></li>
+                    <li><a onclick="selectCategoryItem('USED STORAGE')"><i class="fa-solid fa-hard-drive"></i> USED STORAGE</a></li>
+                    <li><a onclick="selectCategoryItem('CASING')"><i class="fa-solid fa-box"></i> CASING</a></li>
+                    <li><a onclick="selectCategoryItem('COOLERS')"><i class="fa-solid fa-fan"></i> COOLERS</a></li>
+                    <li><a onclick="selectCategoryItem('BRANDNEW COOLERS')"><i class="fa-solid fa-fan"></i> BRANDNEW COOLERS</a></li>
+                    <li><a onclick="selectCategoryItem('USED COOLERS')"><i class="fa-solid fa-fan"></i> USED COOLERS</a></li>
+                    <li><a onclick="selectCategoryItem('POWER SUPPLY')"><i class="fa-solid fa-plug"></i> POWER SUPPLY</a></li>
+                    <li><a onclick="selectCategoryItem('BRANDNEW POWER SUPPLY')"><i class="fa-solid fa-plug"></i> BRANDNEW POWER SUPPLY</a></li>
+                    <li><a onclick="selectCategoryItem('USED POWER SUPPLY')"><i class="fa-solid fa-plug"></i> USED POWER SUPPLY</a></li>
+                    <li><a onclick="selectCategoryItem('KEYBOARD & MOUSE')"><i class="fa-solid fa-keyboard"></i> KEYBOARD & MOUSE</a></li>
+                    <li><a onclick="selectCategoryItem('KEYBOARD')"><i class="fa-solid fa-keyboard"></i> KEYBOARD</a></li>
+                    <li><a onclick="selectCategoryItem('MOUSE')"><i class="fa-solid fa-mouse"></i> MOUSE</a></li>
+                    <li><a onclick="selectCategoryItem('HEADSET & SUBWOOFERS')"><i class="fa-solid fa-headphones"></i> HEADSET & SUBWOOFERS</a></li>
                 </ul>
             </li>
             <li><a onclick="navigateTo('desktops')">DESKTOPS</a></li>
@@ -1292,29 +1290,28 @@
             }
 
             navigateTo('category-items');
-
-            // --- Auto close mobile dropdown after selection ---
-            const dropdown = document.getElementById('categoryDropdown');
-            if (dropdown) {
-                dropdown.classList.remove('mobile-open');
-            }
         }
 
-        // Function to handle Categories dropdown toggle on mobile
+        // Dropdown toggle function (Click එකෙන් පමණක් open/close වීම සඳහා)
         function toggleCategoryMenu(event) {
-            if (window.innerWidth <= 768) {
-                event.preventDefault();
-                event.stopPropagation();
-                const dropdown = document.getElementById('categoryDropdown');
-                dropdown.classList.toggle('mobile-open');
-            }
+            event.preventDefault();
+            event.stopPropagation();
+            const dropdown = document.getElementById('categoryDropdown');
+            dropdown.classList.toggle('active-dropdown');
         }
 
-        // Close dropdown when clicked outside
+        // Category item එකක් ක්ලික් කළ විට, අයිතමය ෆිල්ටර් කර ඩ්‍රොප්ඩවුන් මෙනුව වසා දැමීම (Auto Close)
+        function selectCategoryItem(categoryName) {
+            filterCategoryProducts(categoryName);
+            const dropdown = document.getElementById('categoryDropdown');
+            dropdown.classList.remove('active-dropdown');
+        }
+
+        // පිටුවේ වෙනත් තැනක ක්ලික් කළහොත් ඩ්‍රොප්ඩවුන් මෙනුව වැසී යාම
         document.addEventListener('click', function(e) {
             const dropdown = document.getElementById('categoryDropdown');
             if (dropdown && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('mobile-open');
+                dropdown.classList.remove('active-dropdown');
             }
         });
 
@@ -1386,7 +1383,7 @@
             }
 
             const dropdown = document.getElementById('categoryDropdown');
-            if (dropdown) dropdown.classList.remove('mobile-open');
+            if (dropdown) dropdown.classList.remove('active-dropdown');
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1451,6 +1448,7 @@
             document.getElementById('cartTotalAmount').innerText = "Rs. " + total.toLocaleString() + ".00";
         }
 
+        // Updated Storage Calculation & Update Logic (Realtime Sync)
         function updateStorageSystem() {
             const storageType = document.getElementById('storage-type').value;
             const capacitySelect = document.getElementById('hdd-capacity');
@@ -1478,6 +1476,7 @@
             renderTags();
         }
 
+        // Toggle Game Selection Logic
         function toggleGame(id, title, size, btn) {
             const index = selectedGames.findIndex(g => g.id === id);
             const capacitySelect = document.getElementById('hdd-capacity');
