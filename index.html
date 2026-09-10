@@ -155,8 +155,8 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            min-width: 200px;
-            max-height: 400px;
+            min-width: 240px;
+            max-height: 450px;
             overflow-y: auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             display: flex;
@@ -718,43 +718,43 @@
         </div>
     </header>
 
-  <!-- Nav Menu -->
+    <!-- Nav Menu -->
     <nav class="cat-nav">
         <ul>
             <li><a onclick="navigateTo('home')">HOME</a></li>
             <li class="dropdown" id="categoryDropdown">
                 <a onclick="toggleCategoryMenu(event)"><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a onclick="filterCategoryItems('MONITORS')"><i class="fa-solid fa-tv"></i> MONITORS</a></li>
-                    <li><a onclick="filterCategoryItems('BRANDNEW MONITOR')"><i class="fa-solid fa-tv"></i> BRANDNEW MONITOR</a></li>
-                    <li><a onclick="filterCategoryItems('USED MONITOR')"><i class="fa-solid fa-tv"></i> USED MONITOR</a></li>
-                    <li><a onclick="filterCategoryItems('TV')"><i class="fa-solid fa-desktop"></i> TV</a></li>
-                    <li><a onclick="filterCategoryItems('PROCESSORS')"><i class="fa-solid fa-microchip"></i> PROCESSORS</a></li>
-                    <li><a onclick="filterCategoryItems('BRANDNEW PROCESSORS')"><i class="fa-solid fa-microchip"></i> BRANDNEW PROCESSORS</a></li>
-                    <li><a onclick="filterCategoryItems('USED PROCESSORS')"><i class="fa-solid fa-microchip"></i> USED PROCESSORS</a></li>
-                    <li><a onclick="filterCategoryItems('MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> MOTHERBOARDS</a></li>
-                    <li><a onclick="filterCategoryItems('BRANDNEW MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> BRANDNEW MOTHERBOARDS</a></li>
-                    <li><a onclick="filterCategoryItems('USED MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> USED MOTHERBOARDS</a></li>
-                    <li><a onclick="filterCategoryItems('RAM')"><i class="fa-solid fa-memory"></i> RAM</a></li>
-                    <li><a onclick="filterCategoryItems('BRANDNEW RAM')"><i class="fa-solid fa-memory"></i> BRANDNEW RAM</a></li>
-                    <li><a onclick="filterCategoryItems('USED RAM')"><i class="fa-solid fa-memory"></i> USED RAM</a></li>
-                    <li><a onclick="filterCategoryItems('GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> GRAPHIC CARD</a></li>
-                    <li><a onclick="filterCategoryItems('BRANDNEW GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> BRANDNEW GRAPHIC CARD</a></li>
-                    <li><a onclick="filterCategoryItems('USED GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> USED GRAPHIC CARD</a></li>
-                    <li><a onclick="filterCategoryItems('STORAGE')"><i class="fa-solid fa-hard-drive"></i> STORAGE</a></li>
-                    <li><a onclick="filterCategoryItems('BRANDNEW STORAGE')"><i class="fa-solid fa-hard-drive"></i> BRANDNEW STORAGE</a></li>
-                    <li><a onclick="filterCategoryItems('USED STORAGE')"><i class="fa-solid fa-hard-drive"></i> USED STORAGE</a></li>
-                    <li><a onclick="filterCategoryItems('CASING')"><i class="fa-solid fa-box"></i> CASING</a></li>
-                    <li><a onclick="filterCategoryItems('COOLERS')"><i class="fa-solid fa-fan"></i> COOLERS</a></li>
-                    <li><a onclick="filterCategoryItems('BRANDNEW COOLERS')"><i class="fa-solid fa-fan"></i> BRANDNEW COOLERS</a></li>
-                    <li><a onclick="filterCategoryItems('USED COOLERS')"><i class="fa-solid fa-fan"></i> USED COOLERS</a></li>
-                    <li><a onclick="filterCategoryItems('POWER SUPPLY')"><i class="fa-solid fa-plug"></i> POWER SUPPLY</a></li>
-                    <li><a onclick="filterCategoryItems('BRANDNEW POWER SUPPLY')"><i class="fa-solid fa-plug"></i> BRANDNEW POWER SUPPLY</a></li>
-                    <li><a onclick="filterCategoryItems('USED POWER SUPPLY')"><i class="fa-solid fa-plug"></i> USED POWER SUPPLY</a></li>
-                    <li><a onclick="filterCategoryItems('KEYBOARD & MOUSE')"><i class="fa-solid fa-keyboard"></i> KEYBOARD & MOUSE</a></li>
-                    <li><a onclick="filterCategoryItems('KEYBOARD')"><i class="fa-solid fa-keyboard"></i> KEYBOARD</a></li>
-                    <li><a onclick="filterCategoryItems('MOUSE')"><i class="fa-solid fa-mouse"></i> MOUSE</a></li>
-                    <li><a onclick="filterCategoryItems('HEADSET & SUBWOOFERS')"><i class="fa-solid fa-headphones"></i> HEADSET & SUBWOOFERS</a></li>
+                    <li><a onclick="filterCategoryProducts('MONITORS')"><i class="fa-solid fa-tv"></i> MONITORS</a></li>
+                    <li><a onclick="filterCategoryProducts('BRANDNEW MONITOR')"><i class="fa-solid fa-tv"></i> BRANDNEW MONITOR</a></li>
+                    <li><a onclick="filterCategoryProducts('USED MONITOR')"><i class="fa-solid fa-tv"></i> USED MONITOR</a></li>
+                    <li><a onclick="filterCategoryProducts('TV')"><i class="fa-solid fa-desktop"></i> TV</a></li>
+                    <li><a onclick="filterCategoryProducts('PROCESSORS')"><i class="fa-solid fa-microchip"></i> PROCESSORS</a></li>
+                    <li><a onclick="filterCategoryProducts('BRANDNEW PROCESSORS')"><i class="fa-solid fa-microchip"></i> BRANDNEW PROCESSORS</a></li>
+                    <li><a onclick="filterCategoryProducts('USED PROCESSORS')"><i class="fa-solid fa-microchip"></i> USED PROCESSORS</a></li>
+                    <li><a onclick="filterCategoryProducts('MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> MOTHERBOARDS</a></li>
+                    <li><a onclick="filterCategoryProducts('BRANDNEW MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> BRANDNEW MOTHERBOARDS</a></li>
+                    <li><a onclick="filterCategoryProducts('USED MOTHERBOARDS')"><i class="fa-solid fa-circuit-board"></i> USED MOTHERBOARDS</a></li>
+                    <li><a onclick="filterCategoryProducts('RAM')"><i class="fa-solid fa-memory"></i> RAM</a></li>
+                    <li><a onclick="filterCategoryProducts('BRANDNEW RAM')"><i class="fa-solid fa-memory"></i> BRANDNEW RAM</a></li>
+                    <li><a onclick="filterCategoryProducts('USED RAM')"><i class="fa-solid fa-memory"></i> USED RAM</a></li>
+                    <li><a onclick="filterCategoryProducts('GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> GRAPHIC CARD</a></li>
+                    <li><a onclick="filterCategoryProducts('BRANDNEW GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> BRANDNEW GRAPHIC CARD</a></li>
+                    <li><a onclick="filterCategoryProducts('USED GRAPHIC CARD')"><i class="fa-solid fa-gamepad"></i> USED GRAPHIC CARD</a></li>
+                    <li><a onclick="filterCategoryProducts('STORAGE')"><i class="fa-solid fa-hard-drive"></i> STORAGE</a></li>
+                    <li><a onclick="filterCategoryProducts('BRANDNEW STORAGE')"><i class="fa-solid fa-hard-drive"></i> BRANDNEW STORAGE</a></li>
+                    <li><a onclick="filterCategoryProducts('USED STORAGE')"><i class="fa-solid fa-hard-drive"></i> USED STORAGE</a></li>
+                    <li><a onclick="filterCategoryProducts('CASING')"><i class="fa-solid fa-box"></i> CASING</a></li>
+                    <li><a onclick="filterCategoryProducts('COOLERS')"><i class="fa-solid fa-fan"></i> COOLERS</a></li>
+                    <li><a onclick="filterCategoryProducts('BRANDNEW COOLERS')"><i class="fa-solid fa-fan"></i> BRANDNEW COOLERS</a></li>
+                    <li><a onclick="filterCategoryProducts('USED COOLERS')"><i class="fa-solid fa-fan"></i> USED COOLERS</a></li>
+                    <li><a onclick="filterCategoryProducts('POWER SUPPLY')"><i class="fa-solid fa-plug"></i> POWER SUPPLY</a></li>
+                    <li><a onclick="filterCategoryProducts('BRANDNEW POWER SUPPLY')"><i class="fa-solid fa-plug"></i> BRANDNEW POWER SUPPLY</a></li>
+                    <li><a onclick="filterCategoryProducts('USED POWER SUPPLY')"><i class="fa-solid fa-plug"></i> USED POWER SUPPLY</a></li>
+                    <li><a onclick="filterCategoryProducts('KEYBOARD & MOUSE')"><i class="fa-solid fa-keyboard"></i> KEYBOARD & MOUSE</a></li>
+                    <li><a onclick="filterCategoryProducts('KEYBOARD')"><i class="fa-solid fa-keyboard"></i> KEYBOARD</a></li>
+                    <li><a onclick="filterCategoryProducts('MOUSE')"><i class="fa-solid fa-mouse"></i> MOUSE</a></li>
+                    <li><a onclick="filterCategoryProducts('HEADSET & SUBWOOFERS')"><i class="fa-solid fa-headphones"></i> HEADSET & SUBWOOFERS</a></li>
                 </ul>
             </li>
             <li><a onclick="navigateTo('desktops')">DESKTOPS</a></li>
@@ -904,17 +904,15 @@
             </div>
         </div>
 
-
-        <!-- PAGE 5: DYNAMIC CATEGORY FILTERED VIEW -->
-        <div id="view-category" class="page-view">
-            <div class="section-title" id="selectedCategoryTitle">Category Products</div>
-            <div class="product-grid" id="categoryProductGrid">
-                <!-- Products will be dynamically populated here based on category click -->
+        <!-- DYNAMIC CATEGORY ITEMS VIEW PAGE -->
+        <div id="view-category-items" class="page-view">
+            <div class="section-title" id="selected-category-title">Category Products</div>
+            <div class="product-grid" id="category-products-grid">
+                <!-- Products dynamically loaded via JavaScript -->
             </div>
         </div>
 
-
-        <!-- PAGE 6: PC GAME VAULT & LIVE COMPACT STORAGE CALCULATOR -->
+        <!-- PAGE 5: PC GAME VAULT & LIVE COMPACT STORAGE CALCULATOR -->
         <div id="view-games" class="page-view">
             
             <!-- COMPACT STORAGE CALCULATOR WIDGET (UPDATED DYNAMIC DROPDOWNS) -->
@@ -1145,99 +1143,105 @@
         let selectedGames = [];
         const whatsappNumber = "94715215075"; 
 
-        // Comprehensive Database of Category Items
-        const categoryProductsDB = {
+        // Product database mapping every dropdown category item
+        const categoryProductsDatabase = {
             "MONITORS": [
                 { id: 301, title: 'ASUS TUF Gaming 23.8" 165Hz IPS Gaming Monitor', price: 68000, isUsed: false, img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80' },
                 { id: 302, title: 'Samsung 24" IPS 75Hz Used Borderless Monitor', price: 32500, isUsed: true, img: 'https://images.unsplash.com/photo-1551645120-d70bfe84c826?auto=format&fit=crop&w=500&q=80' }
             ],
             "BRANDNEW MONITOR": [
                 { id: 301, title: 'ASUS TUF Gaming 23.8" 165Hz IPS Gaming Monitor', price: 68000, isUsed: false, img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80' },
-                { id: 303, title: 'MSI Optix G24 144Hz IPS Gaming Monitor', price: 62000, isUsed: false, img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80' }
+                { id: 303, title: 'MSI Optix 27" 180Hz Curved Gaming Monitor', price: 89000, isUsed: false, img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80' }
             ],
             "USED MONITOR": [
                 { id: 302, title: 'Samsung 24" IPS 75Hz Used Borderless Monitor', price: 32500, isUsed: true, img: 'https://images.unsplash.com/photo-1551645120-d70bfe84c826?auto=format&fit=crop&w=500&q=80' },
-                { id: 304, title: 'Dell 22" Full HD Certified Used Monitor', price: 24500, isUsed: true, img: 'https://images.unsplash.com/photo-1551645120-d70bfe84c826?auto=format&fit=crop&w=500&q=80' }
+                { id: 304, title: 'Dell 22" Full HD Certified Used LED Monitor', price: 18500, isUsed: true, img: 'https://images.unsplash.com/photo-1551645120-d70bfe84c826?auto=format&fit=crop&w=500&q=80' }
             ],
             "TV": [
-                { id: 305, title: 'Mi 32" Smart Android Borderless LED TV', price: 48500, isUsed: false, img: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=500&q=80' }
+                { id: 305, title: 'LG 32" Smart LED Android TV Display', price: 54000, isUsed: false, img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=500&q=80' }
             ],
             "PROCESSORS": [
-                { id: 401, title: 'Intel Core i7 13700K 13th Gen Processor', price: 135000, isUsed: false, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' },
-                { id: 402, title: 'AMD Ryzen 5 5600G Used Processor', price: 34000, isUsed: true, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' }
+                { id: 401, title: 'Intel Core i7 13700K Desktop Processor', price: 138000, isUsed: false, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' },
+                { id: 402, title: 'AMD Ryzen 5 5600X Processor Used', price: 38500, isUsed: true, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' }
             ],
             "BRANDNEW PROCESSORS": [
-                { id: 401, title: 'Intel Core i7 13700K 13th Gen Processor', price: 135000, isUsed: false, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' },
-                { id: 403, title: 'Intel Core i5 12400F Brand New Processor', price: 42500, isUsed: false, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' }
+                { id: 401, title: 'Intel Core i7 13700K Desktop Processor', price: 138000, isUsed: false, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' },
+                { id: 403, title: 'AMD Ryzen 7 7800X3D Gaming Processor', price: 165000, isUsed: false, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' }
             ],
             "USED PROCESSORS": [
-                { id: 402, title: 'AMD Ryzen 5 5600G Certified Used Processor', price: 34000, isUsed: true, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' },
-                { id: 404, title: 'Intel Core i5 10400F Certified Used Processor', price: 28500, isUsed: true, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' }
+                { id: 402, title: 'AMD Ryzen 5 5600X Processor Used', price: 38500, isUsed: true, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' },
+                { id: 404, title: 'Intel Core i5 10400F Processor Certified Used', price: 29000, isUsed: true, img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80' }
             ],
             "MOTHERBOARDS": [
-                { id: 501, title: 'ASUS Prime B760M-A WiFi DDR5 Motherboard', price: 58000, isUsed: false, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' }
+                { id: 501, title: 'ASUS ROG Strix Z790-F Gaming WiFi Motherboard', price: 112000, isUsed: false, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' },
+                { id: 502, title: 'Gigabyte B450M DS3H Motherboard Used', price: 22000, isUsed: true, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' }
             ],
             "BRANDNEW MOTHERBOARDS": [
-                { id: 501, title: 'ASUS Prime B760M-A WiFi DDR5 Motherboard', price: 58000, isUsed: false, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' },
-                { id: 502, title: 'Gigabyte B550M DS3H AC Motherboard', price: 42000, isUsed: false, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' }
+                { id: 501, title: 'ASUS ROG Strix Z790-F Gaming WiFi Motherboard', price: 112000, isUsed: false, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' },
+                { id: 503, title: 'MSI B650 Gaming Plus WiFi AM5 Motherboard', price: 78000, isUsed: false, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' }
             ],
             "USED MOTHERBOARDS": [
-                { id: 503, title: 'MSI H410M PRO Certified Used Motherboard', price: 18500, isUsed: true, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' }
+                { id: 502, title: 'Gigabyte B450M DS3H Motherboard Used', price: 22000, isUsed: true, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' }
             ],
             "RAM": [
-                { id: 601, title: 'Corsair Vengeance RGB 16GB DDR4 3200MHz RAM', price: 16500, isUsed: false, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' },
-                { id: 602, title: 'Kingston Fury 8GB DDR4 Used RAM', price: 6500, isUsed: true, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' }
+                { id: 601, title: 'Corsair Vengeance RGB Pro 16GB (2x8GB) DDR4 3200MHz', price: 18500, isUsed: false, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' },
+                { id: 602, title: 'Kingston Fury 8GB DDR4 2666MHz RAM Used', price: 6500, isUsed: true, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' }
             ],
             "BRANDNEW RAM": [
-                { id: 601, title: 'Corsair Vengeance RGB 16GB DDR4 3200MHz RAM', price: 16500, isUsed: false, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' },
-                { id: 603, title: 'Lexar Hades RGB 32GB (16x2) DDR5 6000MHz RAM', price: 42000, isUsed: false, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' }
+                { id: 601, title: 'Corsair Vengeance RGB Pro 16GB (2x8GB) DDR4 3200MHz', price: 18500, isUsed: false, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' },
+                { id: 603, title: 'G.SKILL Trident Z5 RGB 32GB (2x16GB) DDR5 6000MHz', price: 48000, isUsed: false, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' }
             ],
             "USED RAM": [
-                { id: 602, title: 'Kingston Fury 8GB DDR4 2666MHz Certified Used RAM', price: 6500, isUsed: true, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' },
-                { id: 604, title: 'ADATA XPG 16GB DDR4 3200MHz Certified Used RAM', price: 11500, isUsed: true, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' }
+                { id: 602, title: 'Kingston Fury 8GB DDR4 2666MHz RAM Used', price: 6500, isUsed: true, img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80' }
             ],
             "GRAPHIC CARD": [
-                { id: 701, title: 'ASUS Dual RTX 4060 8GB OC Gaming Graphics Card', price: 118000, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 701, title: 'MSI GeForce RTX 4060 Ventus 2X 8GB OC', price: 125000, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' },
+                { id: 702, title: 'ZOTAC GTX 1660 Super 6GB Used Graphic Card', price: 42000, isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "BRANDNEW GRAPHIC CARD": [
-                { id: 701, title: 'ASUS Dual RTX 4060 8GB OC Gaming Graphics Card', price: 118000, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 701, title: 'MSI GeForce RTX 4060 Ventus 2X 8GB OC', price: 125000, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' },
+                { id: 703, title: 'ASUS TUF Gaming RTX 4070 Super 12GB', price: 245000, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "USED GRAPHIC CARD": [
-                { id: 702, title: 'MSI GTX 1660 Super 6GB Certified Used Graphics Card', price: 48500, isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 702, title: 'ZOTAC GTX 1660 Super 6GB Used Graphic Card', price: 42000, isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "STORAGE": [
-                { id: 801, title: 'Samsung 980 PRO 1TB NVMe M.2 SSD', price: 34500, isUsed: false, img: 'https://images.unsplash.com/photo-1597872250969-25816efb6d9e?auto=format&fit=crop&w=500&q=80' }
+                { id: 801, title: 'Samsung 980 PRO 1TB NVMe M.2 SSD', price: 34000, isUsed: false, img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' },
+                { id: 802, title: 'Seagate Barracuda 1TB 3.5" HDD Used', price: 8500, isUsed: true, img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' }
             ],
             "BRANDNEW STORAGE": [
-                { id: 801, title: 'Samsung 980 PRO 1TB NVMe M.2 SSD', price: 34500, isUsed: false, img: 'https://images.unsplash.com/photo-1597872250969-25816efb6d9e?auto=format&fit=crop&w=500&q=80' },
-                { id: 802, title: 'Kingston NV2 500GB NVMe M.2 SSD', price: 14500, isUsed: false, img: 'https://images.unsplash.com/photo-1597872250969-25816efb6d9e?auto=format&fit=crop&w=500&q=80' }
+                { id: 801, title: 'Samsung 980 PRO 1TB NVMe M.2 SSD', price: 34000, isUsed: false, img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' },
+                { id: 803, title: 'Lexar NM620 512GB M.2 NVMe SSD', price: 14500, isUsed: false, img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' }
             ],
             "USED STORAGE": [
-                { id: 803, title: 'Seagate Barracuda 1TB 3.5" Certified Used Hard Drive', price: 8500, isUsed: true, img: 'https://images.unsplash.com/photo-1597872250969-25816efb6d9e?auto=format&fit=crop&w=500&q=80' }
+                { id: 802, title: 'Seagate Barracuda 1TB 3.5" HDD Used', price: 8500, isUsed: true, img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' },
+                { id: 804, title: 'WD Blue 500GB 2.5" Laptop HDD Used', price: 4500, isUsed: true, img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80' }
             ],
             "CASING": [
-                { id: 901, title: 'Antec NX200M Gaming Casing with Tempered Glass', price: 14500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 901, title: 'Armaggeddon Nimitz TR1100 ARGB Gaming Casing', price: 16500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "COOLERS": [
-                { id: 1001, title: 'DeepCool LE520 240mm ARGB Liquid CPU Cooler', price: 24500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 1001, title: 'Thermalright Peerless Assassin 120 SE CPU Air Cooler', price: 14500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "BRANDNEW COOLERS": [
-                { id: 1001, title: 'DeepCool LE520 240mm ARGB Liquid CPU Cooler', price: 24500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 1001, title: 'Thermalright Peerless Assassin 120 SE CPU Air Cooler', price: 14500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' },
+                { id: 1002, title: 'Corsair H100i RGB Elite 240mm Liquid CPU Cooler', price: 42000, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "USED COOLERS": [
-                { id: 1002, title: 'Cooler Master Hyper 212 CPU Air Cooler Used', price: 6500, isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 1003, title: 'Cooler Master Hyper 212 CPU Cooler Used', price: 6500, isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "POWER SUPPLY": [
-                { id: 1101, title: 'Corsair CV650 650W 80 Plus Bronze Power Supply', price: 21500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 1101, title: 'Corsair CX650M 650W 80 Plus Bronze Power Supply', price: 24500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' },
+                { id: 1102, title: 'Antec 500W Power Supply Certified Used', price: 7500, isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "BRANDNEW POWER SUPPLY": [
-                { id: 1101, title: 'Corsair CV650 650W 80 Plus Bronze Power Supply', price: 21500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 1101, title: 'Corsair CX650M 650W 80 Plus Bronze Power Supply', price: 24500, isUsed: false, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "USED POWER SUPPLY": [
-                { id: 1102, title: 'Antec Atom 550W Certified Used Power Supply', price: 9500, isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
+                { id: 1102, title: 'Antec 500W Power Supply Certified Used', price: 7500, isUsed: true, img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80' }
             ],
             "KEYBOARD & MOUSE": [
-                { id: 1201, title: 'Fantech Major KX-301 Gaming Keyboard and Mouse Combo', price: 8500, isUsed: false, img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80' }
+                { id: 1201, title: 'Fantech Major KX-302 Gaming Keyboard & Mouse Combo', price: 7800, isUsed: false, img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80' }
             ],
             "KEYBOARD": [
                 { id: 1202, title: 'Redragon K552 Mechanical RGB Gaming Keyboard', price: 12500, isUsed: false, img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80' }
@@ -1246,46 +1250,44 @@
                 { id: 1203, title: 'Logitech G102 Lightsync RGB Gaming Mouse', price: 6800, isUsed: false, img: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=500&q=80' }
             ],
             "HEADSET & SUBWOOFERS": [
-                { id: 1301, title: 'Fantech HG11 Captain 7.1 Surround Gaming Headset', price: 9800, isUsed: false, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80' }
+                { id: 1301, title: 'Fantech HG11 Captain 7.1 Gaming Headset', price: 8900, isUsed: false, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80' },
+                { id: 1302, title: 'Microlab M-108 2.1 Speaker Subwoofer System', price: 14500, isUsed: false, img: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=500&q=80' }
             ]
         };
 
-        // Filter and display products based on selected Category from Navigation
-        function filterCategoryItems(categoryName) {
-            const titleElement = document.getElementById('selectedCategoryTitle');
-            const gridElement = document.getElementById('categoryProductGrid');
-            
-            titleElement.innerText = categoryName + " Collection";
-            gridElement.innerHTML = '';
+        // Render selected category items
+        function filterCategoryProducts(categoryName) {
+            document.getElementById('selected-category-title').innerText = categoryName + " COLLECTION";
+            const grid = document.getElementById('category-products-grid');
+            grid.innerHTML = '';
 
-            const items = categoryProductsDB[categoryName] || [];
+            const products = categoryProductsDatabase[categoryName] || [];
 
-            if (items.length === 0) {
-                gridElement.innerHTML = `<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px 0;">No items available in ${categoryName} right now. Check back soon!</p>`;
+            if (products.length === 0) {
+                grid.innerHTML = `<p style="color:var(--text-muted);">No products available in this category at the moment.</p>`;
             } else {
-                items.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <span class="badge ${item.isUsed ? 'badge-used' : ''}">${item.isUsed ? 'USED' : 'BRAND NEW'}</span>
-                        <img src="${item.img}" alt="${item.title}">
-                        <a class="product-title">${item.title}</a>
-                        <div>
-                            <span class="price">Rs: ${item.price.toLocaleString()}.00</span>
-                            <span class="koko-pay">or 3 x Rs: ${Math.round(item.price / 3).toLocaleString()} with Koko</span>
-                            <button class="add-to-cart-btn" onclick="addToCart(${item.id}, '${item.title.replace(/'/g, "\\'")}', ${item.price})">Add To Cart</button>
+                products.forEach(p => {
+                    const badgeClass = p.isUsed ? 'badge badge-used' : 'badge';
+                    const badgeText = p.isUsed ? 'USED' : 'BRAND NEW';
+                    const kokoInstallment = Math.round(p.price / 3).toLocaleString();
+
+                    const cardHtml = `
+                        <div class="product-card">
+                            <span class="${badgeClass}">${badgeText}</span>
+                            <img src="${p.img}" alt="${p.title}">
+                            <a class="product-title">${p.title}</a>
+                            <div>
+                                <span class="price">Rs: ${p.price.toLocaleString()}.00</span>
+                                <span class="koko-pay">or 3 x Rs: ${kokoInstallment} with Koko</span>
+                                <button class="add-to-cart-btn" onclick="addToCart(${p.id}, '${p.title.replace(/'/g, "\\'")}', ${p.price})">Add To Cart</button>
+                            </div>
                         </div>
                     `;
-                    gridElement.appendChild(card);
+                    grid.innerHTML += cardHtml;
                 });
             }
 
-            // Navigate to dynamic category view
-            navigateTo('category');
-
-            // Close dropdown menu after click
-            const dropdown = document.getElementById('categoryDropdown');
-            if (dropdown) dropdown.classList.remove('mobile-open');
+            navigateTo('category-items');
         }
 
         // Function to handle Categories dropdown toggle on mobile
