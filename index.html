@@ -26,18 +26,20 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.5; overflow-x: hidden; padding-bottom: 60px; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
 
         /* Top Notification Bar */
         .top-bar { 
             background: linear-gradient(90deg, #1e1b4b, #0f172a); 
             color: var(--text-muted); 
-            font-size: 0.8rem; 
-            padding: 8px 8%; 
+            font-size: 0.75rem; 
+            padding: 8px 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
             border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 5px;
         }
         .top-bar i { color: var(--accent); margin-right: 6px; }
 
@@ -45,7 +47,7 @@
         .main-header { 
             background: var(--bg-glass); 
             backdrop-filter: blur(12px);
-            padding: 16px 8%; 
+            padding: 12px 5%; 
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
@@ -53,26 +55,12 @@
             top: 0; 
             z-index: 1000; 
             border-bottom: 1px solid var(--border-color); 
-            gap: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 1.3rem;
-            cursor: pointer;
-        }
-
         .logo { 
-            font-size: 1.4rem; 
+            font-size: 1.3rem; 
             font-weight: 800; 
             color: #fff; 
             text-decoration: none; 
@@ -81,18 +69,25 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
-            white-space: nowrap;
         }
         .logo span { color: var(--accent); }
         
         .search-box { 
             display: flex; 
-            flex: 0.4; 
+            flex: 1; 
+            min-width: 200px;
+            order: 3;
             background: rgba(255, 255, 255, 0.05); 
             border: 1px solid var(--border-color); 
             border-radius: 50px; 
             padding: 4px 6px 4px 16px;
             transition: all 0.3s ease;
+        }
+        @media (min-width: 768px) {
+            .search-box { flex: 0.4; order: 2; }
+            .logo { font-size: 1.5rem; }
+            .top-bar { padding: 8px 8%; font-size: 0.8rem; }
+            .main-header { padding: 16px 8%; }
         }
         .search-box:focus-within { 
             border-color: var(--primary); 
@@ -110,8 +105,8 @@
             background: var(--primary); 
             color: #fff; 
             border: none; 
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%; 
             cursor: pointer; 
             transition: 0.2s; 
@@ -120,11 +115,11 @@
 
         .cart-btn { 
             position: relative; 
-            font-size: 1.2rem; 
+            font-size: 1.1rem; 
             color: #fff; 
             text-decoration: none; 
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -133,8 +128,9 @@
             border: 1px solid var(--border-color);
             transition: 0.3s; 
             cursor: pointer;
-            flex-shrink: 0;
+            order: 2;
         }
+        @media (min-width: 768px) { .cart-btn { order: 3; } }
         .cart-btn:hover { background: var(--accent); border-color: var(--accent); }
         .cart-count { 
             background: var(--accent); 
@@ -148,15 +144,26 @@
             right: -2px; 
         }
 
-        /* Nav Menu (Desktop) */
-        .cat-nav { background: var(--bg-card); border-bottom: 1px solid var(--border-color); padding: 0 8%; position: sticky; top: 73px; z-index: 999; }
-        .cat-nav ul { display: flex; list-style: none; gap: 24px; align-items: center; overflow-x: auto; white-space: nowrap; }
+        /* Nav Menu Horizontal Scroll for Mobile */
+        .cat-nav { 
+            background: var(--bg-card); 
+            border-bottom: 1px solid var(--border-color); 
+            padding: 0 5%; 
+            position: sticky; 
+            top: 65px; 
+            z-index: 999; 
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        .cat-nav::-webkit-scrollbar { display: none; }
+        .cat-nav ul { display: flex; list-style: none; gap: 16px; align-items: center; }
         .cat-nav a { 
             color: var(--text-muted); 
             text-decoration: none; 
-            font-size: 0.82rem; 
+            font-size: 0.8rem; 
             font-weight: 600; 
-            padding: 16px 0; 
+            padding: 12px 0; 
             display: inline-block; 
             transition: 0.3s; 
             letter-spacing: 0.5px; 
@@ -174,8 +181,8 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            min-width: 250px;
-            max-height: 450px;
+            min-width: 220px;
+            max-height: 350px;
             overflow-y: auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             display: flex;
@@ -201,107 +208,38 @@
             gap: 10px;
             width: 100%;
             font-size: 0.8rem;
-        }
-
-        /* Mobile Bottom Navigation Bar */
-        .mobile-bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-color);
-            z-index: 1800;
-            padding: 6px 10px;
-            justify-content: space-around;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-        .mobile-bottom-nav button {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.65rem;
-            gap: 4px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        .mobile-bottom-nav button.active, .mobile-bottom-nav button:hover {
-            color: var(--primary);
-        }
-        .mobile-bottom-nav i {
-            font-size: 1.1rem;
-        }
-
-        /* Mobile Drawer Menu Overlays */
-        .drawer-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2500;
-            display: none;
-            backdrop-filter: blur(4px);
-        }
-        .drawer-overlay.active { display: block; }
-        .mobile-drawer {
-            position: fixed;
-            top: 0; left: -280px; width: 280px; height: 100%;
-            background: var(--bg-card);
-            border-right: 1px solid var(--border-color);
-            z-index: 2600;
-            transition: all 0.3s ease;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        .mobile-drawer.active { left: 0; }
-        .drawer-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .drawer-menu { list-style: none; }
-        .drawer-menu li { margin-bottom: 12px; }
-        .drawer-menu a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            white-space: normal;
         }
 
         /* Hero Banner */
         .hero-banner { 
             background: linear-gradient(180deg, rgba(9, 13, 22, 0.4) 0%, var(--bg-dark) 100%), 
                         url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80') center/cover; 
-            padding: 80px 20px; 
+            padding: 50px 15px; 
             text-align: center; 
             display: flex;
             flex-direction: column;
             align-items: center;
+            border-radius: 16px;
         }
         .hero-banner h1 { 
-            font-size: 3rem; 
+            font-size: 1.8rem; 
             font-weight: 800; 
-            letter-spacing: -1px;
-            margin-bottom: 16px; 
+            letter-spacing: -0.5px;
+            margin-bottom: 12px; 
             background: linear-gradient(to right, #fff, #9ca3af);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .hero-banner p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 600px; }
+        @media (min-width: 768px) {
+            .hero-banner { padding: 80px 20px; border-radius: 20px; }
+            .hero-banner h1 { font-size: 3rem; letter-spacing: -1px; }
+        }
+        .hero-banner p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; max-width: 600px; }
         .btn-primary { 
             background: var(--accent); 
             color: #fff; 
-            padding: 12px 32px; 
+            padding: 12px 28px; 
             border-radius: 50px; 
             text-decoration: none; 
             font-weight: 700; 
@@ -314,19 +252,23 @@
         }
 
         /* Container & Sections */
-        .container { width: 88%; max-width: 1280px; margin: 40px auto; min-height: 60vh; }
+        .container { width: 92%; max-width: 1280px; margin: 20px auto; min-height: 60vh; }
+        @media (min-width: 768px) { .container { width: 88%; margin: 40px auto; } }
 
         .shop-by-cat-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        @media (min-width: 600px) {
+            .shop-by-cat-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
         }
         .cat-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 14px;
+            padding: 16px 10px;
             text-align: center;
             text-decoration: none;
             color: #fff;
@@ -334,45 +276,49 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             cursor: pointer;
         }
-        .cat-card i { font-size: 2rem; color: var(--primary); transition: 0.3s; }
-        .cat-card span { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.5px; }
-        .cat-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .cat-card i { font-size: 1.6rem; color: var(--primary); transition: 0.3s; }
+        .cat-card span { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; }
+        .cat-card:hover { transform: translateY(-3px); border-color: var(--primary); }
 
-        .content-section { margin-bottom: 50px; }
+        .content-section { margin-bottom: 40px; }
         .section-title { 
-            font-size: 1.3rem; 
+            font-size: 1.15rem; 
             font-weight: 800; 
-            margin-bottom: 24px; 
+            margin-bottom: 18px; 
             color: #fff; 
             display: flex; 
             align-items: center; 
-            gap: 12px;
+            gap: 10px;
         }
-        .section-title::before { content: ''; width: 4px; height: 20px; background: var(--accent); border-radius: 4px; }
+        .section-title::before { content: ''; width: 4px; height: 18px; background: var(--accent); border-radius: 4px; }
 
         /* Hardware Product Grid */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+            gap: 16px; 
+        }
         .product-card { 
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
-            border-radius: 16px; 
-            padding: 16px; 
+            border-radius: 14px; 
+            padding: 14px; 
             position: relative; 
             transition: all 0.3s ease; 
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
         }
-        .product-card:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.2); }
-        .badge { position: absolute; top: 26px; left: 26px; background: var(--primary); color: #fff; font-size: 0.65rem; font-weight: 800; padding: 4px 10px; border-radius: 50px; z-index: 2; }
+        .product-card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.2); }
+        .badge { position: absolute; top: 22px; left: 22px; background: var(--primary); color: #fff; font-size: 0.6rem; font-weight: 800; padding: 3px 8px; border-radius: 50px; z-index: 2; }
         .badge-used { background: #475569; }
-        .product-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 16px; }
-        .product-title { font-size: 0.95rem; font-weight: 600; color: #fff; text-decoration: none; margin-bottom: 12px; line-height: 1.4; }
-        .price { font-size: 1.2rem; font-weight: 800; color: #fff; }
-        .koko-pay { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; display: block; }
+        .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; }
+        .product-title { font-size: 0.9rem; font-weight: 600; color: #fff; text-decoration: none; margin-bottom: 10px; line-height: 1.3; }
+        .price { font-size: 1.1rem; font-weight: 800; color: #fff; }
+        .koko-pay { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; display: block; }
 
         .add-to-cart-btn { 
             background: rgba(255, 255, 255, 0.05); 
@@ -382,10 +328,10 @@
             padding: 10px; 
             border-radius: 8px; 
             font-weight: 600; 
-            margin-top: 16px; 
+            margin-top: 14px; 
             cursor: pointer; 
             transition: 0.3s; 
-            font-size: 0.85rem; 
+            font-size: 0.8rem; 
         }
         .add-to-cart-btn:hover { background: var(--primary); border-color: var(--primary); }
 
@@ -394,23 +340,25 @@
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
             border-radius: 14px; 
-            padding: 14px 18px; 
-            margin-bottom: 30px; 
+            padding: 12px 14px; 
+            margin-bottom: 25px; 
             box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            position: sticky;
-            top: 130px;
+            position: relative;
             z-index: 900;
+        }
+        @media (min-width: 992px) {
+            .storage-wrapper { position: sticky; top: 120px; padding: 14px 18px; margin-bottom: 30px; }
         }
         
         .config-card { 
             background: rgba(255, 255, 255, 0.02); 
             border: 1px solid var(--border-color); 
             border-radius: 8px; 
-            padding: 10px 14px; 
+            padding: 10px 12px; 
             margin-bottom: 10px; 
         }
         .config-card h4 { 
-            font-size: 0.85rem; 
+            font-size: 0.8rem; 
             color: #fff; 
             margin-bottom: 8px; 
             display: flex; 
@@ -420,7 +368,7 @@
 
         select { 
             width: 100%; 
-            padding: 6px 10px; 
+            padding: 8px 10px; 
             border: 1px solid var(--border-color); 
             border-radius: 6px; 
             background: var(--bg-dark); 
@@ -432,7 +380,7 @@
         .storage-box { 
             background: var(--bg-dark); 
             border: 1px solid var(--border-color); 
-            padding: 10px 14px; 
+            padding: 10px 12px; 
             border-radius: 8px; 
         }
         
@@ -456,7 +404,7 @@
             flex-wrap: wrap; 
             gap: 6px; 
             margin-top: 8px; 
-            max-height: 60px; 
+            max-height: 80px; 
             overflow-y: auto; 
         }
         .tag-item { 
@@ -464,7 +412,7 @@
             border: 1px solid var(--primary); 
             padding: 2px 8px; 
             border-radius: 12px; 
-            font-size: 0.7rem; 
+            font-size: 0.68rem; 
             color: #fff; 
             display: flex; 
             align-items: center; 
@@ -476,7 +424,7 @@
             background: var(--whatsapp);
             color: #fff;
             border: none;
-            padding: 8px 16px;
+            padding: 10px 16px;
             border-radius: 6px;
             font-weight: 700;
             font-size: 0.8rem;
@@ -492,40 +440,53 @@
         .btn-whatsapp-order:hover { background: #1eb954; }
 
         /* Game Vault Grid */
-        .game-vault-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
-        .game-vault-search { position: relative; min-width: 280px; }
-        .game-vault-search input { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 10px 16px 10px 40px; border-radius: 50px; color: #fff; outline: none; font-size: 0.85rem; }
-        .game-vault-search i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+        .game-vault-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+        .game-vault-search { position: relative; width: 100%; }
+        @media (min-width: 600px) { .game-vault-search { width: auto; min-width: 260px; } }
+        .game-vault-search input { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 8px 14px 8px 36px; border-radius: 50px; color: #fff; outline: none; font-size: 0.82rem; }
+        .game-vault-search i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.8rem; }
 
-        .category-tabs { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 24px; padding-bottom: 4px; }
-        .cat-tab { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: 0.3s; white-space: nowrap; }
+        .category-tabs { 
+            display: flex; 
+            gap: 8px; 
+            overflow-x: auto; 
+            margin-bottom: 20px; 
+            padding-bottom: 6px; 
+            -webkit-overflow-scrolling: touch;
+        }
+        .category-tabs::-webkit-scrollbar { display: none; }
+        .cat-tab { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 14px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: 0.3s; white-space: nowrap; }
         .cat-tab.active, .cat-tab:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-        .game-grid-showcase { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
-        .game-poster-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; }
-        .game-poster-card:hover { transform: translateY(-6px); border-color: var(--primary); }
-        .poster-image-wrap { position: relative; width: 100%; height: 260px; overflow: hidden; }
+        .game-grid-showcase { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+        @media (min-width: 600px) {
+            .game-grid-showcase { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+        }
+        .game-poster-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .game-poster-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+        .poster-image-wrap { position: relative; width: 100%; height: 200px; overflow: hidden; }
+        @media (min-width: 600px) { .poster-image-wrap { height: 250px; } }
         .poster-image { width: 100%; height: 100%; object-fit: cover; transition: 0.4s ease; }
-        .poster-size-tag { position: absolute; top: 10px; right: 10px; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(6px); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
-        .poster-details { padding: 14px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
-        .poster-game-title { font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
-        .poster-game-genre { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px; }
+        .poster-size-tag { position: absolute; top: 8px; right: 8px; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(6px); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+        .poster-details { padding: 10px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 8px; }
+        .poster-game-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .poster-game-genre { font-size: 0.68rem; color: var(--text-muted); margin-bottom: 6px; }
         
         /* System Requirements Display in Card */
         .sys-req-box { 
             background: rgba(255,255,255,0.03); 
             border: 1px solid var(--border-color); 
-            border-radius: 8px; 
-            padding: 8px; 
-            font-size: 0.68rem; 
+            border-radius: 6px; 
+            padding: 6px; 
+            font-size: 0.65rem; 
             color: var(--text-muted); 
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
-        .sys-req-box div { margin-bottom: 2px; }
+        .sys-req-box div { margin-bottom: 2px; line-height: 1.2; }
         .sys-req-box span { color: #fff; font-weight: 600; }
 
         .poster-game-footer { display: flex; justify-content: flex-end; align-items: center; }
-        .btn-card-select { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; width: 100%; justify-content: center; }
+        .btn-card-select { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 4px; width: 100%; justify-content: center; }
         .btn-card-select.selected { background: var(--success); border-color: var(--success); }
 
         /* Dynamic Page Section Controller */
@@ -536,7 +497,7 @@
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
@@ -545,16 +506,17 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            padding: 15px;
         }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         
         .modal-content {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            width: 90%;
-            max-width: 520px;
-            padding: 30px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
             position: relative;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             max-height: 90vh;
@@ -562,8 +524,8 @@
         }
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 16px;
+            right: 16px;
             font-size: 1.2rem;
             color: var(--text-muted);
             cursor: pointer;
@@ -573,28 +535,28 @@
         /* CART VIEW MODAL STYLES */
         .cart-items-list {
             margin: 15px 0;
-            max-height: 220px;
+            max-height: 200px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
         .cart-item-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: var(--bg-dark);
-            padding: 12px 16px;
-            border-radius: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
         }
         .cart-item-info { display: flex; flex-direction: column; gap: 2px; }
-        .cart-item-title { font-size: 0.85rem; font-weight: 700; color: #fff; }
-        .cart-item-price { font-size: 0.8rem; color: var(--success); font-weight: 600; }
+        .cart-item-title { font-size: 0.8rem; font-weight: 700; color: #fff; }
+        .cart-item-price { font-size: 0.75rem; color: var(--success); font-weight: 600; }
         .cart-item-remove {
             color: var(--accent);
             cursor: pointer;
-            padding: 6px 10px;
+            padding: 4px 8px;
             border-radius: 6px;
             background: rgba(255, 70, 85, 0.1);
             transition: 0.2s;
@@ -604,156 +566,63 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 0;
+            padding: 12px 0;
             border-top: 1px solid var(--border-color);
-            margin-top: 10px;
-            font-size: 1rem;
+            margin-top: 8px;
+            font-size: 0.95rem;
             font-weight: 800;
         }
 
-        .form-group { margin-bottom: 14px; }
-        .form-group label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px 14px;
+            padding: 8px 12px;
             background: var(--bg-dark);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             color: #fff;
             outline: none;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
         }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
 
         /* Floating WhatsApp Icon */
         .whatsapp-float {
             position: fixed;
-            bottom: 75px;
+            bottom: 20px;
             right: 20px;
             background: var(--whatsapp);
             color: #fff;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
             z-index: 1500;
             text-decoration: none;
             transition: 0.3s;
         }
+        @media (min-width: 768px) {
+            .whatsapp-float { width: 55px; height: 55px; font-size: 1.8rem; bottom: 30px; right: 30px; }
+        }
         .whatsapp-float:hover { transform: scale(1.1); }
 
         /* Footer */
-        footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 40px 8% 30px; font-size: 0.85rem; color: var(--text-muted); margin-top: 60px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 30px; }
-        .footer-col h4 { color: #fff; font-size: 1rem; margin-bottom: 16px; }
+        footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 40px 5% 20px; font-size: 0.8rem; color: var(--text-muted); margin-top: 60px; }
+        @media (min-width: 768px) { footer { padding: 60px 8% 30px; font-size: 0.85rem; } }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
+        .footer-col h4 { color: #fff; font-size: 0.95rem; margin-bottom: 12px; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li { margin-bottom: 8px; }
         .footer-col a { color: var(--text-muted); text-decoration: none; transition: 0.2s; cursor: pointer; }
-        .copyright { text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px; font-size: 0.8rem; }
-
-        /* RESPONSIVE DESIGN - MOBILE STYLES */
-        @media (max-width: 768px) {
-            .top-bar { display: none; }
-            
-            .mobile-menu-btn { display: block; }
-            .mobile-bottom-nav { display: flex; }
-
-            .main-header {
-                padding: 12px 5%;
-            }
-
-            .logo { font-size: 1.2rem; }
-            
-            .search-box {
-                flex: 1;
-                margin: 0 5px;
-            }
-
-            .cat-nav { display: none; }
-
-            .hero-banner {
-                padding: 40px 15px;
-                border-radius: 12px !important;
-            }
-            .hero-banner h1 { font-size: 1.8rem; }
-            .hero-banner p { font-size: 0.9rem; }
-
-            .container { width: 92%; margin: 20px auto; }
-
-            .shop-by-cat-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat( auto-fill, minmax(150px, 1fr) );
-                gap: 12px;
-            }
-
-            .product-card { padding: 12px; }
-            .product-card img { height: 130px; margin-bottom: 8px; }
-            .product-title { font-size: 0.82rem; line-height: 1.2; }
-            .price { font-size: 1rem; }
-            .koko-pay { font-size: 0.65rem; }
-            .badge { top: 18px; left: 18px; font-size: 0.55rem; padding: 2px 6px; }
-
-            .game-grid-showcase {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .poster-image-wrap { height: 180px; }
-            .poster-details { padding: 10px; }
-            .poster-game-title { font-size: 0.8rem; }
-            .sys-req-box { font-size: 0.6rem; padding: 6px; }
-
-            .storage-wrapper {
-                position: relative;
-                top: 0;
-                padding: 12px;
-            }
-
-            .game-vault-search { width: 100%; min-width: 100%; }
-
-            footer { padding-bottom: 80px; }
-        }
+        .copyright { text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px; font-size: 0.75rem; }
     </style>
 </head>
 <body>
-
-    <!-- Drawer Menu Overlay -->
-    <div class="drawer-overlay" id="drawerOverlay" onclick="closeMobileDrawer()"></div>
-
-    <!-- Mobile Navigation Drawer -->
-    <div class="mobile-drawer" id="mobileDrawer">
-        <div class="drawer-header">
-            <div class="logo">
-                <i class="fa-solid fa-bolt" style="color:var(--accent);"></i> JANU <span>COMPUTERS</span>
-            </div>
-            <i class="fa-solid fa-xmark" style="font-size:1.3rem; color:var(--text-muted); cursor:pointer;" onclick="closeMobileDrawer()"></i>
-        </div>
-        <ul class="drawer-menu">
-            <li><a onclick="navigateTo('home'); closeMobileDrawer();"><i class="fa-solid fa-house" style="color:var(--primary);"></i> Home</a></li>
-            <li><a onclick="navigateTo('desktops'); closeMobileDrawer();"><i class="fa-solid fa-desktop" style="color:var(--primary);"></i> Desktops</a></li>
-            <li><a onclick="navigateTo('laptops'); closeMobileDrawer();"><i class="fa-solid fa-laptop" style="color:var(--primary);"></i> Laptops</a></li>
-            <li><a onclick="navigateTo('monitors'); closeMobileDrawer();"><i class="fa-solid fa-tv" style="color:var(--primary);"></i> Monitors</a></li>
-            <li><a onclick="navigateTo('games'); closeMobileDrawer();"><i class="fa-solid fa-gamepad" style="color:var(--accent);"></i> PC Games & Storage</a></li>
-        </ul>
-    </div>
-
-    <!-- Mobile Bottom Navigation Bar -->
-    <div class="mobile-bottom-nav">
-        <button onclick="navigateTo('home')" class="active"><i class="fa-solid fa-house"></i>Home</button>
-        <button onclick="navigateTo('desktops')"><i class="fa-solid fa-desktop"></i>Desktops</button>
-        <button onclick="navigateTo('laptops')"><i class="fa-solid fa-laptop"></i>Laptops</button>
-        <button onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i>Monitors</button>
-        <button onclick="navigateTo('games')"><i class="fa-solid fa-gamepad"></i>Games</button>
-        <button onclick="openCartModal()"><i class="fa-solid fa-cart-shopping"></i>Cart</button>
-    </div>
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/94715215075?text=Hi%20Janu%20Computers,%20I%20have%20an%20inquiry." class="whatsapp-float" target="_blank">
@@ -764,24 +633,21 @@
     <div class="top-bar">
         <div>
             <span><i class="fa-solid fa-phone"></i> +94 71 521 5075</span>
-            <span style="margin-left: 15px;"><i class="fa-solid fa-envelope"></i> sales@janucomputers.lk</span>
+            <span style="margin-left: 10px;"><i class="fa-solid fa-envelope"></i> sales@janucomputers.lk</span>
         </div>
         <div>
-            <span><i class="fa-solid fa-truck-fast"></i> Island-wide Express Delivery</span>
+            <span><i class="fa-solid fa-truck-fast"></i> Island-wide Delivery</span>
         </div>
     </div>
 
     <!-- Main Header -->
     <header class="main-header">
-        <div class="header-left">
-            <button class="mobile-menu-btn" onclick="openMobileDrawer()"><i class="fa-solid fa-bars"></i></button>
-            <div class="logo" onclick="navigateTo('home')">
-                <i class="fa-solid fa-bolt" style="color:var(--accent);"></i> JANU <span>COMPUTERS</span>
-            </div>
+        <div class="logo" onclick="navigateTo('home')">
+            <i class="fa-solid fa-bolt" style="color:var(--accent);"></i> JANU <span>COMPUTERS</span>
         </div>
         
         <div class="search-box">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="Search Laptops, Desktops, Monitors...">
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
@@ -792,21 +658,43 @@
         </div>
     </header>
 
-    <!-- Nav Menu (Desktop) -->
+    <!-- Nav Menu (Horizontally Scrollable on Mobile) -->
     <nav class="cat-nav">
         <ul>
             <li><a onclick="navigateTo('home')">HOME</a></li>
             <li class="dropdown">
-                <a><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
+                <a><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;"></i></a>
                 <ul class="dropdown-menu">
                     <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> MONITORS</a></li>
                     <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> BRANDNEW MONITOR</a></li>
                     <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> USED MONITOR</a></li>
+                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-desktop"></i> TV</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> PROCESSORS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> BRANDNEW PROCESSORS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> USED PROCESSORS</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-circuit-board"></i> MOTHERBOARDS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-circuit-board"></i> BRANDNEW MOTHERBOARDS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-circuit-board"></i> USED MOTHERBOARDS</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> RAM</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> BRANDNEW RAM</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> USED RAM</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-gamepad"></i> GRAPHIC CARD</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-gamepad"></i> BRANDNEW GRAPHIC CARD</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-gamepad"></i> USED GRAPHIC CARD</a></li>
                     <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> STORAGE</a></li>
+                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> BRANDNEW STORAGE</a></li>
+                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> USED STORAGE</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-box"></i> CASING</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> COOLERS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> BRANDNEW COOLERS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> USED COOLERS</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> POWER SUPPLY</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> BRANDNEW POWER SUPPLY</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> USED POWER SUPPLY</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-keyboard"></i> KEYBOARD & MOUSE</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-keyboard"></i> KEYBOARD</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-mouse"></i> MOUSE</a></li>
+                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-headphones"></i> HEADSET & SUBWOOFERS</a></li>
                 </ul>
             </li>
             <li><a onclick="navigateTo('desktops')">DESKTOPS</a></li>
@@ -822,7 +710,7 @@
         <!-- PAGE 1: HOME PAGE -->
         <div id="view-home" class="page-view active-view">
             <!-- Hero Banner -->
-            <div class="hero-banner" style="margin-bottom: 40px; border-radius: 20px;">
+            <div class="hero-banner" style="margin-bottom: 30px;">
                 <h1>UNLEASH ULTIMATE PERFORMANCE</h1>
                 <p>Premium Brand New & Certified Used Gaming Gear with Official Store Warranty.</p>
                 <a onclick="navigateTo('desktops')" class="btn-primary">EXPLORE STORE</a>
@@ -964,11 +852,11 @@
             <div class="storage-wrapper">
                 <div class="config-card">
                     <h4><i class="fa-solid fa-hard-drive" style="color:var(--primary);"></i> Select Storage Device & Capacity</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
                         
                         <!-- Storage Type Dropdown -->
                         <div>
-                            <label style="font-size:0.7rem; color:var(--text-muted);">STORAGE TYPE</label>
+                            <label style="font-size:0.65rem; color:var(--text-muted);">STORAGE TYPE</label>
                             <select id="storage-type" onchange="onStorageTypeChange()">
                                 <option value="Desktop HDD">Desktop HDD</option>
                                 <option value="Laptop HDD">Laptop HDD</option>
@@ -979,14 +867,15 @@
 
                         <!-- Capacity Dropdown -->
                         <div>
-                            <label style="font-size:0.7rem; color:var(--text-muted);">CAPACITY</label>
+                            <label style="font-size:0.65rem; color:var(--text-muted);">CAPACITY</label>
                             <select id="hdd-capacity" onchange="updateStorageSystem()">
+                                <!-- Dynamically populated based on storage type -->
                             </select>
                         </div>
 
                         <!-- Condition Dropdown -->
                         <div>
-                            <label style="font-size:0.7rem; color:var(--text-muted);">CONDITION</label>
+                            <label style="font-size:0.65rem; color:var(--text-muted);">CONDITION</label>
                             <select id="storage-condition" onchange="updateStorageSystem()">
                                 <option value="Brand New">Brand New</option>
                                 <option value="Used">Used</option>
@@ -997,7 +886,7 @@
                 </div>
 
                 <div class="storage-box">
-                    <div style="display:flex; justify-content:space-between; font-size:0.78rem; flex-wrap:wrap; gap:6px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.75rem; flex-wrap:wrap; gap:4px;">
                         <span>Device: <b id="hdd-brand-lbl" style="color:var(--primary);">Desktop HDD</b> (<span id="hdd-condition-lbl" style="color:var(--accent);">Brand New</span> - <span id="hdd-total-lbl">2000 GB</span>)</span>
                         <span>Used: <b id="hdd-used-lbl" style="color:var(--accent);">0</b> GB | Free: <b id="hdd-free-lbl" style="color:var(--success);">2000</b> GB</span>
                     </div>
@@ -1007,7 +896,7 @@
                     <div class="selected-tags" id="selected-game-tags"></div>
 
                     <button class="btn-whatsapp-order" onclick="openStorageCheckoutModal()">
-                        <i class="fa-brands fa-whatsapp"></i> Order Selected Games & Storage
+                        <i class="fa-brands fa-whatsapp"></i> Order Selected Games & Drive
                     </button>
                 </div>
             </div>
@@ -1045,9 +934,9 @@
                             <div class="poster-game-title">Ancestors Legacy</div>
                             <div class="poster-game-genre">Strategy / Action</div>
                             <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>i5-750</span></div>
+                                <div><b>CPU:</b> <span>i5-750 / Phenom II</span></div>
                                 <div><b>RAM:</b> <span>4 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 460</span></div>
+                                <div><b>GPU:</b> <span>GTX 460 / HD 5850</span></div>
                             </div>
                         </div>
                         <div class="poster-game-footer">
@@ -1069,13 +958,133 @@
                             <div class="poster-game-title">Aragami 2</div>
                             <div class="poster-game-genre">Action / Stealth</div>
                             <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>i3 / Ryzen 3</span></div>
+                                <div><b>CPU:</b> <span>Core i3 / Ryzen 3</span></div>
                                 <div><b>RAM:</b> <span>8 GB</span></div>
                                 <div><b>GPU:</b> <span>GTX 750 Ti</span></div>
                             </div>
                         </div>
                         <div class="poster-game-footer">
                             <button class="btn-card-select" onclick="toggleGame(2, 'Aragami 2', 3.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ARK - Survival Evolved -->
+                <div class="game-poster-card" data-id="3" data-title="ARK - Survival Evolved" data-category="Open World Action RPG" data-size="35.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/images (5).jpg" class="poster-image" alt="ARK - Survival Evolved">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 35.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">ARK - Survival Evolved</div>
+                            <div class="poster-game-genre">Open World / Survival</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i5 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>8–16 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(3, 'ARK - Survival Evolved', 35.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arma 3 -->
+                <div class="game-poster-card" data-id="4" data-title="Arma 3" data-category="FPS Action" data-size="75">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/capsule_616x353 (1).jpg" class="poster-image" alt="Arma 3">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 75 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Arma 3</div>
+                            <div class="poster-game-genre">FPS / Tactical</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(4, 'Arma 3', 75, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arma Reforger -->
+                <div class="game-poster-card" data-id="5" data-title="Arma Reforger" data-category="FPS Action" data-size="8.6">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/capsule_616x353 (2).jpg" class="poster-image" alt="Arma Reforger">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 8.6 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Arma Reforger</div>
+                            <div class="poster-game-genre">FPS / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(5, 'Arma Reforger', 8.6, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assassin's Creed Black Flag -->
+                <div class="game-poster-card" data-id="6" data-title="Assassin's Creed Black Flag" data-category="Action Open World" data-size="5.3">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Assassin's_Creed_IV_-_Black_Flag_cover.jpg" class="poster-image" alt="Assassin's Creed Black Flag">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 5.3 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">AC IV Black Flag</div>
+                            <div class="poster-game-genre">Action / Open World</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i3 / Ryzen 3</span></div>
+                                <div><b>RAM:</b> <span>8 GB</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(6, 'AC IV Black Flag', 5.3, this)">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Black myth: Wukong -->
+                <div class="game-poster-card" data-id="30" data-title="Black myth: Wukong" data-category="RPG Action" data-size="95.2">
+                    <div class="poster-image-wrap">
+                        <img src="Janu/4to/games/Black_Myth_Wukong_cover_art.jpg" class="poster-image" alt="Black myth: Wukong">
+                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 95.2 GB</span>
+                    </div>
+                    <div class="poster-details">
+                        <div>
+                            <div class="poster-game-title">Black Myth: Wukong</div>
+                            <div class="poster-game-genre">RPG / Action</div>
+                            <div class="sys-req-box">
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5</span></div>
+                                <div><b>RAM:</b> <span>16 GB</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060</span></div>
+                            </div>
+                        </div>
+                        <div class="poster-game-footer">
+                            <button class="btn-card-select" onclick="toggleGame(30, 'Black Myth: Wukong', 95.2, this)">
                                 <i class="fa-solid fa-plus"></i> Add
                             </button>
                         </div>
@@ -1091,7 +1100,7 @@
     <div class="modal-overlay" id="cartModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeCartModal()"><i class="fa-solid fa-xmark"></i></span>
-            <h3 style="color:#fff; font-size:1.2rem; margin-bottom:8px;"><i class="fa-solid fa-cart-shopping" style="color:var(--primary);"></i> Your Shopping Cart</h3>
+            <h3 style="color:#fff; font-size:1.1rem; margin-bottom:8px;"><i class="fa-solid fa-cart-shopping" style="color:var(--primary);"></i> Your Shopping Cart</h3>
             
             <div class="cart-items-list" id="cartItemsContainer"></div>
 
@@ -1100,7 +1109,7 @@
                 <span id="cartTotalAmount" style="color:var(--success);">Rs. 0.00</span>
             </div>
 
-            <form id="cartOrderForm" onsubmit="sendCartWhatsAppOrder(event)" style="margin-top:15px;">
+            <form id="cartOrderForm" onsubmit="sendCartWhatsAppOrder(event)" style="margin-top:12px;">
                 <div class="form-group">
                     <label>YOUR NAME</label>
                     <input type="text" id="custNameCart" placeholder="e.g. Nimal Perera" required>
@@ -1125,8 +1134,8 @@
     <div class="modal-overlay" id="storageModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeStorageModal()"><i class="fa-solid fa-xmark"></i></span>
-            <h3 style="color:#fff; font-size:1.2rem; margin-bottom:8px;"><i class="fa-brands fa-whatsapp" style="color:var(--whatsapp);"></i> Complete Order</h3>
-            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:20px;">Enter details to send Drive & Selected Games order.</p>
+            <h3 style="color:#fff; font-size:1.1rem; margin-bottom:6px;"><i class="fa-brands fa-whatsapp" style="color:var(--whatsapp);"></i> Complete Storage & Game Order</h3>
+            <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:16px;">Enter details to send Drive & Selected Games order.</p>
 
             <form onsubmit="sendStorageWhatsAppOrder(event)">
                 <div class="form-group">
@@ -1165,6 +1174,14 @@
                     <li><a onclick="navigateTo('games')">PC Games & Storage</a></li>
                 </ul>
             </div>
+            <div class="footer-col">
+                <h4>Customer Support</h4>
+                <ul>
+                    <li><a href="#">Warranty Policy</a></li>
+                    <li><a href="#">Delivery & Shipping</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
         </div>
         <div class="copyright">
             &copy; 2026 Janu Computers. All Rights Reserved.
@@ -1177,6 +1194,7 @@
         let selectedGames = [];
         const whatsappNumber = "94715215075"; 
 
+        // Capacity Options per Storage Type Definition
         const storageCapacities = {
             "SSD": [
                 { value: "128", label: "128 GB" },
@@ -1206,16 +1224,6 @@
                 { value: "4000", label: "4 TB (4000 GB)" }
             ]
         };
-
-        function openMobileDrawer() {
-            document.getElementById('drawerOverlay').classList.add('active');
-            document.getElementById('mobileDrawer').classList.add('active');
-        }
-
-        function closeMobileDrawer() {
-            document.getElementById('drawerOverlay').classList.remove('active');
-            document.getElementById('mobileDrawer').classList.remove('active');
-        }
 
         function populateCapacities(type) {
             const capacitySelect = document.getElementById('hdd-capacity');
@@ -1251,10 +1259,6 @@
             if(activePage) {
                 activePage.classList.add('active-view');
             }
-
-            // Update mobile bottom nav active status
-            const navBtns = document.querySelectorAll('.mobile-bottom-nav button');
-            navBtns.forEach(btn => btn.classList.remove('active'));
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1372,6 +1376,7 @@
             const index = selectedGames.findIndex(g => g.id === id);
             if (index > -1) {
                 selectedGames.splice(index, 1);
+                
                 const card = document.querySelector(`.game-poster-card[data-id="${id}"]`);
                 if (card) {
                     const btn = card.querySelector('.btn-card-select');
