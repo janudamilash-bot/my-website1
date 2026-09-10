@@ -32,14 +32,12 @@
         .top-bar { 
             background: linear-gradient(90deg, #1e1b4b, #0f172a); 
             color: var(--text-muted); 
-            font-size: 0.75rem; 
-            padding: 8px 5%; 
+            font-size: 0.8rem; 
+            padding: 8px 8%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
             border-bottom: 1px solid var(--border-color);
-            flex-wrap: wrap;
-            gap: 5px;
         }
         .top-bar i { color: var(--accent); margin-right: 6px; }
 
@@ -47,7 +45,7 @@
         .main-header { 
             background: var(--bg-glass); 
             backdrop-filter: blur(12px);
-            padding: 12px 5%; 
+            padding: 16px 8%; 
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
@@ -55,12 +53,10 @@
             top: 0; 
             z-index: 1000; 
             border-bottom: 1px solid var(--border-color); 
-            gap: 10px;
-            flex-wrap: wrap;
         }
         
         .logo { 
-            font-size: 1.3rem; 
+            font-size: 1.5rem; 
             font-weight: 800; 
             color: #fff; 
             text-decoration: none; 
@@ -74,20 +70,12 @@
         
         .search-box { 
             display: flex; 
-            flex: 1; 
-            min-width: 200px;
-            order: 3;
+            flex: 0.4; 
             background: rgba(255, 255, 255, 0.05); 
             border: 1px solid var(--border-color); 
             border-radius: 50px; 
             padding: 4px 6px 4px 16px;
             transition: all 0.3s ease;
-        }
-        @media (min-width: 768px) {
-            .search-box { flex: 0.4; order: 2; }
-            .logo { font-size: 1.5rem; }
-            .top-bar { padding: 8px 8%; font-size: 0.8rem; }
-            .main-header { padding: 16px 8%; }
         }
         .search-box:focus-within { 
             border-color: var(--primary); 
@@ -105,21 +93,20 @@
             background: var(--primary); 
             color: #fff; 
             border: none; 
-            width: 34px;
-            height: 34px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%; 
             cursor: pointer; 
             transition: 0.2s; 
-            flex-shrink: 0;
         }
 
         .cart-btn { 
             position: relative; 
-            font-size: 1.1rem; 
+            font-size: 1.2rem; 
             color: #fff; 
             text-decoration: none; 
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -128,9 +115,7 @@
             border: 1px solid var(--border-color);
             transition: 0.3s; 
             cursor: pointer;
-            order: 2;
         }
-        @media (min-width: 768px) { .cart-btn { order: 3; } }
         .cart-btn:hover { background: var(--accent); border-color: var(--accent); }
         .cart-count { 
             background: var(--accent); 
@@ -144,26 +129,15 @@
             right: -2px; 
         }
 
-        /* Nav Menu Horizontal Scroll for Mobile */
-        .cat-nav { 
-            background: var(--bg-card); 
-            border-bottom: 1px solid var(--border-color); 
-            padding: 0 5%; 
-            position: sticky; 
-            top: 65px; 
-            z-index: 999; 
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-        .cat-nav::-webkit-scrollbar { display: none; }
-        .cat-nav ul { display: flex; list-style: none; gap: 16px; align-items: center; }
+        /* Nav Menu */
+        .cat-nav { background: var(--bg-card); border-bottom: 1px solid var(--border-color); padding: 0 8%; position: sticky; top: 73px; z-index: 999; }
+        .cat-nav ul { display: flex; list-style: none; gap: 24px; align-items: center; }
         .cat-nav a { 
             color: var(--text-muted); 
             text-decoration: none; 
-            font-size: 0.8rem; 
+            font-size: 0.82rem; 
             font-weight: 600; 
-            padding: 12px 0; 
+            padding: 16px 0; 
             display: inline-block; 
             transition: 0.3s; 
             letter-spacing: 0.5px; 
@@ -181,8 +155,8 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            min-width: 220px;
-            max-height: 350px;
+            min-width: 250px;
+            max-height: 450px;
             overflow-y: auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             display: flex;
@@ -208,38 +182,32 @@
             gap: 10px;
             width: 100%;
             font-size: 0.8rem;
-            white-space: normal;
         }
 
         /* Hero Banner */
         .hero-banner { 
             background: linear-gradient(180deg, rgba(9, 13, 22, 0.4) 0%, var(--bg-dark) 100%), 
                         url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80') center/cover; 
-            padding: 50px 15px; 
+            padding: 80px 20px; 
             text-align: center; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-radius: 16px;
         }
         .hero-banner h1 { 
-            font-size: 1.8rem; 
+            font-size: 3rem; 
             font-weight: 800; 
-            letter-spacing: -0.5px;
-            margin-bottom: 12px; 
+            letter-spacing: -1px;
+            margin-bottom: 16px; 
             background: linear-gradient(to right, #fff, #9ca3af);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        @media (min-width: 768px) {
-            .hero-banner { padding: 80px 20px; border-radius: 20px; }
-            .hero-banner h1 { font-size: 3rem; letter-spacing: -1px; }
-        }
-        .hero-banner p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; max-width: 600px; }
+        .hero-banner p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 600px; }
         .btn-primary { 
             background: var(--accent); 
             color: #fff; 
-            padding: 12px 28px; 
+            padding: 12px 32px; 
             border-radius: 50px; 
             text-decoration: none; 
             font-weight: 700; 
@@ -252,23 +220,19 @@
         }
 
         /* Container & Sections */
-        .container { width: 92%; max-width: 1280px; margin: 20px auto; min-height: 60vh; }
-        @media (min-width: 768px) { .container { width: 88%; margin: 40px auto; } }
+        .container { width: 88%; max-width: 1280px; margin: 40px auto; min-height: 60vh; }
 
         .shop-by-cat-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 40px;
-        }
-        @media (min-width: 600px) {
-            .shop-by-cat-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 50px;
         }
         .cat-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 16px 10px;
+            border-radius: 16px;
+            padding: 24px;
             text-align: center;
             text-decoration: none;
             color: #fff;
@@ -276,49 +240,45 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
         }
-        .cat-card i { font-size: 1.6rem; color: var(--primary); transition: 0.3s; }
-        .cat-card span { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; }
-        .cat-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+        .cat-card i { font-size: 2rem; color: var(--primary); transition: 0.3s; }
+        .cat-card span { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.5px; }
+        .cat-card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
-        .content-section { margin-bottom: 40px; }
+        .content-section { margin-bottom: 50px; }
         .section-title { 
-            font-size: 1.15rem; 
+            font-size: 1.3rem; 
             font-weight: 800; 
-            margin-bottom: 18px; 
+            margin-bottom: 24px; 
             color: #fff; 
             display: flex; 
             align-items: center; 
-            gap: 10px;
+            gap: 12px;
         }
-        .section-title::before { content: ''; width: 4px; height: 18px; background: var(--accent); border-radius: 4px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: var(--accent); border-radius: 4px; }
 
         /* Hardware Product Grid */
-        .product-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-            gap: 16px; 
-        }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
         .product-card { 
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
-            border-radius: 14px; 
-            padding: 14px; 
+            border-radius: 16px; 
+            padding: 16px; 
             position: relative; 
             transition: all 0.3s ease; 
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
         }
-        .product-card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.2); }
-        .badge { position: absolute; top: 22px; left: 22px; background: var(--primary); color: #fff; font-size: 0.6rem; font-weight: 800; padding: 3px 8px; border-radius: 50px; z-index: 2; }
+        .product-card:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.2); }
+        .badge { position: absolute; top: 26px; left: 26px; background: var(--primary); color: #fff; font-size: 0.65rem; font-weight: 800; padding: 4px 10px; border-radius: 50px; z-index: 2; }
         .badge-used { background: #475569; }
-        .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; }
-        .product-title { font-size: 0.9rem; font-weight: 600; color: #fff; text-decoration: none; margin-bottom: 10px; line-height: 1.3; }
-        .price { font-size: 1.1rem; font-weight: 800; color: #fff; }
-        .koko-pay { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; display: block; }
+        .product-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 16px; }
+        .product-title { font-size: 0.95rem; font-weight: 600; color: #fff; text-decoration: none; margin-bottom: 12px; line-height: 1.4; }
+        .price { font-size: 1.2rem; font-weight: 800; color: #fff; }
+        .koko-pay { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; display: block; }
 
         .add-to-cart-btn { 
             background: rgba(255, 255, 255, 0.05); 
@@ -328,10 +288,10 @@
             padding: 10px; 
             border-radius: 8px; 
             font-weight: 600; 
-            margin-top: 14px; 
+            margin-top: 16px; 
             cursor: pointer; 
             transition: 0.3s; 
-            font-size: 0.8rem; 
+            font-size: 0.85rem; 
         }
         .add-to-cart-btn:hover { background: var(--primary); border-color: var(--primary); }
 
@@ -340,25 +300,23 @@
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
             border-radius: 14px; 
-            padding: 12px 14px; 
-            margin-bottom: 25px; 
+            padding: 14px 18px; 
+            margin-bottom: 30px; 
             box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            position: relative;
+            position: sticky;
+            top: 130px;
             z-index: 900;
-        }
-        @media (min-width: 992px) {
-            .storage-wrapper { position: sticky; top: 120px; padding: 14px 18px; margin-bottom: 30px; }
         }
         
         .config-card { 
             background: rgba(255, 255, 255, 0.02); 
             border: 1px solid var(--border-color); 
             border-radius: 8px; 
-            padding: 10px 12px; 
+            padding: 10px 14px; 
             margin-bottom: 10px; 
         }
         .config-card h4 { 
-            font-size: 0.8rem; 
+            font-size: 0.85rem; 
             color: #fff; 
             margin-bottom: 8px; 
             display: flex; 
@@ -368,7 +326,7 @@
 
         select { 
             width: 100%; 
-            padding: 8px 10px; 
+            padding: 6px 10px; 
             border: 1px solid var(--border-color); 
             border-radius: 6px; 
             background: var(--bg-dark); 
@@ -380,7 +338,7 @@
         .storage-box { 
             background: var(--bg-dark); 
             border: 1px solid var(--border-color); 
-            padding: 10px 12px; 
+            padding: 10px 14px; 
             border-radius: 8px; 
         }
         
@@ -404,7 +362,7 @@
             flex-wrap: wrap; 
             gap: 6px; 
             margin-top: 8px; 
-            max-height: 80px; 
+            max-height: 60px; 
             overflow-y: auto; 
         }
         .tag-item { 
@@ -412,7 +370,7 @@
             border: 1px solid var(--primary); 
             padding: 2px 8px; 
             border-radius: 12px; 
-            font-size: 0.68rem; 
+            font-size: 0.7rem; 
             color: #fff; 
             display: flex; 
             align-items: center; 
@@ -424,7 +382,7 @@
             background: var(--whatsapp);
             color: #fff;
             border: none;
-            padding: 10px 16px;
+            padding: 8px 16px;
             border-radius: 6px;
             font-weight: 700;
             font-size: 0.8rem;
@@ -440,53 +398,40 @@
         .btn-whatsapp-order:hover { background: #1eb954; }
 
         /* Game Vault Grid */
-        .game-vault-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
-        .game-vault-search { position: relative; width: 100%; }
-        @media (min-width: 600px) { .game-vault-search { width: auto; min-width: 260px; } }
-        .game-vault-search input { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 8px 14px 8px 36px; border-radius: 50px; color: #fff; outline: none; font-size: 0.82rem; }
-        .game-vault-search i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.8rem; }
+        .game-vault-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+        .game-vault-search { position: relative; min-width: 280px; }
+        .game-vault-search input { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 10px 16px 10px 40px; border-radius: 50px; color: #fff; outline: none; font-size: 0.85rem; }
+        .game-vault-search i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
 
-        .category-tabs { 
-            display: flex; 
-            gap: 8px; 
-            overflow-x: auto; 
-            margin-bottom: 20px; 
-            padding-bottom: 6px; 
-            -webkit-overflow-scrolling: touch;
-        }
-        .category-tabs::-webkit-scrollbar { display: none; }
-        .cat-tab { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 14px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: 0.3s; white-space: nowrap; }
+        .category-tabs { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 24px; padding-bottom: 4px; }
+        .cat-tab { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: 0.3s; white-space: nowrap; }
         .cat-tab.active, .cat-tab:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-        .game-grid-showcase { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-        @media (min-width: 600px) {
-            .game-grid-showcase { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
-        }
-        .game-poster-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; }
-        .game-poster-card:hover { transform: translateY(-4px); border-color: var(--primary); }
-        .poster-image-wrap { position: relative; width: 100%; height: 200px; overflow: hidden; }
-        @media (min-width: 600px) { .poster-image-wrap { height: 250px; } }
+        .game-grid-showcase { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+        .game-poster-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .game-poster-card:hover { transform: translateY(-6px); border-color: var(--primary); }
+        .poster-image-wrap { position: relative; width: 100%; height: 260px; overflow: hidden; }
         .poster-image { width: 100%; height: 100%; object-fit: cover; transition: 0.4s ease; }
-        .poster-size-tag { position: absolute; top: 8px; right: 8px; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(6px); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
-        .poster-details { padding: 10px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 8px; }
-        .poster-game-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
-        .poster-game-genre { font-size: 0.68rem; color: var(--text-muted); margin-bottom: 6px; }
+        .poster-size-tag { position: absolute; top: 10px; right: 10px; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(6px); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
+        .poster-details { padding: 14px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+        .poster-game-title { font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .poster-game-genre { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px; }
         
         /* System Requirements Display in Card */
         .sys-req-box { 
             background: rgba(255,255,255,0.03); 
             border: 1px solid var(--border-color); 
-            border-radius: 6px; 
-            padding: 6px; 
-            font-size: 0.65rem; 
+            border-radius: 8px; 
+            padding: 8px; 
+            font-size: 0.68rem; 
             color: var(--text-muted); 
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
-        .sys-req-box div { margin-bottom: 2px; line-height: 1.2; }
+        .sys-req-box div { margin-bottom: 2px; }
         .sys-req-box span { color: #fff; font-weight: 600; }
 
         .poster-game-footer { display: flex; justify-content: flex-end; align-items: center; }
-        .btn-card-select { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 4px; width: 100%; justify-content: center; }
+        .btn-card-select { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; width: 100%; justify-content: center; }
         .btn-card-select.selected { background: var(--success); border-color: var(--success); }
 
         /* Dynamic Page Section Controller */
@@ -497,7 +442,7 @@
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
@@ -506,17 +451,16 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            padding: 15px;
         }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         
         .modal-content {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            width: 100%;
-            max-width: 500px;
-            padding: 20px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 520px;
+            padding: 30px;
             position: relative;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             max-height: 90vh;
@@ -524,8 +468,8 @@
         }
         .modal-close {
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 20px;
+            right: 20px;
             font-size: 1.2rem;
             color: var(--text-muted);
             cursor: pointer;
@@ -535,28 +479,28 @@
         /* CART VIEW MODAL STYLES */
         .cart-items-list {
             margin: 15px 0;
-            max-height: 200px;
+            max-height: 220px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
         .cart-item-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: var(--bg-dark);
-            padding: 10px 12px;
-            border-radius: 8px;
+            padding: 12px 16px;
+            border-radius: 10px;
             border: 1px solid var(--border-color);
         }
         .cart-item-info { display: flex; flex-direction: column; gap: 2px; }
-        .cart-item-title { font-size: 0.8rem; font-weight: 700; color: #fff; }
-        .cart-item-price { font-size: 0.75rem; color: var(--success); font-weight: 600; }
+        .cart-item-title { font-size: 0.85rem; font-weight: 700; color: #fff; }
+        .cart-item-price { font-size: 0.8rem; color: var(--success); font-weight: 600; }
         .cart-item-remove {
             color: var(--accent);
             cursor: pointer;
-            padding: 4px 8px;
+            padding: 6px 10px;
             border-radius: 6px;
             background: rgba(255, 70, 85, 0.1);
             transition: 0.2s;
@@ -566,60 +510,56 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 14px 0;
             border-top: 1px solid var(--border-color);
-            margin-top: 8px;
-            font-size: 0.95rem;
+            margin-top: 10px;
+            font-size: 1rem;
             font-weight: 800;
         }
 
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; }
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 8px 12px;
+            padding: 10px 14px;
             background: var(--bg-dark);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             color: #fff;
             outline: none;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
         }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
 
         /* Floating WhatsApp Icon */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background: var(--whatsapp);
             color: #fff;
-            width: 48px;
-            height: 48px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
             z-index: 1500;
             text-decoration: none;
             transition: 0.3s;
         }
-        @media (min-width: 768px) {
-            .whatsapp-float { width: 55px; height: 55px; font-size: 1.8rem; bottom: 30px; right: 30px; }
-        }
         .whatsapp-float:hover { transform: scale(1.1); }
 
         /* Footer */
-        footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 40px 5% 20px; font-size: 0.8rem; color: var(--text-muted); margin-top: 60px; }
-        @media (min-width: 768px) { footer { padding: 60px 8% 30px; font-size: 0.85rem; } }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
-        .footer-col h4 { color: #fff; font-size: 0.95rem; margin-bottom: 12px; }
+        footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 60px 8% 30px; font-size: 0.85rem; color: var(--text-muted); margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: #fff; font-size: 1rem; margin-bottom: 16px; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li { margin-bottom: 10px; }
         .footer-col a { color: var(--text-muted); text-decoration: none; transition: 0.2s; cursor: pointer; }
-        .copyright { text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px; font-size: 0.75rem; }
+        .copyright { text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -633,10 +573,10 @@
     <div class="top-bar">
         <div>
             <span><i class="fa-solid fa-phone"></i> +94 71 521 5075</span>
-            <span style="margin-left: 10px;"><i class="fa-solid fa-envelope"></i> sales@janucomputers.lk</span>
+            <span style="margin-left: 15px;"><i class="fa-solid fa-envelope"></i> sales@janucomputers.lk</span>
         </div>
         <div>
-            <span><i class="fa-solid fa-truck-fast"></i> Island-wide Delivery</span>
+            <span><i class="fa-solid fa-truck-fast"></i> Island-wide Express Delivery</span>
         </div>
     </div>
 
@@ -658,43 +598,23 @@
         </div>
     </header>
 
-    <!-- Nav Menu (Horizontally Scrollable on Mobile) -->
+    <!-- Nav Menu -->
     <nav class="cat-nav">
         <ul>
             <li><a onclick="navigateTo('home')">HOME</a></li>
             <li class="dropdown">
-                <a><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;"></i></a>
+                <a><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> CATEGORIES <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
                 <ul class="dropdown-menu">
                     <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> MONITORS</a></li>
-                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> BRANDNEW MONITOR</a></li>
-                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-tv"></i> USED MONITOR</a></li>
-                    <li><a onclick="navigateTo('monitors')"><i class="fa-solid fa-desktop"></i> TV</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> PROCESSORS</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> BRANDNEW PROCESSORS</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-microchip"></i> USED PROCESSORS</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-circuit-board"></i> MOTHERBOARDS</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-circuit-board"></i> BRANDNEW MOTHERBOARDS</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-circuit-board"></i> USED MOTHERBOARDS</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> RAM</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> BRANDNEW RAM</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-memory"></i> USED RAM</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-gamepad"></i> GRAPHIC CARD</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-gamepad"></i> BRANDNEW GRAPHIC CARD</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-gamepad"></i> USED GRAPHIC CARD</a></li>
                     <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> STORAGE</a></li>
-                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> BRANDNEW STORAGE</a></li>
-                    <li><a onclick="navigateTo('games')"><i class="fa-solid fa-hard-drive"></i> USED STORAGE</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-box"></i> CASING</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> COOLERS</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> BRANDNEW COOLERS</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-fan"></i> USED COOLERS</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> POWER SUPPLY</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> BRANDNEW POWER SUPPLY</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-plug"></i> USED POWER SUPPLY</a></li>
                     <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-keyboard"></i> KEYBOARD & MOUSE</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-keyboard"></i> KEYBOARD</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-mouse"></i> MOUSE</a></li>
-                    <li><a onclick="navigateTo('desktops')"><i class="fa-solid fa-headphones"></i> HEADSET & SUBWOOFERS</a></li>
                 </ul>
             </li>
             <li><a onclick="navigateTo('desktops')">DESKTOPS</a></li>
@@ -710,7 +630,7 @@
         <!-- PAGE 1: HOME PAGE -->
         <div id="view-home" class="page-view active-view">
             <!-- Hero Banner -->
-            <div class="hero-banner" style="margin-bottom: 30px;">
+            <div class="hero-banner" style="margin-bottom: 40px; border-radius: 20px;">
                 <h1>UNLEASH ULTIMATE PERFORMANCE</h1>
                 <p>Premium Brand New & Certified Used Gaming Gear with Official Store Warranty.</p>
                 <a onclick="navigateTo('desktops')" class="btn-primary">EXPLORE STORE</a>
@@ -852,11 +772,11 @@
             <div class="storage-wrapper">
                 <div class="config-card">
                     <h4><i class="fa-solid fa-hard-drive" style="color:var(--primary);"></i> Select Storage Device & Capacity</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
                         
                         <!-- Storage Type Dropdown -->
                         <div>
-                            <label style="font-size:0.65rem; color:var(--text-muted);">STORAGE TYPE</label>
+                            <label style="font-size:0.7rem; color:var(--text-muted);">STORAGE TYPE</label>
                             <select id="storage-type" onchange="onStorageTypeChange()">
                                 <option value="Desktop HDD">Desktop HDD</option>
                                 <option value="Laptop HDD">Laptop HDD</option>
@@ -867,15 +787,15 @@
 
                         <!-- Capacity Dropdown -->
                         <div>
-                            <label style="font-size:0.65rem; color:var(--text-muted);">CAPACITY</label>
+                            <label style="font-size:0.7rem; color:var(--text-muted);">CAPACITY</label>
                             <select id="hdd-capacity" onchange="updateStorageSystem()">
-                                <!-- Dynamically populated based on storage type -->
+                                <!-- Dynamically populated -->
                             </select>
                         </div>
 
                         <!-- Condition Dropdown -->
                         <div>
-                            <label style="font-size:0.65rem; color:var(--text-muted);">CONDITION</label>
+                            <label style="font-size:0.7rem; color:var(--text-muted);">CONDITION</label>
                             <select id="storage-condition" onchange="updateStorageSystem()">
                                 <option value="Brand New">Brand New</option>
                                 <option value="Used">Used</option>
@@ -886,7 +806,7 @@
                 </div>
 
                 <div class="storage-box">
-                    <div style="display:flex; justify-content:space-between; font-size:0.75rem; flex-wrap:wrap; gap:4px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.78rem; flex-wrap:wrap; gap:6px;">
                         <span>Device: <b id="hdd-brand-lbl" style="color:var(--primary);">Desktop HDD</b> (<span id="hdd-condition-lbl" style="color:var(--accent);">Brand New</span> - <span id="hdd-total-lbl">2000 GB</span>)</span>
                         <span>Used: <b id="hdd-used-lbl" style="color:var(--accent);">0</b> GB | Free: <b id="hdd-free-lbl" style="color:var(--success);">2000</b> GB</span>
                     </div>
@@ -896,7 +816,7 @@
                     <div class="selected-tags" id="selected-game-tags"></div>
 
                     <button class="btn-whatsapp-order" onclick="openStorageCheckoutModal()">
-                        <i class="fa-brands fa-whatsapp"></i> Order Selected Games & Drive
+                        <i class="fa-brands fa-whatsapp"></i> Order Selected Games & Storage Device
                     </button>
                 </div>
             </div>
@@ -934,9 +854,9 @@
                             <div class="poster-game-title">Ancestors Legacy</div>
                             <div class="poster-game-genre">Strategy / Action</div>
                             <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>i5-750 / Phenom II</span></div>
+                                <div><b>CPU:</b> <span>i5-750 / Phenom II X4 955</span></div>
                                 <div><b>RAM:</b> <span>4 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 460 / HD 5850</span></div>
+                                <div><b>GPU:</b> <span>GTX 460 1GB / HD 5850 1GB</span></div>
                             </div>
                         </div>
                         <div class="poster-game-footer">
@@ -958,9 +878,9 @@
                             <div class="poster-game-title">Aragami 2</div>
                             <div class="poster-game-genre">Action / Stealth</div>
                             <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Core i3 / Ryzen 3</span></div>
+                                <div><b>CPU:</b> <span>Intel Core i3 / Ryzen 3</span></div>
                                 <div><b>RAM:</b> <span>8 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 750 Ti</span></div>
+                                <div><b>GPU:</b> <span>GTX 750 Ti / RX 560</span></div>
                             </div>
                         </div>
                         <div class="poster-game-footer">
@@ -974,7 +894,7 @@
                 <!-- ARK - Survival Evolved -->
                 <div class="game-poster-card" data-id="3" data-title="ARK - Survival Evolved" data-category="Open World Action RPG" data-size="35.6">
                     <div class="poster-image-wrap">
-                        <img src="Janu/4to/games/images (5).jpg" class="poster-image" alt="ARK - Survival Evolved">
+                        <img src="Janu/4to/games/images (5).jpg" alt="ARK - Survival Evolved">
                         <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 35.6 GB</span>
                     </div>
                     <div class="poster-details">
@@ -982,9 +902,9 @@
                             <div class="poster-game-title">ARK - Survival Evolved</div>
                             <div class="poster-game-genre">Open World / Survival</div>
                             <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Core i5 / Ryzen 5</span></div>
+                                <div><b>CPU:</b> <span>Intel Core i5 / Ryzen 5</span></div>
                                 <div><b>RAM:</b> <span>8–16 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 1060</span></div>
+                                <div><b>GPU:</b> <span>GTX 1060 / RX 580</span></div>
                             </div>
                         </div>
                         <div class="poster-game-footer">
@@ -1006,85 +926,13 @@
                             <div class="poster-game-title">Arma 3</div>
                             <div class="poster-game-genre">FPS / Tactical</div>
                             <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5</span></div>
+                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5 3600+</span></div>
                                 <div><b>RAM:</b> <span>16 GB</span></div>
-                                <div><b>GPU:</b> <span>RTX 2060</span></div>
+                                <div><b>GPU:</b> <span>RTX 2060 / RX 6600+</span></div>
                             </div>
                         </div>
                         <div class="poster-game-footer">
                             <button class="btn-card-select" onclick="toggleGame(4, 'Arma 3', 75, this)">
-                                <i class="fa-solid fa-plus"></i> Add
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Arma Reforger -->
-                <div class="game-poster-card" data-id="5" data-title="Arma Reforger" data-category="FPS Action" data-size="8.6">
-                    <div class="poster-image-wrap">
-                        <img src="Janu/4to/games/capsule_616x353 (2).jpg" class="poster-image" alt="Arma Reforger">
-                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 8.6 GB</span>
-                    </div>
-                    <div class="poster-details">
-                        <div>
-                            <div class="poster-game-title">Arma Reforger</div>
-                            <div class="poster-game-genre">FPS / Action</div>
-                            <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Core i3 / Ryzen 3</span></div>
-                                <div><b>RAM:</b> <span>8 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 750 Ti</span></div>
-                            </div>
-                        </div>
-                        <div class="poster-game-footer">
-                            <button class="btn-card-select" onclick="toggleGame(5, 'Arma Reforger', 8.6, this)">
-                                <i class="fa-solid fa-plus"></i> Add
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Assassin's Creed Black Flag -->
-                <div class="game-poster-card" data-id="6" data-title="Assassin's Creed Black Flag" data-category="Action Open World" data-size="5.3">
-                    <div class="poster-image-wrap">
-                        <img src="Janu/4to/games/Assassin's_Creed_IV_-_Black_Flag_cover.jpg" class="poster-image" alt="Assassin's Creed Black Flag">
-                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 5.3 GB</span>
-                    </div>
-                    <div class="poster-details">
-                        <div>
-                            <div class="poster-game-title">AC IV Black Flag</div>
-                            <div class="poster-game-genre">Action / Open World</div>
-                            <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Core i3 / Ryzen 3</span></div>
-                                <div><b>RAM:</b> <span>8 GB</span></div>
-                                <div><b>GPU:</b> <span>GTX 750 Ti</span></div>
-                            </div>
-                        </div>
-                        <div class="poster-game-footer">
-                            <button class="btn-card-select" onclick="toggleGame(6, 'AC IV Black Flag', 5.3, this)">
-                                <i class="fa-solid fa-plus"></i> Add
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Black myth: Wukong -->
-                <div class="game-poster-card" data-id="30" data-title="Black myth: Wukong" data-category="RPG Action" data-size="95.2">
-                    <div class="poster-image-wrap">
-                        <img src="Janu/4to/games/Black_Myth_Wukong_cover_art.jpg" class="poster-image" alt="Black myth: Wukong">
-                        <span class="poster-size-tag"><i class="fa-solid fa-hard-drive"></i> 95.2 GB</span>
-                    </div>
-                    <div class="poster-details">
-                        <div>
-                            <div class="poster-game-title">Black Myth: Wukong</div>
-                            <div class="poster-game-genre">RPG / Action</div>
-                            <div class="sys-req-box">
-                                <div><b>CPU:</b> <span>Core i7 / Ryzen 5</span></div>
-                                <div><b>RAM:</b> <span>16 GB</span></div>
-                                <div><b>GPU:</b> <span>RTX 2060</span></div>
-                            </div>
-                        </div>
-                        <div class="poster-game-footer">
-                            <button class="btn-card-select" onclick="toggleGame(30, 'Black Myth: Wukong', 95.2, this)">
                                 <i class="fa-solid fa-plus"></i> Add
                             </button>
                         </div>
@@ -1100,7 +948,7 @@
     <div class="modal-overlay" id="cartModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeCartModal()"><i class="fa-solid fa-xmark"></i></span>
-            <h3 style="color:#fff; font-size:1.1rem; margin-bottom:8px;"><i class="fa-solid fa-cart-shopping" style="color:var(--primary);"></i> Your Shopping Cart</h3>
+            <h3 style="color:#fff; font-size:1.2rem; margin-bottom:8px;"><i class="fa-solid fa-cart-shopping" style="color:var(--primary);"></i> Your Shopping Cart</h3>
             
             <div class="cart-items-list" id="cartItemsContainer"></div>
 
@@ -1109,7 +957,7 @@
                 <span id="cartTotalAmount" style="color:var(--success);">Rs. 0.00</span>
             </div>
 
-            <form id="cartOrderForm" onsubmit="sendCartWhatsAppOrder(event)" style="margin-top:12px;">
+            <form id="cartOrderForm" onsubmit="sendCartWhatsAppOrder(event)" style="margin-top:15px;">
                 <div class="form-group">
                     <label>YOUR NAME</label>
                     <input type="text" id="custNameCart" placeholder="e.g. Nimal Perera" required>
@@ -1134,8 +982,8 @@
     <div class="modal-overlay" id="storageModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeStorageModal()"><i class="fa-solid fa-xmark"></i></span>
-            <h3 style="color:#fff; font-size:1.1rem; margin-bottom:6px;"><i class="fa-brands fa-whatsapp" style="color:var(--whatsapp);"></i> Complete Storage & Game Order</h3>
-            <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:16px;">Enter details to send Drive & Selected Games order.</p>
+            <h3 style="color:#fff; font-size:1.2rem; margin-bottom:8px;"><i class="fa-brands fa-whatsapp" style="color:var(--whatsapp);"></i> Complete Storage & Game Order</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:20px;">Enter details to send Drive & Selected Games order.</p>
 
             <form onsubmit="sendStorageWhatsAppOrder(event)">
                 <div class="form-group">
@@ -1194,7 +1042,6 @@
         let selectedGames = [];
         const whatsappNumber = "94715215075"; 
 
-        // Capacity Options per Storage Type Definition
         const storageCapacities = {
             "SSD": [
                 { value: "128", label: "128 GB" },
@@ -1238,11 +1085,7 @@
                 capacitySelect.appendChild(el);
             });
             
-            if (options.length > 3) {
-                capacitySelect.selectedIndex = 3;
-            } else {
-                capacitySelect.selectedIndex = 0;
-            }
+            capacitySelect.selectedIndex = options.length > 3 ? 3 : 0;
         }
 
         function onStorageTypeChange() {
