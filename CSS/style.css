@@ -1094,3 +1094,24 @@ footer {
         gap: 20px;
     }
 }
+/* Mobile Display Constraints */
+@media screen and (max-width: 768px) {
+    .cat-nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Submenus default hidden on mobile */
+    .dropdown-menu, .submenu {
+        position: static !important;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    /* Active State for Mobile Tapping */
+    .dropdown.active > .dropdown-menu,
+    .dropdown-submenu.active > .submenu {
+        display: block !important;
+    }
+}
